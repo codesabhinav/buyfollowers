@@ -1,0 +1,1941 @@
+/* Max width */
+@media (max-width: 1399.98px) {}
+
+@media (max-width: 1199.98px) {
+    .more-section{
+        padding-bottom: 60px;
+    }
+}
+
+
+@media (max-width: 991.98px) {
+    .sidebar-inner {
+        left: -115%;
+        top: 0;
+        transition: all 0.4s ease;
+    }
+
+    .main-container {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .sidebar-wrap.active .sidebar-inner {
+        left: 0;
+        transition: all 0.4s ease;
+    }
+
+    .sidebar-wrap.active .sidebar .bg-shadow {
+        visibility: visible;
+        opacity: 0.4;
+    }
+
+    .dashboard-content {
+        padding: 15px;
+    }
+    .main-nav a.nav-link,
+    .subnav-links a{
+        font-size: 18px;
+    }
+    .hero-slider .slider-contant h1{
+        max-width: 675px;
+    }
+    .networking-section .bg-red-lg{
+        margin: 0 0 20px;
+    }
+    .contact-section{
+        padding-bottom: 65px;
+    }
+    .contact-section .btn {
+        font-size: 28px;
+        min-height: 65px;
+        min-width: 249px;
+    }
+    .success-section h2.fs-35-bold{
+        max-width: unset;
+    }
+    .footer-links{
+        gap: 15px;
+    }
+    .footer-links a:not(:last-child)::after{
+        padding-left: 15px;
+    }
+    .footer-links a{
+        font-size: 18px;
+    }
+    footer {
+        padding: 40px 0 30px;
+    }
+    .social-links{
+        margin-bottom: 30px;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+    .main-nav a.nav-link,
+    .subnav-links a {
+        font-size: 16px;
+    }
+
+    .main-nav .navbar-brand {
+        max-width: 115px;
+        margin-right: 0;
+    }
+
+    .hero-slider .slider-contant h1 {
+        font-size: 41px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+    .hero-slider .slider-contant .btn {
+        font-size: 18px;
+        padding: 7px 25px;
+    }
+
+    .hero-slider img{
+        height: 408px;
+    }
+
+    .hero-slider .swiper-horizontal>.swiper-pagination-bullets, .hero-slider .swiper-pagination-bullets.swiper-pagination-horizontal, .hero-slider .swiper-pagination-custom, .swiper-pagination-fraction {
+        bottom: 20px;
+    }
+    .hero-slider .swiper-pagination-bullet {
+        width: 30px;
+        height: 5px;
+    }
+
+    .bg-red-lg::after{
+        width: 198px;
+        height: 198px;
+    }
+
+    .networking-section .bg-red-lg {
+        max-width: 300px;
+    }
+    .bg-red-lg {
+        position: relative;
+        padding-top: 21px;
+        padding-left: 20px;
+    }
+
+    .benefit-card  p{
+        max-width: unset;
+    }
+    .benefit-card .fs-22-bold {
+        margin-bottom: 15px;
+    }
+    .benefit-card .bg-red-md {
+        margin: 0 0 20px;
+    }
+    .footer-links {
+        gap: 5px;
+    }
+    .footer-links a {
+        font-size: 16px;
+    }
+    .social-links{
+        gap: 15px;
+    }
+    .social-links img {
+        max-width: 48px;
+    }
+    .footer-links a:not(:last-child)::after {
+        padding-left: 2px;
+    }
+    .buttons {
+        column-gap: 18px;
+        row-gap: 20px;
+        margin: 10px auto 60px;
+    }
+
+    .btn.large-btn {
+        font-size: 17px;
+        width: 249px;
+        height: 88px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dashboard-header .header-elements {
+        gap: 16px;
+    }
+
+    .dashboard-header .profile .body {
+        display: none;
+    }
+
+    .report-row>div:not(:last-child) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .main-nav .nav-item:not(:last-child) a.nav-link::after{
+        content: none;
+    }
+    .main-nav a.nav-link{
+        padding-bottom: 10px !important;
+    }
+    .hero-slider .slider-contant{
+        left: 15px;
+    }
+    .hero-slider .slider-contant h1 {
+        font-size: 28px;
+    }
+    .hero-slider .slider-contant .btn {
+        font-size: 16px;
+        padding: 6px 20px;
+    }
+    .networking-section .fs-35-bold{
+        margin-bottom: 18px;
+        margin-top: 0;
+    }
+    .fs-35-bold {
+        font-size: 28px;
+        line-height: normal;
+    }
+    .col-sm-6:nth-child(3n-2) .organization-card {
+        background-color: #FBFBFB;
+    }
+    .col-sm-6:nth-child(2n-1) .organization-card {
+        background-color: #F4F4F4;
+    }
+    .contact-section .btn {
+        font-size: 22px;
+        min-height: 52px;
+        min-width: 219px;
+    }
+    .contact-section {
+        padding: 40px 0 30px;
+    }
+    .success-card p{
+        max-width: unset;
+    }
+    .success-section {
+        padding: 0px 0 20px;
+    }
+}
+
+/* Min width */
+@media (min-width: 576px) {
+    .report-row>div:nth-child(odd) {
+        border-right: 1px solid var(--border);
+    }
+}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {
+    .sidebar-toggle {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {}
+
+@media (min-width: 1400px) {
+    .report-row>div:not(:last-child) {
+        border-right: 1px solid var(--border);
+    }
+}
+
+
+/* Frontend Teams */
+@media (max-width: 319.98px) {
+    .player-1 {
+        padding-left: 0px;
+        width: 100%;
+    }
+
+    .player-2 {
+        width: 100%;
+        padding-right: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .name_plate {
+        padding: 10px 25px;
+    }
+
+    .player_shape {
+        width: 150px;
+    }
+
+    .player_image {
+        width: 150px;
+        height: 150px;
+
+    }
+
+    .player_info {
+        width: 100%;
+    }
+
+    .left_section {
+        width: 100%;
+        padding-right: 10px;
+        padding-left: 10px;
+        height: max-content;
+    }
+
+    .name_plate span {
+        font-size: 20px;
+    }
+
+    .cricket_section {
+        width: auto;
+        margin: 0;
+        display: grid;
+    }
+
+    #cricket-container {
+        width: 230px;
+        margin: 0 auto;
+    }
+
+    #cricket2-container {
+        width: 230px;
+        margin: 0 auto;
+    }
+
+    #chart2-container {
+        width: 240px;
+        margin: 0 auto;
+    }
+
+    #chart-container {
+        width: 240px;
+        margin: 0 auto;
+    }
+
+    .business_graph h1 {
+        width: fit-content;
+    }
+
+    .player_shape::before {
+        top: 16px;
+        left: 50%;
+        width: 170px;
+        height: 170px;
+    }
+
+    .player_icon {
+        margin-bottom: 0;
+    }
+
+    .right_section {
+        padding: 0px;
+        height: auto;
+    }
+
+    .business_graph {
+        padding: 10px;
+    }
+
+
+    .player_shape svg {
+        height: 200px;
+    }
+
+    .player_image img {
+        height: 150px;
+    }
+
+    .animated_bg {
+        height: auto;
+        overflow: auto;
+        padding: 10px;
+    }
+
+    .animated_bg .inner_section {
+        display: grid;
+        gap: 20px;
+    }
+
+    .player_section.player-2 .player_upper_div {
+        gap: 50px;
+    }
+
+    .business_text_div {
+        width: auto;
+    }
+
+    .player_upper_div {
+        width: 100%;
+        height: auto;
+        display: grid;
+        gap: 20px;
+        justify-content: normal;
+    }
+
+    .business_graph {
+        width: 100%;
+        height: auto;
+    }
+
+    .traffic_graph {
+        width: 100%;
+    }
+
+    .cricket_graph {
+        width: 100%;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 499.98px) {
+    /* .player-1 {
+        padding-left: 0px;
+        width: 100%;
+    }
+
+    .player-2 {
+        width: 100%;
+        padding-right: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .name_plate {
+        padding: 10px 30px;
+    }
+
+    .player_shape {
+        width: 200px;
+    }
+
+    .player_image {
+        width: 200px;
+        height: 200px;
+
+    }
+
+    .player_info {
+        width: 100%;
+    }
+
+    .left_section {
+        width: 100%;
+        padding-right: 20px;
+        padding-left: 20px;
+        height: max-content;
+    }
+
+    .cricket_section {
+        width: auto;
+        margin: 0;
+        display: grid;
+    }
+
+    #cricket-container {
+        width: 275px;
+        margin: 0 auto;
+    }
+
+    #cricket2-container {
+        width: 275px;
+        margin: 0 auto;
+    }
+
+    #chart2-container {
+        width: 270px;
+        margin: 0 auto;
+    }
+
+    #chart-container {
+        width: 270px;
+        margin: 0 auto;
+    }
+
+    .business_graph h1 {
+        width: fit-content;
+    }
+
+    .player_shape::before {
+        top: -10px;
+        left: 50%;
+        width: 220px;
+        height: 220px;
+    }
+
+    .right_section {
+        padding: 0px;
+        height: auto;
+    }
+
+    .business_graph {
+        padding: 10px;
+    }
+
+
+    .player_shape svg {
+        height: 200px;
+    }
+
+    .player_image img {
+        height: 200px;
+    } */
+
+    /* .player_upper_div {
+        justify-content: space-between;
+    } */
+    /*
+    .animated_bg {
+        height: auto;
+        overflow: auto;
+        padding: 10px;
+    }
+
+    .animated_bg .inner_section {
+        display: grid;
+        gap: 20px;
+    }
+
+    .player_section.player-2 .player_upper_div {
+        gap: 50px;
+    }
+
+    .business_text_div {
+        width: auto;
+    }
+
+    .player_upper_div {
+        width: 100%;
+        height: auto;
+        display: grid;
+        gap: 60px;
+        justify-content: normal;
+    }
+
+    .business_graph {
+        width: 100%;
+        height: auto;
+    }
+
+    .traffic_graph {
+        width: 100%;
+    }
+
+    .cricket_graph {
+        width: 100%;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 11px;
+    } */
+}
+
+@media (min-width: 320px) and (max-width: 499.98px) {
+    .player-1 {
+        padding-left: 0px;
+        width: 100%;
+    }
+
+    .player-2 {
+        width: 100%;
+        padding-right: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .name_plate {
+        padding: 10px 25px;
+    }
+
+    .player_shape {
+        width: 150px;
+    }
+
+    .player_image {
+        width: 150px;
+        height: 150px;
+
+    }
+
+    .player_info {
+        width: 100%;
+    }
+
+    .left_section {
+        width: 100%;
+        padding-right: 10px;
+        padding-left: 10px;
+        height: max-content;
+    }
+
+    .name_plate span {
+        font-size: 20px;
+    }
+
+    .cricket_section {
+        width: auto;
+        margin: 0;
+        display: grid;
+    }
+
+    #cricket-container {
+        width: 230px;
+        margin: 0 auto;
+    }
+
+    #cricket2-container {
+        width: 230px;
+        margin: 0 auto;
+    }
+
+    #chart2-container {
+        width: 240px;
+        margin: 0 auto;
+    }
+
+    #chart-container {
+        width: 240px;
+        margin: 0 auto;
+    }
+
+    .business_graph h1 {
+        width: fit-content;
+    }
+
+    .player_shape::before {
+        top: 16px;
+        left: 50%;
+        width: 170px;
+        height: 170px;
+    }
+
+    .player_icon {
+        margin-bottom: 0;
+    }
+
+    .right_section {
+        padding: 0px;
+        height: auto;
+    }
+
+    .business_graph {
+        padding: 10px;
+    }
+
+
+    .player_shape svg {
+        height: 200px;
+    }
+
+    .player_image img {
+        height: 150px;
+    }
+
+    .animated_bg {
+        height: auto;
+        overflow: auto;
+        padding: 10px;
+    }
+
+    .animated_bg .inner_section {
+        display: grid;
+        gap: 20px;
+    }
+
+    .player_section.player-2 .player_upper_div {
+        gap: 50px;
+    }
+
+    .business_text_div {
+        width: auto;
+    }
+
+    .player_upper_div {
+        width: 100%;
+        height: auto;
+        display: grid;
+        gap: 20px;
+        justify-content: normal;
+    }
+
+    .business_graph {
+        width: 100%;
+        height: auto;
+    }
+
+    .traffic_graph {
+        width: 100%;
+    }
+
+    .cricket_graph {
+        width: 100%;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 11px;
+    }
+}
+
+
+@media (min-width: 500px) and (max-width: 649.98px) {
+    .player-1 {
+        padding-left: 0px;
+        width: 100%;
+    }
+
+    .player-2 {
+        width: 100%;
+        padding-right: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .name_plate {
+        padding: 10px 30px;
+    }
+
+    .player_shape {
+        width: 200px;
+    }
+
+    .player_image {
+        width: 200px;
+        height: 200px;
+
+    }
+
+    .player_info {
+        width: 100%;
+    }
+
+    .left_section {
+        width: 100%;
+        padding-right: 20px;
+        padding-left: 20px;
+        height: max-content;
+    }
+
+    .cricket_section {
+        width: auto;
+        margin: 0;
+        display: flex;
+    }
+
+    #cricket-container {
+        width: 250px;
+        margin: auto;
+    }
+
+    #cricket2-container {
+        width: 250px;
+        margin: auto;
+    }
+
+    #chart2-container {
+        width: 400px;
+        margin: auto;
+    }
+
+    #chart-container {
+        width: 400px;
+        margin: auto;
+    }
+
+    .business_graph h1 {
+        width: fit-content;
+    }
+
+    .player_shape::before {
+        top: -10px;
+        left: 50%;
+        width: 220px;
+        height: 220px;
+    }
+
+    .right_section {
+        padding: 0px;
+        height: auto;
+    }
+
+    .business_graph {
+        padding: 10px;
+    }
+
+
+    .player_shape svg {
+        height: 200px;
+    }
+
+    .player_image img {
+        height: 200px;
+    }
+
+    /* .player_upper_div {
+        justify-content: space-between;
+    } */
+
+    .animated_bg {
+        height: auto;
+        padding: 10px;
+    }
+
+    .animated_bg .inner_section {
+        display: grid;
+        gap: 20px;
+    }
+
+    .player_section.player-2 .player_upper_div {
+        gap: 50px;
+    }
+
+    .business_text_div {
+        width: 100%;
+    }
+
+    .player_upper_div {
+        width: 100%;
+        height: auto;
+        display: grid;
+        gap: 60px;
+        justify-content: normal;
+    }
+
+    .business_graph {
+        width: 100%;
+        height: auto;
+    }
+
+    .traffic_graph {
+        width: 30%;
+    }
+
+    .cricket_graph {
+        width: 70%;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 799.98px) {
+    .player-1 {
+        padding-left: 0px;
+        width: 100%;
+    }
+
+    .player-2 {
+        width: 100%;
+        padding-right: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .name_plate {
+        padding: 10px 30px;
+    }
+
+    .player_shape {
+        width: 200px;
+    }
+
+    .player_image {
+        width: 200px;
+        height: 200px;
+
+    }
+
+    .player_info {
+        width: 100%;
+    }
+
+    .left_section {
+        width: 100%;
+        padding-right: 20px;
+        padding-left: 20px;
+        height: max-content;
+    }
+
+    .cricket_section {
+        width: auto;
+        margin: 0;
+        display: flex;
+    }
+
+    #cricket-container {
+        width: 300px;
+        margin: auto;
+    }
+
+    #cricket2-container {
+        width: 300px;
+        margin: auto;
+    }
+
+    #chart2-container {
+        width: 550px;
+        margin: auto;
+    }
+
+
+    .business_graph h1 {
+        width: fit-content;
+    }
+
+    .player_shape::before {
+        top: -10px;
+        left: 50%;
+        width: 220px;
+        height: 220px;
+    }
+
+    .right_section {
+        padding: 0px;
+        height: auto;
+    }
+
+    .business_graph {
+        padding: 10px;
+    }
+
+
+    .player_shape svg {
+        height: 200px;
+    }
+
+    .player_image img {
+        height: 200px;
+    }
+
+    /* .player_upper_div {
+        justify-content: space-between;
+    } */
+
+    .animated_bg {
+        height: auto;
+        padding: 10px;
+    }
+
+    .animated_bg .inner_section {
+        display: grid;
+        gap: 20px;
+    }
+
+    .player_section.player-2 .player_upper_div {
+        gap: 50px;
+    }
+
+    #chart-container {
+        width: 550px;
+        margin: auto;
+    }
+
+    .business_text_div {
+        width: 100%;
+    }
+
+    .player_upper_div {
+        width: 100%;
+        height: auto;
+        display: grid;
+        gap: 60px;
+        justify-content: normal;
+    }
+
+    .business_graph {
+        width: 100%;
+        height: auto;
+    }
+
+    .traffic_graph {
+        width: 30%;
+    }
+
+    .cricket_graph {
+        width: 70%;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 921.98px) {
+    .player-1 {
+        padding-left: 0px;
+        width: 100%;
+    }
+
+    .player-2 {
+        width: 100%;
+        padding-right: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .name_plate {
+        padding: 10px 30px;
+    }
+
+    .player_shape {
+        width: 200px;
+    }
+
+    .player_image {
+        width: 200px;
+        height: 200px;
+
+    }
+
+    .player_info {
+        width: 50%;
+    }
+
+    .left_section {
+        width: 100%;
+        height: max-content;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .cricket_section {
+        width: auto;
+        margin: 0;
+        padding-top: 20px;
+    }
+
+    #cricket-container {
+        width: 360px;
+        margin: 0 auto;
+    }
+
+    #cricket2-container {
+        width: 360px;
+        margin: 0 auto;
+    }
+
+    #chart2-container {
+        width: 700px;
+        margin: 0 auto;
+    }
+
+
+    .business_graph h1 {
+        width: fit-content;
+    }
+
+    .player_shape::before {
+        top: -10px;
+        left: 50%;
+        width: 220px;
+        height: 220px;
+    }
+
+    .right_section {
+        padding: 0px;
+    }
+
+    .business_graph {
+        padding: 10px;
+    }
+
+
+    .player_shape svg {
+        height: 200px;
+    }
+
+    .player_image img {
+        height: 200px;
+    }
+
+    /* .player_upper_div {
+        justify-content: space-between;
+    } */
+
+    .animated_bg {
+        height: auto;
+        padding: 10px;
+    }
+
+    .animated_bg .inner_section {
+        display: grid;
+    }
+
+    .player_section.player-2 .player_upper_div {
+        gap: 50px;
+    }
+
+    #chart-container {
+        width: 700px;
+        margin: 0 auto;
+    }
+
+    .business_text_div {
+        width: 100%;
+    }
+
+    .player_upper_div {
+        width: 100%;
+        height: auto;
+        justify-content: space-between;
+    }
+
+    .business_graph {
+        width: 100%;
+    }
+
+    .cricket_section .business_graph {
+        width: 100%;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 12px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 12px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 12px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 922px) and (max-width: 1099.98px) {
+
+    .name_plate {
+        height: auto;
+        max-width: 200px;
+        padding: 10px 25px;
+    }
+
+    .cricket_section {
+        margin: 5px;
+    }
+
+    .right_section {
+        padding: 10px;
+    }
+
+    .name_plate span {
+        font-size: 16px;
+        text-wrap: wrap;
+    }
+
+    .player_icon img {
+        height: 40px;
+    }
+
+    .business_graph {
+        padding: 10px;
+    }
+
+    #chart-container {
+        height: 200px;
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    .player_shape svg {
+        height: 150px;
+    }
+
+    #chart2-container {
+        height: 200px;
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    .player_image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .player_shape::before {
+        height: 170px;
+        width: 170px;
+        top: -10px;
+    }
+
+    .player_image img {
+        height: 150px;
+    }
+
+    .player_shape {
+        width: 150px;
+    }
+
+    #cricket-container {
+        height: 200px;
+        width: 200px;
+    }
+
+    .animated_bg {
+        padding: 10px;
+    }
+
+    .business_graph h1 {
+        font-size: 12px;
+    }
+
+    .player_animated_div {
+        width: 100px;
+    }
+
+    .traffic_graph span {
+        font-size: 12px;
+    }
+
+    .player_icon {
+        margin-bottom: 60px;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 08px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 08px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 08px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 08px;
+    }
+}
+
+
+@media (min-width: 1100px) and (max-width: 1299.98px) {
+
+    .name_plate {
+        height: auto;
+        padding: 10px 25px;
+    }
+
+    .cricket_section {
+        margin: 5px;
+    }
+
+    .right_section {
+        padding: 10px;
+    }
+
+    .name_plate span {
+        font-size: 17px;
+    }
+
+    .player_icon img {
+        height: 40px;
+    }
+
+    .business_graph {
+        padding: 10px;
+    }
+
+    #chart-container {
+        height: 200px;
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    #cricket-container {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    #cricket2-container {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    .player_shape svg {
+        height: 200px;
+    }
+
+    #chart2-container {
+        height: 200px;
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .player_image {
+        width: 190px;
+        height: 190px;
+    }
+
+    .player_shape::before {
+        height: 210px;
+        width: 210px;
+        top: -5px;
+    }
+
+    .player_image img {
+        height: 190px;
+    }
+
+    .player_shape {
+        width: 200px;
+    }
+
+    .animated_bg {
+        padding: 10px;
+    }
+
+    .business_graph h1 {
+        font-size: 12px;
+    }
+
+    .player_animated_div {
+        width: 200px;
+    }
+
+    .traffic_graph span {
+        font-size: 12px;
+    }
+
+    .player_icon {
+        margin-bottom: 60px;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 08px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 08px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 08px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 08px;
+    }
+}
+
+@media (min-width: 1300px) and (max-width: 1499.98px) {
+
+    .name_plate {
+        height: auto;
+        padding: 15px 40px;
+    }
+
+    #chart-container {
+        height: 200px;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    #chart2-container {
+        height: 200px;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .player_image {
+        width: 190px;
+        height: 190px;
+    }
+
+    .player_shape::before {
+        height: 210px;
+        width: 210px;
+        top: 55px;
+    }
+
+    .player_image img {
+        height: 190px;
+    }
+
+    .player_shape {
+        width: 300px;
+    }
+
+    .two-players .player_shape {
+        width: unset;
+    }
+
+    .player_icon {
+        margin-bottom: 0;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .name_plate span {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1500px) and (max-width: 1699.98px) {
+
+    .name_plate {
+        height: auto;
+        padding: 05px 40px;
+    }
+
+    #chart-container {
+        height: 200px;
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    #chart2-container {
+        height: 200px;
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .player_image {
+        width: 190px;
+        height: 190px;
+    }
+
+    .player_shape::before {
+        height: 210px;
+        width: 210px;
+        top: 55px;
+    }
+
+    .player_image img {
+        height: 190px;
+    }
+
+    .player_shape {
+        width: 300px;
+    }
+
+    .two-players .player_shape {
+        width: unset;
+    }
+
+    .player_icon {
+        margin-bottom: 0;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 1700px) and (max-width: 1899.98px) {
+
+    .name_plate {
+        height: auto;
+        padding: 10px 30px;
+    }
+
+    #chart-container {
+        height: 200px;
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    #chart2-container {
+        height: 200px;
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .player_image {
+        width: 190px;
+        height: 190px;
+    }
+
+    .player_shape::before {
+        height: 210px;
+        width: 210px;
+        top: 55px;
+    }
+
+    .player_image img {
+        height: 190px;
+    }
+
+    .player_shape {
+        width: 300px;
+    }
+
+    .two-players .player_shape {
+        width: unset;
+    }
+
+    .player_icon {
+        margin-bottom: 0;
+    }
+
+    .raphael-group-273-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-144-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-551-dataset-axis>text {
+        font-size: 11px;
+    }
+
+    .raphael-group-420-dataset-axis>text {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 1599.98px) {
+    .teams-page .title {
+        margin-bottom: 18px;
+    }
+
+    .twoplayer-arrow {
+        right: 62px;
+        margin: auto auto 18px;
+    }
+
+    .padding-inline-120 {
+        padding-inline: 62px;
+    }
+
+    .two-players .name_plate span {
+        font-size: 18px;
+    }
+
+    .two-players .name_plate {
+        padding: 0 39px;
+    }
+}
+
+@media (max-width: 1399.98px) {
+    .team-card .card-body {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .team-card .owner,
+    .team-card .fund {
+        width: 100%;
+    }
+
+    .two-players .player_upper_div {
+        flex-direction: column;
+    }
+
+    .two-players .player_info {
+        width: 100%;
+    }
+
+    .two-players .cricket_section {
+        width: 100%;
+    }
+
+    .business-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 48px;
+    }
+
+    .rules-img {
+        max-width: 992px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .sponser-cards {
+        display: unset;
+    }
+}
+
+@media (max-width: 991.98px) {
+
+    .custome-container .main-title {
+        font-size: 62px;
+    }
+
+    .team-card .team-logo {
+        width: 68px;
+        min-width: 68px;
+    }
+
+    .team-card h6 {
+        font-size: 18px;
+        line-height: normal;
+        font-weight: 600;
+    }
+
+    .team-card .name {
+        font-size: 16px;
+    }
+
+    .team-card .lable {
+        font-size: 14px;
+    }
+
+    .teams-page .common-nav .logo {
+        max-height: 36px;
+    }
+
+    .hero-section-logo {
+        width: 200px;
+        height: auto;
+    }
+
+    .team-owner .team-logo {
+        width: 142px;
+        min-width: 142px;
+    }
+
+    .team-owner .team-logo img {
+        max-width: 95px;
+        max-height: 95px;
+    }
+
+    .team-owner-bg {
+        width: 300px;
+    }
+
+    .team-owner .team-card h6 {
+        font-size: 38px;
+    }
+
+    .team-owner .card-heading {
+        gap: 28px;
+    }
+
+    .teamowner-card {
+        gap: 28px;
+    }
+
+    .team-owner .owner-img {
+        width: 64px;
+    }
+
+    .team-player-header {
+        flex-direction: column;
+        align-content: center;
+        gap: 24px;
+    }
+
+    .sponser-cards .team-logo {
+        width: 88px;
+        min-width: 88px;
+    }
+
+    .two-players .cricket_section {
+        flex-direction: column;
+    }
+
+    .two-players .business_graph {
+        width: 100%;
+    }
+
+    .two-players .left_section {
+        padding: 0;
+    }
+
+    .two-players .player_upper_div {
+        width: 100%;
+    }
+
+    .two-players .cricket-chart {
+        max-width: 240px;
+    }
+
+    .business-list {
+        gap: 20px;
+    }
+
+    .two-players .row>div:not(:last-child)::after {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .custome-container .main-title {
+        padding: 10px 8px 12px 18px;
+        font-size: 42px;
+        line-height: 64px;
+    }
+
+    .start-btn span {
+        padding: 4px 5px 6px 5px;
+    }
+
+    .start-btn {
+        font-size: 14px;
+    }
+
+    .teams-page .common-nav h2 {
+        font-size: 18px;
+        line-height: normal;
+        padding-right: 78px;
+    }
+
+    .teams-page .title {
+        font-size: 18px;
+        line-height: normal;
+    }
+
+    .team-card .owner,
+    .team-card .fund {
+        width: 50%;
+    }
+
+    .team-card .card-body {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .custome-container .main-title-container {
+        gap: 20px;
+    }
+
+    .hero-section .main-logo-container {
+        width: 100px;
+    }
+
+    .team-name-section {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .team-name-section .main-team-owner,
+    .team-name-section .main-team {
+        flex-direction: column;
+    }
+
+    .main-team .main-team-title,
+    .main-team-owner .main-owner-title {
+        align-items: center;
+    }
+
+    .team-name-section .main-team-owner {
+        flex-direction: column-reverse;
+    }
+
+    .twoplayer-arrow {
+        right: 32px;
+        margin: auto auto 18px;
+    }
+
+    .padding-inline-120 {
+        padding-inline: 32px;
+    }
+
+    .rules-list .text p {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22.8px;
+    }
+
+    .rules-list .text {
+        clip-path: polygon(0 0, 97.2% 0, 100% 50%, 97.2% 100%, 0 100%, 0% 100%);
+    }
+
+    .two-players .cricket_section {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .custome-container .main-title {
+        font-size: 25px;
+        line-height: 42px;
+    }
+
+    .nums {
+        width: 100px;
+        height: 140px;
+    }
+
+    .nums:after {
+        font-size: 100px;
+    }
+
+    .num {
+        font-size: 100px;
+    }
+
+    .hero-section .countdown-msg {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .teams-page .common-nav {
+        flex-direction: column;
+        padding-block: 18px 10px;
+        gap: 8px;
+    }
+
+    .teams-page .common-nav h2 {
+        padding: 0;
+    }
+
+    .padding-inline-120 {
+        padding-inline: 18px;
+    }
+
+    .team-card .card-body {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .team-card .owner,
+    .team-card .fund {
+        width: 100%;
+    }
+
+    .teams-page .title {
+        margin-bottom: 8px;
+    }
+
+    .teams-page .team-card {
+        padding: 14px;
+    }
+
+    .team-card .team-logo {
+        width: 58px;
+        min-width: 58px;
+    }
+
+    .team-card .owner-img {
+        width: 42px;
+    }
+
+    .hero-section-logo {
+        width: 100px;
+        height: auto;
+    }
+
+    .animated_bg {
+        height: 100%;
+    }
+
+    .animated_bg .inner_section {
+        display: grid;
+    }
+
+    .team-players-title {
+        font-size: 24px;
+    }
+
+    .rules-list .text p {
+        font-size: 14px;
+        line-height: 19.8px;
+    }
+
+    .rules-list .text {
+        padding: 9px 12px 9px 8px;
+        clip-path: polygon(0 0, 95.2% 0, 100% 50%, 95.2% 100%, 0 100%, 0% 100%);
+    }
+
+    .rules-list .number span {
+        font-size: 14px;
+    }
+
+    .rules-list .number {
+        padding: 4px;
+        width: 50px;
+    }
+
+    .two-players .cricket_section {
+        flex-direction: column;
+    }
+
+    .twoplayer-arrow {
+        position: unset;
+        justify-content: center;
+    }
+    .rules-parent{
+        padding: 4px;
+    }
+}
