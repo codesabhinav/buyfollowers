@@ -66,6 +66,10 @@ export default {
                     5: "hsl(var(--chart-5))",
                 },
             },
+            backgroundImage: {
+                "custom-gradient":
+                    "linear-gradient(274.49deg, #247EBF 25.06%, #BD96E3 41.85%, #CE7ADF 55.96%, #E798E7 69.85%)",
+            },
             keyframes: {
                 zoomIn: {
                     "0%": {

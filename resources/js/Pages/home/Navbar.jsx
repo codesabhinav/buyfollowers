@@ -83,7 +83,7 @@ const Navbar = () => {
                         BuyFollowers
                     </h1> */}
                     <img
-                        src="assets/images/logo-v1.png"
+                        src="assets/images/buy_followers_logo.svg"
                         alt="logo-v1"
                         className="w-44 md:w-60 h-auto"
                     />
