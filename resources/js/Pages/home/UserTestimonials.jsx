@@ -47,13 +47,32 @@ const userTestimonials = [
 ];
 
 const UserTestimonials = () => {
-    const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+    const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
+
+    // const ratingValue = Number(item.rating);
+    // const totalStars = 5;
+
+    // const stars = userTestimonials({ length: totalStars }, (_, i) => {
+    //     const isFilled = i < ratingValue;
+    //     return (
+    //         <Star
+    //             key={i}
+    //             className={`${
+    //                 isFilled
+    //                     ? "stroke-[#F9B524] fill-[#F9B524]"
+    //                     : "stroke-[#D1D6E3] fill-[#D1D6E3]"
+    //             } size-4`}
+    //         />
+    //     );
+    // });
 
     return (
         <>
             <Carousel
+                plugins={[plugin.current]}
                 opts={{
                     align: "start",
+                    loop: true,
                 }}
                 className="w-full flex items-center gap-2"
             >
@@ -70,8 +89,8 @@ const UserTestimonials = () => {
                             key={index}
                             className="h-[523px] md:basis-1/2"
                         >
-                            <div className="bg-[#FFFFFF] shadow-md rounded-3xl p-12 relative w-full flex flex-col justify-center items-center">
-                                <div className="bg-[#D52E9C] rounded-md absolute top-0 right-8 p-8">
+                            <div className="bg-[#FFFFFF] shadow-md border border-[#EDEDED] rounded-3xl p-12 relative w-full flex flex-col justify-center items-center">
+                                <div className="bg-[#D52E9C] rounded-md absolute top-0 right-4 p-8">
                                     <img
                                         src="assets/images/right_comma.svg"
                                         alt="right_comma"
@@ -84,10 +103,27 @@ const UserTestimonials = () => {
                                             {item.title}
                                         </span>
                                         <span className="flex items-center gap-1">
+                                            {/* <Star className="stroke-[#F9B524] fill-[#F9B524] size-4" />
                                             <Star className="stroke-[#F9B524] fill-[#F9B524] size-4" />
                                             <Star className="stroke-[#F9B524] fill-[#F9B524] size-4" />
-                                            <Star className="stroke-[#F9B524] fill-[#F9B524] size-4" />
-                                            <Star className="stroke-[#D1D6E3] fill-[#D1D6E3] size-4" />
+                                            <Star className="stroke-[#D1D6E3] fill-[#D1D6E3] size-4" /> */}
+                                            {Array.from(
+                                                { length: 5 },
+                                                (_, i) => {
+                                                    const isFilled =
+                                                        i < Number(item.rating);
+                                                    return (
+                                                        <Star
+                                                            key={i}
+                                                            className={`${
+                                                                isFilled
+                                                                    ? "stroke-[#F9B524] fill-[#F9B524]"
+                                                                    : "stroke-[#D1D6E3] fill-[#D1D6E3]"
+                                                            } size-4`}
+                                                        />
+                                                    );
+                                                }
+                                            )}
                                         </span>
                                     </div>
                                     <p className="text-[#6C728A]">

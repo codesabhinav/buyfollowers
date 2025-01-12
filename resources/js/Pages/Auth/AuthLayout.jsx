@@ -3,6 +3,7 @@ import Footer from "../home/Footer";
 import Navbar from "../home/Navbar";
 import Login from "./Login";
 import Signup from "./Signup";
+import NewNavbar from "../home/NewNavbar";
 
 const AuthLayout = () => {
     return (
@@ -21,7 +22,7 @@ const AuthLayout = () => {
 
         <div className="relative z-10 flex flex-col items-center min-h-screen bg-pink-200/45">
             <div className="w-full md:w-[85%] mt-8">
-                <Navbar />
+                <NewNavbar />
             </div>
             <div className="flex-1 w-full md:w-[85%] px-2 md:px-0 py-12 flex items-center justify-center mt-12">
                 <div className="flex items-center justify-center w-full min-[449px]:w-[434px] lg:w-full">

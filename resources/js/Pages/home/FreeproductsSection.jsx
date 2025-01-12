@@ -144,6 +144,7 @@ const FreeproductsSection = () => {
                                 </div>
                             </div>
                         </div>
+
                         <div>
                             <img
                                 src="assets/images/ourproduct_person.svg"

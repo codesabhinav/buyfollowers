@@ -16,9 +16,9 @@ export const navbarLinks = [
         description: "Home.",
     },
     {
-        title: "All products ",
+        title: "Paid Products ",
         href: "#",
-        description: "All products.",
+        description: "Paid Products.",
         sub_navbarLinks: [
             { title: "Instagram ", href: "#", description: "Instagram." },
             { title: "Facebook", href: "#", description: "Facebook" },
@@ -67,7 +67,7 @@ export const navbarLinks = [
     },
 ];
 
-const Navbar = () => {
+const Navbar = ({ navbarstyle }) => {
     const [openDropdown, setOpenDropdown] = useState(null);
 
     const handleDropdownToggle = (index) => {
@@ -77,11 +77,12 @@ const Navbar = () => {
     return (
         <>
             {/* bg-gradient-to-r from-[#73c3eb] via-[#c688cd] to-[#dcd5d5] bg-clip-text text-transparent */}
-            <div className="flex justify-between items-center mt-2 w-full h-16 bg-white/45 rounded-full text-black p-9">
+            <div
+                className={`flex justify-between items-center mt-2 w-full h-16 bg-white/45 rounded-full text-black p-9 ${
+                    navbarstyle && navbarstyle
+                }`}
+            >
                 <div className="mt-2">
-                    {/* <h1 className="text-4xl font-bold text-white">
-                        BuyFollowers
-                    </h1> */}
                     <img
                         src="assets/images/buy_followers_logo.svg"
                         alt="logo-v1"
@@ -114,15 +115,10 @@ const Navbar = () => {
                                                     >
                                                         <NavigationMenuLink
                                                             asChild
+                                                            href={item.href}
+                                                            className="text-lg text-black/50 font-medium"
                                                         >
-                                                            <a
-                                                                href={
-                                                                    subItem.href
-                                                                }
-                                                                className="text-lg text-black/50 font-medium"
-                                                            >
-                                                                {subItem.title}
-                                                            </a>
+                                                            {subItem.title}
                                                         </NavigationMenuLink>
                                                     </li>
                                                 )
@@ -132,13 +128,11 @@ const Navbar = () => {
                                 </NavigationMenuItem>
                             ) : (
                                 <NavigationMenuItem key={index}>
-                                    <NavigationMenuLink>
-                                        <a
-                                            href={item.href}
-                                            className="text-lg text-black/50 font-medium"
-                                        >
-                                            {item.title}
-                                        </a>
+                                    <NavigationMenuLink
+                                        href={item.href}
+                                        className="text-lg text-black/50 font-medium"
+                                    >
+                                        {item.title}
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                             )

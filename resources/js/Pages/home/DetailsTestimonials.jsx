@@ -9,75 +9,60 @@ import { useRef } from "react";
 
 const detailsTestimonials = [
     {
-        title: "Resonable",
-        rating: "5",
+        title: "What Clients Say About Us",
         description:
-            "Ueniy ad minim veniam quis nostrud exe rcitati oen ullamco labor is nisi ut aliq uip ex ea comm odo cons equa uis aute iruoesre trud exeon dllecomm odo cons equa uis aute iruoesre trud exeon dlle.odo cons equa uis aute iruoesre trud exeon dlle.odo cons equa uis aute iruoesre trud exeon dlle.",
-        user_icon: "assets/images/user_1.png",
-        user_name: "Mark Wood",
-        user_hobbie: "Traveller",
+            "Our clients consistently praise us for our unparalleled expertise, unwavering commitment, and exceptional service. Their testimonials reflect a trust in our ability to deliver results, making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions. making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions.",
     },
     {
-        title: "Excellent",
-        rating: "4",
+        title: "What Clients Say About Us",
         description:
-            "Ueniy ad minim veniam quis nostrud exe rcitati oen ullamco labor is nisi ut aliq uip ex ea comm odo cons equa uis aute iruoesre trud exeon dllecomm odo cons equa uis aute iruoesre trud exeon dlle.odo cons equa uis aute iruoesre trud exeon dlle.odo cons equa uis aute iruoesre trud exeon dlle.",
-        user_icon: "assets/images/user_2.png",
-        user_name: "Aman Khan",
-        user_hobbie: "Traveller",
+            "Our clients consistently praise us for our unparalleled expertise, unwavering commitment, and exceptional service. Their testimonials reflect a trust in our ability to deliver results, making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions. making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions.",
     },
     {
-        title: "Resonable",
-        rating: "3",
+        title: "What Clients Say About Us",
         description:
-            "Ueniy ad minim veniam quis nostrud exe rcitati oen ullamco labor is nisi ut aliq uip ex ea comm odo cons equa uis aute iruoesre trud exeon dllecomm odo cons equa uis aute iruoesre trud exeon dlle.odo cons equa uis aute iruoesre trud exeon dlle.odo cons equa uis aute iruoesre trud exeon dlle.",
-        user_icon: "assets/images/user_1.png",
-        user_name: "Abhinav Singh",
-        user_hobbie: "Traveller",
+            "Our clients consistently praise us for our unparalleled expertise, unwavering commitment, and exceptional service. Their testimonials reflect a trust in our ability to deliver results, making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions. making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions.",
     },
     {
-        title: "Excellent",
-        rating: "4",
+        title: "What Clients Say About Us",
         description:
-            "Ueniy ad minim veniam quis nostrud exe rcitati oen ullamco labor is nisi ut aliq uip ex ea comm odo cons equa uis aute iruoesre trud exeon dllecomm odo cons equa uis aute iruoesre trud exeon dlle.odo cons equa uis aute iruoesre trud exeon dlle.odo cons equa uis aute iruoesre trud exeon dlle.",
-        user_icon: "assets/images/user_2.png",
-        user_name: "Gaurav Tiwari",
-        user_hobbie: "Traveller",
+            "Our clients consistently praise us for our unparalleled expertise, unwavering commitment, and exceptional service. Their testimonials reflect a trust in our ability to deliver results, making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions. making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions.",
     },
 ];
 
 const DetailsTestimonials = () => {
-    const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+    const plugin = useRef(
+        Autoplay({
+            delay: 2000,
+            stopOnInteraction: false,
+            stopOnMouseEnter: true,
+        })
+    );
 
     return (
         <>
             <Carousel
+                plugins={[plugin.current]}
                 opts={{
                     align: "start",
+                    loop: true,
                 }}
-                className="w-full flex flex-col items-center justify-center"
+                className="w-full flex flex-col items-start gap-3"
             >
+                <span className="text-base sm:text-lg font-semibold text-[#D52E9C]">
+                    Testimonials
+                </span>
+
                 <CarouselContent>
                     {detailsTestimonials.map((item, index) => (
-                        <CarouselItem key={index} className="h-[523px]">
-                            <div className="bg-[#FFFFFF] shadow-md rounded-3xl p-12 relative w-full flex flex-col justify-center items-center">
-                                <div className="flex items-center gap-3 bg-[#D52E9C] py-2 px-2 rounded-full absolute -bottom-5">
-                                    <div className="w-11 h-11">
-                                        <img
-                                            src={item.user_icon}
-                                            alt="usericon"
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                    <div className="flex flex-col text-white pr-4">
-                                        <span className="text-sm font-medium">
-                                            {item.user_name}
-                                        </span>
-                                        <span className="text-xs font-medium">
-                                            {item.user_hobbie}
-                                        </span>
-                                    </div>
-                                </div>
+                        <CarouselItem key={index} className="">
+                            <div className="relative w-full flex flex-col gap-6">
+                                <h1 className="text-xl text-[#151515] font-semibold">
+                                    {item.title}
+                                </h1>
+                                <p className="text-[#6C728A] font-medium">
+                                    {item.description}
+                                </p>
                             </div>
                         </CarouselItem>
                     ))}

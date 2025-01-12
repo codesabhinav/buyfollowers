@@ -68,7 +68,7 @@ export default {
             },
             backgroundImage: {
                 "custom-gradient":
-                    "linear-gradient(274.49deg, #247EBF 25.06%, #BD96E3 41.85%, #CE7ADF 55.96%, #E798E7 69.85%)",
+                    "linear-gradient(130deg, #247EBF 25.06%, #BD96E3 41.85%, #CE7ADF 55.96%, #E798E7 69.85%)",
             },
             keyframes: {
                 zoomIn: {

@@ -25,7 +25,7 @@ const whyBuyfollowers = [
 const WhyBuyFollwers = () => {
     return (
         <>
-            <div className="w-full md:w-[85%] flex flex-col items-center gap-16 py-20">
+            <div className="w-full py-20 md:w-[85%] flex flex-col items-center gap-16">
                 <div className="flex flex-col gap-2 items-center">
                     <h5 className="text-lg sm:text-2xl font-semibold text-pink-400">
                         Why Buy Followers

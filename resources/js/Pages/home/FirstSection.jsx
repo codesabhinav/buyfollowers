@@ -1,6 +1,7 @@
 import { Input } from "@/Components/ui/input";
-import { Facebook, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import ServicesCarousel from "./ServicesCarousel";
+import { FaYoutube } from "react-icons/fa";
 
 const FirstSection = () => {
     return (
@@ -9,10 +10,10 @@ const FirstSection = () => {
                 {/* Left Section */}
                 <div className="flex flex-col gap-4 w-full">
                     <h1 className="text-4xl sm:text-5xl font-semibold text-white">
-                        Make the Best of Your Experience With Trollishly
+                        Make the Best of Your Experience With BuyFollowers
                     </h1>
                     <p className="text-base sm:text-lg text-white">
-                        Trollishly is the one-stop destination for 100%
+                        BuyFollowers is the one-stop destination for 100%
                         high-quality social media services. We ensure to boost
                         your online presence through genuine and authentic
                         services.
@@ -27,9 +28,9 @@ const FirstSection = () => {
                     <div className="mt-6 w-full sm:w-[75%] lg:w-[85%] mx-auto">
                         <div className="relative w-full">
                             {/* Facebook Icon */}
-                            <Facebook
+                            <FaYoutube
                                 size={32}
-                                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300 border border-pink-400 border-dashed rounded-full bg-transparent p-1"
+                                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300 border-2 border-pink-400 border-dashed rounded-full bg-transparent p-1"
                             />
                             {/* Input Field */}
                             <Input

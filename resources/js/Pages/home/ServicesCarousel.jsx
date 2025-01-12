@@ -28,11 +28,11 @@ const carouselItems = [
         icon: <FaFacebookF />,
     },
     {
-        title: "Facebook",
+        title: "Twitter",
         icon: <FaTwitter />,
     },
     {
-        title: "Facebook",
+        title: "TikTok",
         icon: <FaTiktok />,
     },
 ];
@@ -102,9 +102,9 @@ const ServicesCarousel = () => {
                     >
                         <span
                             className={`shadow-xl p-6 rounded-tl-xl rounded-tr-[28px] rounded-br-xl rounded-bl-[28px] border-4 backdrop-blur-2xl text-3xl ${
-                                index === positionIndexs
-                                    ? "bg-gradient-to-r from-blue-500 to-pink-400 text-white border-white"
-                                    : "white/45 text-white border-white/45"
+                                (positionIndexs + index) % carouselItems.length
+                                    ? "white/45 text-white border-white/45"
+                                    : "bg-custom-gradient text-white border-white"
                             }`}
                         >
                             {item.icon}

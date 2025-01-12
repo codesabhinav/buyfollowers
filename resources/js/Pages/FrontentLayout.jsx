@@ -8,8 +8,9 @@ import BlogSection from "./home/BlogSection";
 import MovingWave from "./home/MovingWave";
 import WhyBuyFollwers from "./home/WhyBuyFollwers";
 import Testimonials from "./home/Testimonials";
+import NewNavbar from "./home/NewNavbar";
 
-export default function FrontentLayout({ children }) {
+const FrontentLayout = () => {
     return (
         <>
             <div className="flex flex-col items-center min-h-screen relative bg-repeat bg-cover bg-center">
@@ -27,7 +28,8 @@ export default function FrontentLayout({ children }) {
                     <div className="absolute inset-0 bg-custom-gradient opacity-85"></div>
 
                     <div className="relative z-30 mt-8 w-full md:w-[85%] min-h-screen flex flex-col justify-start gap-14">
-                        <Navbar />
+                        {/* <Navbar /> */}
+                        <NewNavbar />
 
                         <FirstSection />
                     </div>
@@ -47,4 +49,6 @@ export default function FrontentLayout({ children }) {
             </div>
         </>
     );
-}
+};
+
+export default FrontentLayout;

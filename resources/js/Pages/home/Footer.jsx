@@ -2,11 +2,139 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <>
-            <div className="">
-                <h1>this is Footer</h1>
+        <div className="w-full relative">
+            <div
+                className="absolute inset-0 opacity-35 z-10 object-contain"
+                style={{
+                    backgroundImage: "url('assets/images/footer_bgimage.png')",
+                    backgroundSize: "auto",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}
+            ></div>
+            <div className="absolute inset-0 bg-custom-gradient opacity-95"></div>
+
+            <div className="relative z-30 py-16 w-full md:w-[85%] mx-auto  text-center text-white flex flex-col gap-12">
+                <div className="flex flex-col md:flex-row justify-between items-start">
+                    <div className="flex flex-col items-start gap-8 w-1/4">
+                        <div className="">
+                            <img
+                                src="assets/images/footericon.svg"
+                                alt="footericon"
+                            />
+                        </div>
+
+                        <span className="text-start">
+                            We work with a passion of taking challenges and
+                            creating new ones in advertising sector.
+                        </span>
+
+                        <div className="border-2 border-dashed p-3 rounded-lg relative">
+                            <div className="bg-[#D52E9C] rounded-lg p-2 text-start">
+                                <span className="text-base font-semibold">
+                                    Have Any Question?
+                                </span>
+                                <span className="text-base font-semibold">
+                                    Support@buyfollowers.com
+                                </span>
+                            </div>
+
+                            <div className="absolute top-5 -right-8 w-16 h-16">
+                                <img
+                                    src="assets/images/footer_mail.png"
+                                    alt="footer_mail"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex items-start gap-20">
+                        <div className="flex flex-col items-start gap-4">
+                            <span className="text-base font-semibold">
+                                Links:
+                            </span>
+                            <li className="flex flex-col items-start gap-4 text-base font-semibold">
+                                <a href="#">Home</a>
+                                <a href="#">About</a>
+                                <a href="#">All Products</a>
+                                <a href="#">Free Trail</a>
+                                <a href="#">Blog</a>
+                                <a href="#">About us</a>
+                            </li>
+                        </div>
+                        <div className="flex flex-col items-start gap-8">
+                            <span className="text-base font-semibold">
+                                Office Info:
+                            </span>
+                            <li className="flex flex-col items-start gap-4">
+                                <div className="flex flex-col items-start gap-4">
+                                    <span className="flex items-center gap-2">
+                                        <img
+                                            src="assets/images/footer_location.svg"
+                                            alt="footer_contact"
+                                        />
+                                        <span>
+                                            8819 Xyz South Gate, CA 90280
+                                        </span>
+                                    </span>
+                                    <span className="flex items-center gap-2">
+                                        <img
+                                            src="assets/images/footer_contact.svg"
+                                            alt="footer_contact"
+                                        />
+                                        <span>+1 999-688-4585</span>
+                                    </span>
+                                </div>
+                                <div className="flex flex-col items-start gap-8">
+                                    <span className="text-base font-semibold">
+                                        Open Hours:
+                                    </span>
+                                    <span className="flex flex-col gap-4 items-start">
+                                        <span>Mon - Sat: 8 am - 5 pm,</span>
+                                        <span>Sunday: CLOSED</span>
+                                    </span>
+                                </div>
+                            </li>
+                        </div>
+                    </div>
+                    <div className="flex flex-col items-start gap-4">
+                        <span>Free Products</span>
+
+                        <div className="grid grid-cols-3 gap-2">
+                            <img
+                                src="/assets/images/footer_youtube.png"
+                                alt="footer_youtube"
+                            />
+                            <img
+                                src="/assets/images/footer_facebook.png"
+                                alt="footer_facebook"
+                            />
+                            <img
+                                src="/assets/images/footer_tiktok.png"
+                                alt="footer_tiktok"
+                            />
+                            <img
+                                src="/assets/images/footer_twitter.png"
+                                alt="footer_twitter"
+                            />
+                            <img
+                                src="/assets/images/footer_instagram.png"
+                                alt="footer_instagram"
+                            />
+                            <img
+                                src="/assets/images/footer_telegram.png"
+                                alt="footer_telegram"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div>
+                    <span>
+                        Copyright © 2023 Buy Followers - All rights reserved.
+                    </span>
+                </div>
             </div>
-        </>
+        </div>
     );
 };
 

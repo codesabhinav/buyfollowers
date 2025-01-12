@@ -17,6 +17,7 @@ const paidProducts = [
         heading: "Safety-focused lubricant:",
         description:
             "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
+        href: "add-cart",
     },
     {
         image: "assets/social_media/instagram.svg",
@@ -24,6 +25,7 @@ const paidProducts = [
         heading: "Safety-focused lubricant:",
         description:
             "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
+        href: "add-cart",
     },
     {
         image: "assets/social_media/tiktok.svg",
@@ -31,6 +33,7 @@ const paidProducts = [
         heading: "Safety-focused lubricant:",
         description:
             "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
+        href: "add-cart",
     },
     {
         image: "assets/social_media/twitter.svg",
@@ -38,6 +41,7 @@ const paidProducts = [
         heading: "Safety-focused lubricant:",
         description:
             "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
+        href: "add-cart",
     },
     {
         image: "assets/social_media/facebook.svg",
@@ -45,6 +49,7 @@ const paidProducts = [
         heading: "Safety-focused lubricant:",
         description:
             "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
+        href: "add-cart",
     },
     {
         image: "assets/social_media/instagram.svg",
@@ -52,6 +57,7 @@ const paidProducts = [
         heading: "Safety-focused lubricant:",
         description:
             "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
+        href: "add-cart",
     },
     {
         image: "assets/social_media/tiktok.svg",
@@ -59,6 +65,7 @@ const paidProducts = [
         heading: "Safety-focused lubricant:",
         description:
             "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
+        href: "add-cart",
     },
     {
         image: "assets/social_media/twitter.svg",
@@ -66,11 +73,18 @@ const paidProducts = [
         heading: "Safety-focused lubricant:",
         description:
             "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
+        href: "add-cart",
     },
 ];
 
 const PaidProductsSection = () => {
-    const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+    const plugin = useRef(
+        Autoplay({
+            delay: 2000,
+            stopOnInteraction: false,
+            stopOnMouseEnter: true,
+        })
+    );
 
     return (
         <>
@@ -131,10 +145,10 @@ const PaidProductsSection = () => {
             <div className="w-full md:w-[85%] flex flex-col items-center gap-16 py-20">
                 <div className="flex flex-col gap-2 items-center">
                     <h5 className="text-lg sm:text-2xl font-semibold text-pink-400">
-                        Our Paind Product
+                        Our Paid Product
                     </h5>
                     <h3 className="text-3xl sm:text-4xl font-semibold text-black">
-                        Our Paind Product
+                        Our Paid Product
                     </h3>
                 </div>
 
@@ -176,9 +190,12 @@ const PaidProductsSection = () => {
                                                 {item.newAmount}
                                             </span>
                                         </div>
-                                        <button className="w-fit py-2 px-2 bg-pink-500 hover:bg-pink-600 text-white text-xs font-semibold rounded-full transition-all">
+                                        <a
+                                            href={item.href}
+                                            className="w-fit py-2 px-2 bg-pink-500 hover:bg-pink-600 text-white text-xs font-semibold rounded-full transition-all"
+                                        >
                                             Buy now
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </CarouselItem>

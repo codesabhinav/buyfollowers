@@ -32,6 +32,12 @@ Route::get('/authentication', function () {
 Route::get('/forget', function () {
     return Inertia::render('Auth/Forgot');
 });
+Route::get('/add-cart', function () {
+    return Inertia::render('home/addtocart/AddtoCartLayout');
+});
+Route::get('/about-us', function () {
+    return Inertia::render('home/about/AboutusLayout');
+});
 
 require __DIR__.'/auth.php';
 
