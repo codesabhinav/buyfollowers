@@ -20,7 +20,6 @@
 
 <script src="{{ asset('admin/assets/js/pie-chart.js') }}"></script>
 <script src="{{ asset('admin/assets/js/jquery.timepicker.min.js') }}"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 @yield('js')
 <script>
     $(".alert").fadeTo(3000, 500).slideUp(500, function() {

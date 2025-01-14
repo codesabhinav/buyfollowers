@@ -10,19 +10,7 @@
                                 <div class="row gx-2 mb-2 pb-1">
                                     <div class="col">
                                         <h2 class="large-title"></h2>
-                                        <p class="body">Total Barbers </p>
-
-                                        <div class="col-auto mb-4">
-                                            <button type="submit" class="btn btn-primary px-4">
-                                                search
-                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M3.85002 10C3.85002 6.60347 6.60347 3.85002 10 3.85002C13.3966 3.85002 16.15 6.60347 16.15 10C16.15 13.3966 13.3966 16.15 10 16.15C6.60347 16.15 3.85002 13.3966 3.85002 10ZM10 2.15002C5.66459 2.15002 2.15002 5.66459 2.15002 10C2.15002 14.3355 5.66459 17.85 10 17.85C11.8615 17.85 13.5717 17.2021 14.9173 16.1194L20.399 21.6011C20.7309 21.933 21.2691 21.933 21.6011 21.6011C21.933 21.2691 21.933 20.7309 21.6011 20.399L16.1194 14.9173C17.2021 13.5717 17.85 11.8615 17.85 10C17.85 5.66459 14.3355 2.15002 10 2.15002Z"
-                                                        fill="#7C8DB5" />
-                                                </svg>
-                                            </button>
-                                        </div>
+                                        <p class="body">Total Products ({{$products}}) </p>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon">
