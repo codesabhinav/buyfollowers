@@ -116,13 +116,13 @@ const ServicesCarousel = () => {
                 ))}
 
                 <div
-                    className="absolute top-2 left-0 transform -translate-y-1/2 text-3xl bg-white/45 border border-dashed border-white rounded-full p-2 text-white cursor-pointer"
+                    className="absolute top-12 lg:top-2 left-0 transform -translate-y-1/2 text-3xl bg-white/45 border border-dashed border-white rounded-full p-2 text-white cursor-pointer"
                     onClick={handlePrev}
                 >
                     <ChevronLeft className="size-4" />
                 </div>
                 <div
-                    className="absolute top-2 right-0 transform -translate-y-1/2 text-3xl bg-white/45 border border-dashed border-white rounded-full p-2 text-white cursor-pointer"
+                    className="absolute top-12 lg:top-2 right-0 transform -translate-y-1/2 text-3xl bg-white/45 border border-dashed border-white rounded-full p-2 text-white cursor-pointer"
                     onClick={handleNext}
                 >
                     <ChevronRight className="size-4" />

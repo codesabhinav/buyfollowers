@@ -72,7 +72,7 @@ const Active = () => {
                         </span>
                     </div>
 
-                    <div className="relative flex items-center gap-2 pt-2">
+                    <div className="relative flex items-center gap-2 pt-2 overflow-x-scroll scroll-smooth scrollbar-custom">
                         <span
                             className="text-[#D52E9C] text-center font-semibold border border-[#D52E9C] hover:bg-[#D52E9C] hover:text-white rounded-md p-1 w-full cursor-pointer"
                             onClick={() => setPackageQuantity(500)}

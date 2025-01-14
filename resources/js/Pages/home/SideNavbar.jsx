@@ -21,36 +21,39 @@ import { ScrollArea } from "@/Components/ui/scroll-area";
 const SideNavbar = () => {
     return (
         <>
-            <Sheet>
+            <Sheet key={"left"}>
                 <SheetTrigger asChild>
                     {/* <Button variant="outline">Open</Button> */}
-                    <AlignJustify className="size-8 md:size-12 text-center text-white cursor-pointer" />
+                    <AlignJustify className="size-8 md:size-12 text-center text-[#D52E9C] cursor-pointer" />
                 </SheetTrigger>
-                <SheetContent>
+                <SheetContent side={"left"}>
                     <SheetHeader>
-                        <SheetTitle className="text-white text-3xl text-center">
-                            <Button className="bg-transparent border border-white text-white font-semibold transition-all ease-in-out delay-150 hover:bg-transparent hover:-translate-y-1 hover:scale-110">
+                        <SheetTitle className="text-white text-[14px] text-center flex flex-col min-[532px]:flex-row justify-between items-center gap-8">
+                            <img
+                                src="assets/images/buy_followers_logo.svg"
+                                alt="logo-v1"
+                                className="w-44 lg:w-48 xl:w-64 h-auto"
+                            />
+
+                            <Button className="bg-[#D52E9C] hover:bg-[#D52E9C] border border-white text-white font-semibold transition-all ease-in-out delay-150 hover:-translate-y-1 hover:scale-110">
                                 My Account
                             </Button>
                         </SheetTitle>
-                        <SheetDescription className="pt-8 text-white">
-                            Make changes to your profile here. Click save when
-                            you're done.
-                        </SheetDescription>
+                        <SheetDescription className="pt-8 text-[16px] text-[#D52E9C]"></SheetDescription>
                     </SheetHeader>
                     <ScrollArea className="w-full h-[359px]">
                         <div className="flex flex-col items-center py-4">
                             {navbarLinks.map((item, index) => (
                                 <div
                                     key={index}
-                                    className={`w-full text-white`}
+                                    className={`w-full text-[#D52E9C]`}
                                 >
                                     {item.sub_navbarLinks ? (
                                         <Accordion type="single" collapsible>
                                             <AccordionItem
                                                 value={`item-${index + 1}`}
                                             >
-                                                <AccordionTrigger className="text-xl font-semibold">
+                                                <AccordionTrigger className="text-[16px] font-semibold text-[#D52E9C]">
                                                     {item.title}
                                                 </AccordionTrigger>
                                                 {item.sub_navbarLinks.map(
@@ -60,7 +63,7 @@ const SideNavbar = () => {
                                                         >
                                                             <a
                                                                 href="/about"
-                                                                className={`text-base font-medium`}
+                                                                className={`text-[14px] font-medium`}
                                                             >
                                                                 {subItem.title}
                                                             </a>
@@ -72,7 +75,7 @@ const SideNavbar = () => {
                                     ) : (
                                         <a
                                             href="#"
-                                            className={`text-xl font-semibold`}
+                                            className={`text-[16px] font-semibold`}
                                         >
                                             {item.title}
                                         </a>

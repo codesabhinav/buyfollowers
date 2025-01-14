@@ -1,9 +1,9 @@
 const AddtoCartHero = () => {
     return (
         <>
-            <div className="flex items-center justify-center gap-36">
-                <div className="flex flex-col gap-4 w-[45%]">
-                    <span className="text-[42px] text-[#D52E9C] font-semibold">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-36">
+                <div className="flex flex-col gap-4 w-full lg:w-[45%]">
+                    <span className="text-[28px] sm:text-[33px] lg:text-[38px] xl:text-[42px] text-[#D52E9C] font-semibold">
                         Buy Followers – Your #1 Authentic Instagram Likes
                         Provider
                     </span>
@@ -20,11 +20,17 @@ const AddtoCartHero = () => {
                         alt="girl_instagram"
                         className="absolute -left-44 top-20"
                     /> */}
-                    <img src="assets/addtocart/cart_girl.png" alt="cart_girl" />
+                    <div className="w-[283px] lg:w-[434px]">
+                        <img
+                            src="assets/addtocart/cart_girl.png"
+                            alt="cart_girl"
+                            className="w-full h-auto"
+                        />
+                    </div>
                     <img
                         src="assets/addtocart/gitl_backgroung.png"
                         alt="girl_wifi"
-                        className="absolute -right-20 top-[162px]"
+                        className=" absolute right-0 lg:-right-20 top-[162px]"
                     />
                 </div>
             </div>

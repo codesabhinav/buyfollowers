@@ -34,11 +34,11 @@ const BuyFollowers = () => {
 
     return (
         <>
-            <div className="bg-[#FFFAFE] w-full flex items-center justify-center py-28">
-                <div className="flex items-center gap-12 w-full md:w-[85%]">
+            <div className="bg-[#FFFAFE] w-full flex items-center justify-center px-2 py-12">
+                <div className="flex flex-col lg:flex-row items-center gap-12 w-full md:w-[85%]">
                     <div className="flex flex-col items-center gap-8 w-full">
                         <div className=" flex flex-col gap-2">
-                            <span className="text-[#151515] font-semibold text-[28px]">
+                            <span className="text-[#151515] font-semibold text-[28px] sm:text-[33px] lg:text-[38px] xl:text-[42px]">
                                 Buy Followers - Check out Our Top-notch
                                 Instagram Likes Services!
                             </span>

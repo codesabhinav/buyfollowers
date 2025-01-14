@@ -158,7 +158,7 @@ const PaidProductsSection = () => {
                         align: "start",
                         loop: true,
                     }}
-                    className="w-full flex flex-col items-center justify-center"
+                    className="flex flex-col items-center justify-center"
                 >
                     <CarouselContent>
                         {paidProducts.map((item, index) => (
@@ -201,8 +201,6 @@ const PaidProductsSection = () => {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    {/* <CarouselPrevious className="" />
-                    <CarouselNext className="" /> */}
                     <div className="flex items-center gap-2">
                         <ChevronLeft className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
                         <ChevronRight className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />

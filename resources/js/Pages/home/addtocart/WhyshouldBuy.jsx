@@ -35,7 +35,7 @@ const whyshouldBuyList = [
 
 const WhyshouldBuy = () => {
     return (
-        <div className="w-full flex items-center justify-center py-28">
+        <div className="w-full flex items-center justify-center py-12 px-2">
             <div className="flex flex-col gap-12 items-center w-full md:w-[85%]">
                 {/* Main Section Header Animation */}
                 <motion.div
@@ -46,10 +46,10 @@ const WhyshouldBuy = () => {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                 >
-                    <span className="text-[#D52E9C] font-semibold text-4xl">
+                    <span className="text-[#D52E9C] font-semibold text-[28px] sm:text-[33px] lg:text-[38px] xl:text-[42px] text-center">
                         Why should I Buy Instagram Likes From Buy Followers?
                     </span>
-                    <span className="text-base text-[#5F5F5F] font-medium text-center">
+                    <span className="text-[14px] text-[#5F5F5F] font-medium text-center">
                         Buy Instagram likes from Buy Followers to build your
                         audience community. Our services are significantly live.
                         Read below to realize <br /> why Buy Followers is the
@@ -58,7 +58,7 @@ const WhyshouldBuy = () => {
                 </motion.div>
 
                 {/* Cards Section */}
-                <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {whyshouldBuyList.map((item, index) => (
                         <motion.div
                             key={index}

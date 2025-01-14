@@ -67,7 +67,9 @@ const blockContent = [
 ];
 
 const BlogSection = () => {
-    const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+    const plugin = useRef(
+        Autoplay({ delay: 200000000, stopOnInteraction: true })
+    );
 
     return (
         <div className="w-full bg-[#FFFAFE] flex flex-col items-center">
@@ -90,11 +92,11 @@ const BlogSection = () => {
                     }}
                     className="w-full flex flex-col items-center justify-center gap-12"
                 >
-                    <CarouselContent>
+                    {/* <CarouselContent>
                         {blockContent.map((item, index) => (
                             <CarouselItem
                                 key={index}
-                                className="md:basis-1/3 lg:basis-1/4 basis-full flex-shrink-0"
+                                className="md:basis-1/3 lg:basis-1/4"
                             >
                                 <div className="border border-[#EDEDED] rounded-lg relative">
                                     <div className="w-full">
@@ -105,15 +107,15 @@ const BlogSection = () => {
                                         />
                                     </div>
 
-                                    <div className="absolute bottom-0 left-0 right-0 rounded-b-lg p-4">
-                                        <div className="absolute bottom-[0px] left-0 z-10 w-full">
+                                    <div className="absolute bottom-0 left-0 rounded-b-lg p-4">
+                                        <div className="absolute bottom-0 left-0 z-10 w-full">
                                             <img
                                                 src="assets/images/rectangle_blog.png"
                                                 alt="rectangle_blog.png"
                                                 className="w-full h-auto"
                                             />
                                         </div>
-                                        <div className="absolute top-0 left-[55%] transform -translate-y-[65%] z-30">
+                                        <div className="absolute top-0 left-[62%] transform -translate-y-[65%] z-30">
                                             <img
                                                 src="assets/images/youtube_blog.png"
                                                 alt="2_youtube"
@@ -129,6 +131,67 @@ const BlogSection = () => {
                                                 {item.description}
                                             </p>
                                         </div>
+                                    </div>
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent> */}
+                    <CarouselContent>
+                        {blockContent.map((item, index) => (
+                            <CarouselItem
+                                key={index}
+                                className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 p-2"
+                            >
+                                {/* <div
+                                    className="border border-[#EDEDED] rounded-lg relative overflow-hidden w-full bg-cover bg-center"
+                                    style={{
+                                        backgroundImage: `url(${item.image})`,
+                                        aspectRatio: "9 / 8",
+                                    }}
+                                >
+                                    <div className="absolute bottom-0 left-0 w-full">
+                                        <div className="relative">
+                                            <img
+                                                src="assets/images/rectangle_blog.svg"
+                                                alt="rectangle_blog"
+                                                className="w-full"
+                                            />
+
+                                            <div className="z-20 absolute top-12 min-[359px]:top-1/3  md:top-8 lg:top-8 w-[75%] px-3 py-2">
+                                                <h1 className="text-[#232323] text-[18px] md:text-[12px] lg:text-[14px] font-bold">
+                                                    {item.title}
+                                                </h1>
+                                                <p className="text-[#6C728A] mt-1 mb-8 text-[14px] md:text-[8px] lg:text-[11px]">
+                                                    {item.heading}{" "}
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> */}
+                                <div
+                                    className="border border-[#EDEDED] rounded-lg relative overflow-hidden w-full bg-cover bg-center"
+                                    style={{
+                                        backgroundImage: `url(${item.image})`,
+                                        aspectRatio: "9 / 8",
+                                    }}
+                                >
+                                    <div className="absolute bottom-0 left-0 w-full h-full">
+                                        <div className="absolute bottom-0 left-0 w-[85%] px-3 py-2 z-20">
+                                            <h1 className="text-[#232323] text-[18px] md:text-[12px] lg:text-[14px] font-bold">
+                                                {item.title}
+                                            </h1>
+                                            <p className="text-[#6C728A] mt-1 mb-8 text-[14px] md:text-[8px] lg:text-[11px]">
+                                                {item.heading}{" "}
+                                                {item.description}
+                                            </p>
+                                        </div>
+
+                                        <img
+                                            src="assets/images/rectangle_blog.svg"
+                                            alt="rectangle_blog"
+                                            className="w-full h-auto absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10"
+                                        />
                                     </div>
                                 </div>
                             </CarouselItem>

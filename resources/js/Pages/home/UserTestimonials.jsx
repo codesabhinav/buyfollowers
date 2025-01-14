@@ -47,24 +47,9 @@ const userTestimonials = [
 ];
 
 const UserTestimonials = () => {
-    const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
-
-    // const ratingValue = Number(item.rating);
-    // const totalStars = 5;
-
-    // const stars = userTestimonials({ length: totalStars }, (_, i) => {
-    //     const isFilled = i < ratingValue;
-    //     return (
-    //         <Star
-    //             key={i}
-    //             className={`${
-    //                 isFilled
-    //                     ? "stroke-[#F9B524] fill-[#F9B524]"
-    //                     : "stroke-[#D1D6E3] fill-[#D1D6E3]"
-    //             } size-4`}
-    //         />
-    //     );
-    // });
+    const plugin = useRef(
+        Autoplay({ delay: 4000000, stopOnInteraction: true })
+    );
 
     return (
         <>
@@ -74,20 +59,20 @@ const UserTestimonials = () => {
                     align: "start",
                     loop: true,
                 }}
-                className="w-full flex items-center gap-2"
+                className="w-full flex flex-col-reverse md:flex-row items-center justify-center gap-2"
             >
-                <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-row md:flex-col items-center gap-2">
                     <span className="bg-[#D52E9C] size-4 rounded-full cursor-pointer border border-[#D52E9C] ring-2 ring-offset-1 ring-[#D52E9C]"></span>
                     <span className="bg-[#F2F2F2] size-6 rounded-full cursor-pointer"></span>
                     <span className="bg-[#F2F2F2] size-6 rounded-full cursor-pointer"></span>
                     <span className="bg-[#F2F2F2] size-6 rounded-full cursor-pointer"></span>
                 </div>
 
-                <CarouselContent>
+                <CarouselContent className="h-[534px] sm:h-[434px] md:h-[534px] lg:h-[453px]">
                     {userTestimonials.map((item, index) => (
                         <CarouselItem
                             key={index}
-                            className="h-[523px] md:basis-1/2"
+                            className="h-[534px] md:basis-1/2"
                         >
                             <div className="bg-[#FFFFFF] shadow-md border border-[#EDEDED] rounded-3xl p-12 relative w-full flex flex-col justify-center items-center">
                                 <div className="bg-[#D52E9C] rounded-md absolute top-0 right-4 p-8">
@@ -103,10 +88,6 @@ const UserTestimonials = () => {
                                             {item.title}
                                         </span>
                                         <span className="flex items-center gap-1">
-                                            {/* <Star className="stroke-[#F9B524] fill-[#F9B524] size-4" />
-                                            <Star className="stroke-[#F9B524] fill-[#F9B524] size-4" />
-                                            <Star className="stroke-[#F9B524] fill-[#F9B524] size-4" />
-                                            <Star className="stroke-[#D1D6E3] fill-[#D1D6E3] size-4" /> */}
                                             {Array.from(
                                                 { length: 5 },
                                                 (_, i) => {

@@ -82,11 +82,11 @@ const Navbar = ({ navbarstyle }) => {
                     navbarstyle && navbarstyle
                 }`}
             >
-                <div className="mt-2">
+                <div className="mt-2 w-44 md:w-60">
                     <img
                         src="assets/images/buy_followers_logo.svg"
                         alt="logo-v1"
-                        className="w-44 md:w-60 h-auto"
+                        className="w-full h-auto"
                     />
                 </div>
 

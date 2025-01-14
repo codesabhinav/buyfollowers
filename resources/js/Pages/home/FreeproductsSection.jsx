@@ -2,42 +2,24 @@ import { ScrollArea } from "@/Components/ui/scroll-area";
 import { Gift } from "lucide-react";
 import React from "react";
 
-const freeProducts = [
+const freeProductsLeftCard = [
     {
         title: "Youtube",
         img: "assets/social_media/youtube.svg",
-        heading: "Safety-focused lubricant:",
-        description: "secure facilities, CCTV, alarms.",
+        description:
+            "Safety-focused lubricant: secure facilities, CCTV, alarms.",
     },
     {
-        title: "Facebook",
-        img: "assets/social_media/2_facebook.svg",
-        heading: "Safety-focused lubricant:",
-        description: "secure facilities, CCTV, alarms.",
+        title: "Youtube",
+        img: "assets/social_media/youtube.svg",
+        description:
+            "Safety-focused lubricant: secure facilities, CCTV, alarms.",
     },
     {
-        title: "Instagram",
-        img: "assets/social_media/2_instagram.svg",
-        heading: "Safety-focused lubricant:",
-        description: "secure facilities, CCTV, alarms.",
-    },
-    {
-        title: "Twitter",
-        img: "assets/social_media/2_twitter.svg",
-        heading: "Safety-focused lubricant:",
-        description: "secure facilities, CCTV, alarms.",
-    },
-    {
-        title: "TikTok",
-        img: "assets/social_media/2_tiktok.svg",
-        heading: "Safety-focused lubricant:",
-        description: "secure facilities, CCTV, alarms.",
-    },
-    {
-        title: "Telegram",
-        img: "assets/social_media/telegram.svg",
-        heading: "Safety-focused lubricant:",
-        description: "secure facilities, CCTV, alarms.",
+        title: "Youtube",
+        img: "assets/social_media/youtube.svg",
+        description:
+            "Safety-focused lubricant: secure facilities, CCTV, alarms.",
     },
 ];
 
@@ -87,125 +69,64 @@ const FreeproductsSection = () => {
                         </h3>
                     </div>
 
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center flex-col md:flex-row gap-6">
                         <div className="flex flex-col gap-6">
-                            <div className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6">
-                                <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF]">
-                                    <img
-                                        src="assets/social_media/youtube.svg"
-                                        alt="youtube"
-                                    />
-                                </div>
+                            {freeProductsLeftCard.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6"
+                                >
+                                    <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
+                                        <img
+                                            src="assets/social_media/youtube.svg"
+                                            alt="youtube"
+                                            className="w-full h-auto"
+                                        />
+                                    </div>
 
-                                <div className="flex flex-col gap-2">
-                                    <h2 className="font-semibold text-[16px] text-[#232323]">
-                                        YouTube
-                                    </h2>
-                                    <p className="text-[12px] text-[#6C728A]">
-                                        Safety-focused lubricant: secure
-                                        facilities, CCTV, alarms.
-                                    </p>
+                                    <div className="flex flex-col gap-2">
+                                        <h2 className="font-semibold text-[16px] text-[#232323]">
+                                            YouTube
+                                        </h2>
+                                        <p className="text-[12px] text-[#6C728A]">
+                                            Safety-focused lubricant: secure
+                                            facilities, CCTV, alarms.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6">
-                                <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF]">
-                                    <img
-                                        src="assets/social_media/youtube.svg"
-                                        alt="youtube"
-                                    />
-                                </div>
-
-                                <div className="flex flex-col gap-2">
-                                    <h2 className="font-semibold text-[16px] text-[#232323]">
-                                        YouTube
-                                    </h2>
-                                    <p className="text-[12px] text-[#6C728A]">
-                                        Safety-focused lubricant: secure
-                                        facilities, CCTV, alarms.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6">
-                                <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF]">
-                                    <img
-                                        src="assets/social_media/youtube.svg"
-                                        alt="youtube"
-                                    />
-                                </div>
-
-                                <div className="flex flex-col gap-2">
-                                    <h2 className="font-semibold text-[16px] text-[#232323]">
-                                        YouTube
-                                    </h2>
-                                    <p className="text-[12px] text-[#6C728A]">
-                                        Safety-focused lubricant: secure
-                                        facilities, CCTV, alarms.
-                                    </p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
-
-                        <div>
+                        <div className="hidden lg:block">
                             <img
                                 src="assets/images/ourproduct_person.svg"
                                 alt="ourproduct_person"
                             />
                         </div>
                         <div className="flex flex-col gap-6">
-                            <div className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6">
-                                <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF]">
-                                    <img
-                                        src="assets/social_media/youtube.svg"
-                                        alt="youtube"
-                                    />
-                                </div>
+                            {freeProductsLeftCard.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6"
+                                >
+                                    <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
+                                        <img
+                                            src="assets/social_media/youtube.svg"
+                                            alt="youtube"
+                                            className="w-full h-auto"
+                                        />
+                                    </div>
 
-                                <div className="flex flex-col gap-2">
-                                    <h2 className="font-semibold text-[16px] text-[#232323]">
-                                        YouTube
-                                    </h2>
-                                    <p className="text-[12px] text-[#6C728A]">
-                                        Safety-focused lubricant: secure
-                                        facilities, CCTV, alarms.
-                                    </p>
+                                    <div className="flex flex-col gap-2">
+                                        <h2 className="font-semibold text-[16px] text-[#232323]">
+                                            YouTube
+                                        </h2>
+                                        <p className="text-[12px] text-[#6C728A]">
+                                            Safety-focused lubricant: secure
+                                            facilities, CCTV, alarms.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6">
-                                <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF]">
-                                    <img
-                                        src="assets/social_media/youtube.svg"
-                                        alt="youtube"
-                                    />
-                                </div>
-
-                                <div className="flex flex-col gap-2">
-                                    <h2 className="font-semibold text-[16px] text-[#232323]">
-                                        YouTube
-                                    </h2>
-                                    <p className="text-[12px] text-[#6C728A]">
-                                        Safety-focused lubricant: secure
-                                        facilities, CCTV, alarms.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6">
-                                <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF]">
-                                    <img
-                                        src="assets/social_media/youtube.svg"
-                                        alt="youtube"
-                                    />
-                                </div>
-
-                                <div className="flex flex-col gap-2">
-                                    <h2 className="font-semibold text-[16px] text-[#232323]">
-                                        YouTube
-                                    </h2>
-                                    <p className="text-[12px] text-[#6C728A]">
-                                        Safety-focused lubricant: secure
-                                        facilities, CCTV, alarms.
-                                    </p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>

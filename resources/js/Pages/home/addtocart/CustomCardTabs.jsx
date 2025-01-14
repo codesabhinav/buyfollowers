@@ -22,7 +22,7 @@ const CustomCardTabs = () => {
                             Instagram Likes
                         </span>
                     </div>
-                    <div className="flex flex-col gap-2 p-4 w-full">
+                    <div className="flex flex-col gap-2 p-1 lg:p-4 w-full">
                         <div className="flex flex-col w-full border border-[#FFEEF9] rounded-xl">
                             <div className="flex items-center gap-2 bg-white">
                                 <motion.div

@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <div className="w-full relative">
+        <div className="w-full relative px-2">
             <div
                 className="absolute inset-0 opacity-35 z-10 object-contain"
                 style={{
@@ -15,8 +15,8 @@ const Footer = () => {
             <div className="absolute inset-0 bg-custom-gradient opacity-95"></div>
 
             <div className="relative z-30 py-16 w-full md:w-[85%] mx-auto  text-center text-white flex flex-col gap-12">
-                <div className="flex flex-col md:flex-row justify-between items-start">
-                    <div className="flex flex-col items-start gap-8 w-1/4">
+                <div className="flex flex-wrap justify-between items-start gap-12">
+                    <div className="flex flex-col items-start gap-8 w-full lg:w-[25%]">
                         <div className="">
                             <img
                                 src="assets/images/footericon.svg"
@@ -24,41 +24,54 @@ const Footer = () => {
                             />
                         </div>
 
-                        <span className="text-start">
-                            We work with a passion of taking challenges and
-                            creating new ones in advertising sector.
-                        </span>
+                        <div className="flex flex-col justify-center items-center gap-4">
+                            <span className="text-start">
+                                We work with a passion of taking challenges and
+                                creating new ones in advertising sector.
+                            </span>
 
-                        <div className="border-2 border-dashed p-3 rounded-lg relative">
-                            <div className="bg-[#D52E9C] rounded-lg p-2 text-start">
-                                <span className="text-base font-semibold">
-                                    Have Any Question?
-                                </span>
-                                <span className="text-base font-semibold">
-                                    Support@buyfollowers.com
-                                </span>
-                            </div>
-
-                            <div className="absolute top-5 -right-8 w-16 h-16">
-                                <img
-                                    src="assets/images/footer_mail.png"
-                                    alt="footer_mail"
-                                />
+                            <div className="border-2 border-dashed p-2 rounded-lg relative w-full">
+                                <div className="bg-[#D52E9C] rounded-lg p-2 text-start flex flex-col gap-2">
+                                    <span className="text-base font-semibold">
+                                        Have Any Question?
+                                    </span>
+                                    <span className="text-base font-semibold">
+                                        Support@buyfollowers.com
+                                    </span>
+                                </div>
+                                <div className="hidden md:block absolute top-5 -right-6 w-12 h-12 lg:w-14 lg:h-14">
+                                    <img
+                                        src="assets/images/footer_mail.png"
+                                        alt="footer_mail"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-start gap-20">
+                    <div className="flex items-start justify-between flex-col min-[499px]:flex-row gap-20">
                         <div className="flex flex-col items-start gap-4">
                             <span className="text-base font-semibold">
                                 Links:
                             </span>
                             <li className="flex flex-col items-start gap-4 text-base font-semibold">
-                                <a href="#">Home</a>
-                                <a href="#">About</a>
-                                <a href="#">All Products</a>
-                                <a href="#">Free Trail</a>
-                                <a href="#">Blog</a>
-                                <a href="#">About us</a>
+                                <a href="#" className="text-nowrap">
+                                    Home
+                                </a>
+                                <a href="#" className="text-nowrap">
+                                    About
+                                </a>
+                                <a href="#" className="text-nowrap">
+                                    All Products
+                                </a>
+                                <a href="#" className="text-nowrap">
+                                    Free Trail
+                                </a>
+                                <a href="#" className="text-nowrap">
+                                    Blog
+                                </a>
+                                <a href="#" className="text-nowrap">
+                                    About us
+                                </a>
                             </li>
                         </div>
                         <div className="flex flex-col items-start gap-8">

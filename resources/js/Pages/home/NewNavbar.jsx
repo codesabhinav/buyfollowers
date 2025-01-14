@@ -15,15 +15,13 @@ const NewNavbar = ({ navbarstyle }) => {
                 <img
                     src="assets/images/buy_followers_logo.svg"
                     alt="logo-v1"
-                    className="w-44 md:w-60 h-auto"
+                    className="w-44 lg:w-48 xl:w-64 h-auto"
                 />
             </div>
 
-            <div className="flex items-center gap-6">
-                {navbarList.map((item, index) => (
-                    <>
-                        <FlyoutLink key={index} item={item} />
-                    </>
+            <div className="hidden lg:flex items-center gap-4">
+                {navbarList.map((item) => (
+                    <FlyoutLink key={item.id} item={item} />
                 ))}
             </div>
 
@@ -33,7 +31,7 @@ const NewNavbar = ({ navbarstyle }) => {
 
             <a
                 href="/authentication"
-                className="bg-pink-600 hover:bg-pink-500 p-2 rounded-lg text-white font-semibold hidden lg:flex"
+                className="bg-[#D52E9C] hover:bg-[#f23bb5] p-2 rounded-lg text-white text-[14px] font-semibold hidden lg:flex"
             >
                 My Account
             </a>
@@ -126,27 +124,25 @@ const FlyoutLink = ({ item }) => {
                             >
                                 {subNavChunks.map((chunk, chunkIndex) => (
                                     <div
-                                        key={chunkIndex}
+                                        key={`chunk-${chunkIndex}`}
                                         className={`flex flex-col ${
                                             chunkIndex > 0
                                                 ? "ml-6 border-l-2"
                                                 : ""
                                         }`}
                                     >
-                                        {chunk.map((subItem, subIndex) => (
-                                            <>
-                                                <div
-                                                    key={subIndex}
-                                                    className={`space-y-3 hover:bg-pink-200/25 px-2 py-2 rounded-md`}
+                                        {chunk.map((subItem) => (
+                                            <div
+                                                key={subItem.id}
+                                                className={`space-y-3 hover:bg-pink-200/25 px-2 py-2 rounded-md`}
+                                            >
+                                                <a
+                                                    href={subItem.href}
+                                                    className="block text-sm"
                                                 >
-                                                    <a
-                                                        href={subItem.href}
-                                                        className="block text-sm"
-                                                    >
-                                                        {subItem.title}
-                                                    </a>
-                                                </div>
-                                            </>
+                                                    {subItem.title}
+                                                </a>
+                                            </div>
                                         ))}
                                     </div>
                                 ))}

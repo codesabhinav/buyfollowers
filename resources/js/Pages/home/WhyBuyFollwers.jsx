@@ -35,10 +35,10 @@ const WhyBuyFollwers = () => {
                     </h3>
                 </div>
 
-                <div className="flex items-center justify-center gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-6">
                     {whyBuyfollowers.map((item, index) => (
                         <div
-                            className="shadow-sm px-20 py-8 border border-[#EDEDED] rounded-xl bg-[#FFFFFF] flex flex-col items-center gap-8"
+                            className="shadow-sm px-4 xl:px-20 py-8 border border-[#EDEDED] rounded-xl bg-[#FFFFFF] flex flex-col items-center gap-8"
                             key={index}
                         >
                             <img
