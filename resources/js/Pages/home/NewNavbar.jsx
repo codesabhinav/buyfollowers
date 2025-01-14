@@ -119,7 +119,7 @@ const FlyoutLink = ({ item }) => {
                                 className={`${
                                     item.sub_navbarLinks.length > 10
                                         ? "w-full"
-                                        : "w-64"
+                                        : "w-full"
                                 }  bg-white p-6 shadow-xl rounded-lg flex`}
                             >
                                 {subNavChunks.map((chunk, chunkIndex) => (
