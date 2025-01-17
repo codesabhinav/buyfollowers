@@ -1,32 +1,33 @@
 import navbarList from "../json/NavbarList.json";
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SideNavbar from "./SideNavbar";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { getSettingByKey , products } from '../../Helper/api';
+import { getSettingByKey, products } from "../../Helper/api";
 
 const NewNavbar = ({ navbarstyle }) => {
-    const [logo, setLogo] = useState('assets/images/buy_followers_logo.svg');
+    const [logo, setLogo] = useState("assets/images/buy_followers_logo.svg");
     const [productNames, setProductNames] = useState([]);
     const fetchData = async () => {
-        const logoPath = await getSettingByKey('logo');
+        const logoPath = await getSettingByKey("logo");
         if (logoPath) {
             setLogo(logoPath);
         }
-        const fetchedProducts = await products([2, 3]); 
+        const fetchedProducts = await products([2, 3]);
         if (fetchedProducts) {
-            setProductNames(fetchedProducts.data); 
+            setProductNames(fetchedProducts.data);
         }
     };
 
     useEffect(() => {
         fetchData();
     }, []);
-    
+
     return (
         <div
-            className={`flex justify-between items-center mt-2 w-full h-16 bg-white/45 rounded-full text-black p-9 ${navbarstyle && navbarstyle
-                }`}
+            className={`flex justify-between items-center mt-2 w-full h-16 bg-white/45 rounded-full text-black p-9 ${
+                navbarstyle && navbarstyle
+            }`}
         >
             <div className="mt-2">
                 <img
@@ -68,13 +69,13 @@ const FlyoutLink = ({ item }) => {
     const chunkSize = 10;
     const subNavChunks = hasSubNav
         ? item.sub_navbarLinks.reduce((result, value, index) => {
-            const chunkIndex = Math.floor(index / chunkSize);
-            if (!result[chunkIndex]) {
-                result[chunkIndex] = [];
-            }
-            result[chunkIndex].push(value);
-            return result;
-        }, [])
+              const chunkIndex = Math.floor(index / chunkSize);
+              if (!result[chunkIndex]) {
+                  result[chunkIndex] = [];
+              }
+              result[chunkIndex].push(value);
+              return result;
+          }, [])
         : [];
 
     return (
@@ -133,18 +134,20 @@ const FlyoutLink = ({ item }) => {
                         )} */}
                         {hasSubNav && (
                             <div
-                                className={`${item.sub_navbarLinks.length > 10
+                                className={`${
+                                    item.sub_navbarLinks.length > 10
                                         ? "w-full"
                                         : "w-full"
-                                    }  bg-white p-6 shadow-xl rounded-lg flex`}
+                                }  bg-white p-6 shadow-xl rounded-lg flex`}
                             >
                                 {subNavChunks.map((chunk, chunkIndex) => (
                                     <div
                                         key={`chunk-${chunkIndex}`}
-                                        className={`flex flex-col ${chunkIndex > 0
+                                        className={`flex flex-col ${
+                                            chunkIndex > 0
                                                 ? "ml-6 border-l-2"
                                                 : ""
-                                            }`}
+                                        }`}
                                     >
                                         {chunk.map((subItem) => (
                                             <div

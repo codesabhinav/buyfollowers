@@ -1,8 +1,7 @@
 import { ScrollArea } from "@/Components/ui/scroll-area";
 import { Gift } from "lucide-react";
 import React, { useState, useEffect } from "react";
-import { products } from '../../Helper/api';
-
+import { products } from "../../Helper/api";
 
 const freeProductsLeftCard = [
     {
@@ -31,7 +30,7 @@ const FreeproductsSection = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await products(['1']);
+                const response = await products(["1"]);
                 if (response && Array.isArray(response.data)) {
                     setFreeProducts(response.data);
                 } else {
@@ -108,15 +107,17 @@ const FreeproductsSection = () => {
 
                                         <div className="flex flex-col gap-2">
                                             <h2 className="font-semibold text-[16px] text-[#232323]">
-                                                {product.name.split('|')[0]}
+                                                {product.name.split("|")[0]}
                                             </h2>
                                             <p className="text-[12px] text-[#6C728A]">
-                                                {product.name.split('|').slice(1).join(' | ')}
+                                                {product.name
+                                                    .split("|")
+                                                    .slice(1)
+                                                    .join(" | ")}
                                             </p>
                                         </div>
                                     </div>
                                 ))
-
                             ) : (
                                 <p>No products available</p>
                             )}
@@ -144,15 +145,17 @@ const FreeproductsSection = () => {
 
                                         <div className="flex flex-col gap-2">
                                             <h2 className="font-semibold text-[16px] text-[#232323]">
-                                                {product.name.split('|')[0]}
+                                                {product.name.split("|")[0]}
                                             </h2>
                                             <p className="text-[12px] text-[#6C728A]">
-                                                {product.name.split('|').slice(1).join(' | ')}
+                                                {product.name
+                                                    .split("|")
+                                                    .slice(1)
+                                                    .join(" | ")}
                                             </p>
                                         </div>
                                     </div>
                                 ))
-
                             ) : (
                                 <p>No products available</p>
                             )}

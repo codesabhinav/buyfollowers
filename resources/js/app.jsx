@@ -4,11 +4,11 @@ import "./bootstrap";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { createRoot } from "react-dom/client";
-import { getSettingByKey } from './Helper/api';
+import { getSettingByKey } from "./Helper/api";
 
 const fetchAppName = async () => {
-    const appName = await getSettingByKey('title');
-    return appName || "Buy Followers"; 
+    const appName = await getSettingByKey("title");
+    return appName || "Buy Followers";
 };
 
 fetchAppName().then((appName) => {
@@ -29,4 +29,3 @@ fetchAppName().then((appName) => {
         },
     });
 });
-

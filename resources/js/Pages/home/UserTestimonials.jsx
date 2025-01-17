@@ -7,6 +7,8 @@ import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Dot, Star } from "lucide-react";
 import { useRef, useState, useEffect, useCallback } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const userTestimonials = [
     {
@@ -48,33 +50,17 @@ const userTestimonials = [
 ];
 
 const UserTestimonials = () => {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
     const [selectedIndex, setSelectedIndex] = useState(0);
-
-    const plugin = useRef(
-        Autoplay({ delay: 4000000, stopOnInteraction: true })
-    );
-
-    const onSelect = useCallback(() => {
-        if (!emblaApi) return;
-        setSelectedIndex(emblaApi.selectedScrollSnap());
-    }, [emblaApi]);
-
-    useEffect(() => {
-        if (!emblaApi) return;
-        emblaApi.on("select", onSelect);
-        onSelect(); // Ensure initial state is correct
-    }, [emblaApi, onSelect]);
-
-    const scrollTo = (index) => {
-        if (!emblaApi) return;
-        emblaApi.scrollTo(index);
+    const swiperRef = useRef();
+    const handleDotClick = (index) => {
+        if (swiperRef.current) {
+            swiperRef.current.swiper.slideTo(index);
+        }
     };
 
-
     return (
-        <div className="px-4 md:px-0">
-            <Carousel
+        <>
+            {/* <Carousel
                 plugins={[plugin.current]}
                 opts={{
                     align: "start",
@@ -83,18 +69,18 @@ const UserTestimonials = () => {
                 className="w-full flex flex-col-reverse md:flex-row items-center justify-center gap-2 px-0"
             >
                 <div className="flex flex-row md:flex-col items-center gap-2">
-    {userTestimonials.map((_, index) => (
-        <span
-            key={index}
-            onClick={() => scrollTo(index)} // Navigate to the respective slide
-            className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
-                selectedIndex === index
-                    ? "bg-[#D52E9C] border border-[#D52E9C] ring-2 ring-offset-1 ring-[#D52E9C]"
-                    : "bg-[#F2F2F2]"
-            }`}
-        ></span>
-    ))}
-</div>
+                    {userTestimonials.map((_, index) => (
+                        <span
+                            key={index}
+                            onClick={() => scrollTo(index)}
+                            className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
+                                selectedIndex === index
+                                    ? "bg-[#D52E9C] border border-[#D52E9C] ring-2 ring-offset-1 ring-[#D52E9C]"
+                                    : "bg-[#F2F2F2]"
+                            }`}
+                        ></span>
+                    ))}
+                </div>
 
                 <CarouselContent className="h-[534px] sm:h-[434px] md:h-[534px] lg:h-[453px]">
                     {userTestimonials.map((item, index) => (
@@ -160,8 +146,123 @@ const UserTestimonials = () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-            </Carousel>
-        </div>
+            </Carousel> */}
+            <div className="px-4 md:px-0">
+                <div className=" flex items-center gap-4">
+                    <div className="hidden md:flex flex-col justify-center gap-2 mt-4">
+                        {userTestimonials.map((_, index) => (
+                            <span
+                                key={index}
+                                onClick={() => handleDotClick(index)}
+                                className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
+                                    selectedIndex === index
+                                        ? "bg-[#D52E9C] border border-[#D52E9C] ring-2 ring-offset-1 ring-[#D52E9C]"
+                                        : "bg-[#F2F2F2]"
+                                }`}
+                            ></span>
+                        ))}
+                    </div>
+
+                    <Swiper
+                        ref={swiperRef}
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        breakpoints={{
+                            949: {
+                                slidePrev: 1,
+                            },
+                            1024: {
+                                slidesPerView: 2,
+                            },
+                        }}
+                        loop={true}
+                        navigation={true}
+                        onSlideChange={(swiper) =>
+                            setSelectedIndex(swiper.activeIndex)
+                        }
+                        autoplay={{
+                            delay: 2000,
+                            disableOnInteraction: false,
+                        }}
+                        className="h-[534px] sm:h-[434px] md:h-[534px] lg:h-[423]"
+                    >
+                        {userTestimonials.map((item, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="bg-[#FFFFFF] shadow-md border border-[#EDEDED] rounded-3xl p-8 py-14 sm:py-12 sm:p-12 relative w-full flex flex-col justify-center items-center">
+                                    <div className="bg-[#D52E9C] rounded-md absolute top-0 right-4 p-8">
+                                        <img
+                                            src="assets/images/right_comma.svg"
+                                            alt="right_comma"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col gap-6">
+                                        <div className="flex flex-col gap-1">
+                                            <span className="text-lg font-semibold text-[#232323]">
+                                                {item.title}
+                                            </span>
+                                            <span className="flex items-center gap-1">
+                                                {Array.from(
+                                                    { length: 5 },
+                                                    (_, i) => {
+                                                        const isFilled =
+                                                            i <
+                                                            Number(item.rating);
+                                                        return (
+                                                            <Star
+                                                                key={i}
+                                                                className={`${
+                                                                    isFilled
+                                                                        ? "stroke-[#F9B524] fill-[#F9B524]"
+                                                                        : "stroke-[#D1D6E3] fill-[#D1D6E3]"
+                                                                } size-4`}
+                                                            />
+                                                        );
+                                                    }
+                                                )}
+                                            </span>
+                                        </div>
+                                        <p className="text-[#6C728A]">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                    <div className="flex items-center gap-3 bg-[#D52E9C] py-2 px-2 rounded-full absolute -bottom-5">
+                                        <div className="w-11 h-11">
+                                            <img
+                                                src={item.user_icon}
+                                                alt="usericon"
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                        <div className="flex flex-col text-white pr-4">
+                                            <span className="text-sm font-medium">
+                                                {item.user_name}
+                                            </span>
+                                            <span className="text-xs font-medium">
+                                                {item.user_hobbie}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+                <div className="md:hidden flex flex-row justify-center gap-2 mt-4">
+                    {userTestimonials.map((_, index) => (
+                        <span
+                            key={index}
+                            onClick={() => handleDotClick(index)}
+                            className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
+                                selectedIndex === index
+                                    ? "bg-[#D52E9C] border border-[#D52E9C] ring-2 ring-offset-1 ring-[#D52E9C]"
+                                    : "bg-[#F2F2F2]"
+                            }`}
+                        ></span>
+                    ))}
+                </div>
+            </div>
+        </>
     );
 };
 

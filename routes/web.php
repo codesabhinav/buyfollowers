@@ -36,6 +36,9 @@ Route::get('/forget', function () {
 Route::get('/add-cart', function () {
     return Inertia::render('home/addtocart/AddtoCartLayout');
 });
+Route::get('/checkout', function () {
+    return Inertia::render('home/checkout/CheckoutLayout');
+});
 Route::get('/about-us', function () {
     return Inertia::render('home/about/AboutusLayout');
 });

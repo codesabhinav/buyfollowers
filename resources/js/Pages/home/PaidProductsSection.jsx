@@ -9,7 +9,7 @@ import { useRef } from "react";
 
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { products } from '../../Helper/api';
+import { products } from "../../Helper/api";
 import React, { useState, useEffect } from "react";
 
 const PaidProductsSection = () => {
@@ -21,11 +21,12 @@ const PaidProductsSection = () => {
             stopOnMouseEnter: true,
         })
     );
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await products(['2', '3']);
+                const response = await products(["2", "3"]);
                 if (response && Array.isArray(response.data)) {
                     setPaidProducts(response.data);
                 } else {
@@ -126,15 +127,19 @@ const PaidProductsSection = () => {
                                             alt={product.name}
                                             className="w-24 h-115px object-center absolute top-12 left-1/2"
                                             style={{
-                                                transform: "translate(-50%, -50%)",
+                                                transform:
+                                                    "translate(-50%, -50%)",
                                             }}
                                         />
                                         <div className="p-4 mt-11 border border-[#F2F2F2] rounded-xl shadow-lg flex flex-col items-center justify-center gap-2">
                                             <h2 className="text-xl font-semibold text-center mt-12">
-                                                {product.name.split('|')[0]}
+                                                {product.name.split("|")[0]}
                                             </h2>
                                             <p className="text-center text-sm text-gray-600">
-                                                {product.name.split('|').slice(1).join(' | ')}
+                                                {product.name
+                                                    .split("|")
+                                                    .slice(1)
+                                                    .join(" | ")}
                                             </p>
                                             <a
                                                 href={product.href}
@@ -151,8 +156,16 @@ const PaidProductsSection = () => {
                         )}
                     </CarouselContent>
                     <div className="flex items-center gap-2">
-                        <ChevronLeft className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
-                        <ChevronRight className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
+                        {/* <ChevronLeft
+                            className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer"
+                            onClick={handlePrev}
+                        />
+                        <ChevronRight
+                            className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer"
+                            onClick={handleNext}
+                        /> */}
+                        <CarouselPrevious className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
+                        <CarouselNext className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
                     </div>
                 </Carousel>
             </div>
