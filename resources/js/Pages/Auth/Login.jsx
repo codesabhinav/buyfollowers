@@ -24,7 +24,7 @@ const formSchema = z.object({
     }),
 });
 
-const Login = () => {
+const Login = ({switchTab}) => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -157,12 +157,12 @@ const Login = () => {
                     <div className="mt-4 text-center">
                         <p className="text-sm text-gray-600 font-semibold">
                             Don't have an account?{" "}
-                            <a
-                                href="/authentication"
+                            <span
+                                onClick={() => switchTab("signup")}
                                 className="text-pink-500 hover:underline"
                             >
                                 Click here to Signup
-                            </a>
+                            </span>
                         </p>
                     </div>
                 </Form>

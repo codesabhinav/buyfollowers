@@ -27,14 +27,14 @@ const AddtoCartLayout = () => {
                     ></div>
                     {/* <div className="absolute inset-0 bg-custom-gradient opacity-85"></div> */}
 
-                    <div className="relative z-30 mt-8 px-2 w-full md:w-[85%] min-h-screen flex flex-col justify-start gap-14">
+                    <div className="relative z-30 mt-8 md:px-2 w-full md:w-[85%] md:min-h-screen flex flex-col justify-start gap-14 px-6 ">
                         {/* <Navbar navbarstyle={customNavbarstyle} /> */}
                         <NewNavbar navbarstyle={customNavbarstyle} />
 
                         <AddtoCartHero />
                     </div>
                 </div>
-                <div className="w-full mt-10 mb-12 flex flex-col items-center gap-12">
+                <div className="w-full mt-10 mb-12 flex flex-col items-center gap-12 px-4 md:px-1">
                     <BuyFollowers />
                     <HowToBuy />
                     <WhyshouldBuy />

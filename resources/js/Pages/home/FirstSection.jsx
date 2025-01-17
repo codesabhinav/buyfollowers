@@ -6,7 +6,7 @@ import { FaYoutube } from "react-icons/fa";
 const FirstSection = () => {
     return (
         <>
-            <div className="relative bg-transparent w-full mt-4 mb-8 xl:mt-28 flex flex-col lg:flex-row justify-between items-center gap-4 lg:gap-48">
+            <div className="relative bg-transparent w-full mt-4 mb-8 xl:mt-28 flex flex-col lg:flex-row justify-between items-center gap-4 lg:gap-48 px-2">
                 {/* Left Section */}
                 <div className="flex flex-col gap-4 w-full">
                     <h1 className="text-4xl sm:text-5xl font-semibold text-white">

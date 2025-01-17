@@ -4,8 +4,9 @@ import {
     CarouselItem,
 } from "@/Components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Dot, Star } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 const userTestimonials = [
     {
@@ -47,26 +48,53 @@ const userTestimonials = [
 ];
 
 const UserTestimonials = () => {
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
     const plugin = useRef(
         Autoplay({ delay: 4000000, stopOnInteraction: true })
     );
 
+    const onSelect = useCallback(() => {
+        if (!emblaApi) return;
+        setSelectedIndex(emblaApi.selectedScrollSnap());
+    }, [emblaApi]);
+
+    useEffect(() => {
+        if (!emblaApi) return;
+        emblaApi.on("select", onSelect);
+        onSelect(); // Ensure initial state is correct
+    }, [emblaApi, onSelect]);
+
+    const scrollTo = (index) => {
+        if (!emblaApi) return;
+        emblaApi.scrollTo(index);
+    };
+
+
     return (
-        <>
+        <div className="px-4 md:px-0">
             <Carousel
                 plugins={[plugin.current]}
                 opts={{
                     align: "start",
                     loop: true,
                 }}
-                className="w-full flex flex-col-reverse md:flex-row items-center justify-center gap-2"
+                className="w-full flex flex-col-reverse md:flex-row items-center justify-center gap-2 px-0"
             >
                 <div className="flex flex-row md:flex-col items-center gap-2">
-                    <span className="bg-[#D52E9C] size-4 rounded-full cursor-pointer border border-[#D52E9C] ring-2 ring-offset-1 ring-[#D52E9C]"></span>
-                    <span className="bg-[#F2F2F2] size-6 rounded-full cursor-pointer"></span>
-                    <span className="bg-[#F2F2F2] size-6 rounded-full cursor-pointer"></span>
-                    <span className="bg-[#F2F2F2] size-6 rounded-full cursor-pointer"></span>
-                </div>
+    {userTestimonials.map((_, index) => (
+        <span
+            key={index}
+            onClick={() => scrollTo(index)} // Navigate to the respective slide
+            className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
+                selectedIndex === index
+                    ? "bg-[#D52E9C] border border-[#D52E9C] ring-2 ring-offset-1 ring-[#D52E9C]"
+                    : "bg-[#F2F2F2]"
+            }`}
+        ></span>
+    ))}
+</div>
 
                 <CarouselContent className="h-[534px] sm:h-[434px] md:h-[534px] lg:h-[453px]">
                     {userTestimonials.map((item, index) => (
@@ -74,7 +102,7 @@ const UserTestimonials = () => {
                             key={index}
                             className="h-[534px] md:basis-1/2"
                         >
-                            <div className="bg-[#FFFFFF] shadow-md border border-[#EDEDED] rounded-3xl p-12 relative w-full flex flex-col justify-center items-center">
+                            <div className="bg-[#FFFFFF] shadow-md border border-[#EDEDED] rounded-3xl p-8 py-14 sm:py-12 sm:p-12 relative w-full flex flex-col justify-center items-center">
                                 <div className="bg-[#D52E9C] rounded-md absolute top-0 right-4 p-8">
                                     <img
                                         src="assets/images/right_comma.svg"
@@ -133,7 +161,7 @@ const UserTestimonials = () => {
                     ))}
                 </CarouselContent>
             </Carousel>
-        </>
+        </div>
     );
 };
 

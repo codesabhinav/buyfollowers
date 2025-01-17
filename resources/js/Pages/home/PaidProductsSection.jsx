@@ -95,7 +95,7 @@ const PaidProductsSection = () => {
                 </Carousel>
             </div> */}
 
-            <div className="w-full md:w-[85%] flex flex-col items-center gap-16 py-20">
+            <div className="w-full md:w-[85%] flex flex-col items-center gap-16 py-20 px-4">
                 <div className="flex flex-col gap-2 items-center">
                     <h5 className="text-lg sm:text-2xl font-semibold text-pink-400">
                         Our Paid Product

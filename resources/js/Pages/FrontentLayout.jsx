@@ -16,10 +16,8 @@ const FrontentLayout = () => {
             <div className="flex flex-col items-center min-h-screen relative bg-repeat bg-cover bg-center">
                 <div className="relative w-full flex justify-center">
                     <div
-                        className="absolute inset-0 opacity-100 z-20"
+                        className="absolute inset-0 opacity-100 z-20  bg-none md:bg-[url('assets/images/herorobgimg.png')]"
                         style={{
-                            backgroundImage:
-                                "url('assets/images/herorobgimg.png')",
                             backgroundSize: "auto",
                             backgroundPosition: "center",
                             backgroundRepeat: "no-repeat",

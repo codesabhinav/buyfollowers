@@ -14,13 +14,13 @@ const AddtoCartHero = () => {
                         authentic services.
                     </span>
                 </div>
-                <div className="relative">
+                <div className="relative hidden sm:block    ">
                     {/* <img
                         src="assets/addtocart/girl_instagram.png"
                         alt="girl_instagram"
                         className="absolute -left-44 top-20"
                     /> */}
-                    <div className="w-[283px] lg:w-[434px]">
+                    <div className=" w-[283px] lg:w-[434px]">
                         <img
                             src="assets/addtocart/cart_girl.png"
                             alt="cart_girl"

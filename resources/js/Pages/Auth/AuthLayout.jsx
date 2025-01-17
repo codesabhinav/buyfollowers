@@ -4,8 +4,10 @@ import Navbar from "../home/Navbar";
 import Login from "./Login";
 import Signup from "./Signup";
 import NewNavbar from "../home/NewNavbar";
+import { useState } from "react";
 
 const AuthLayout = () => {
+    const [value ,setValue] = useState('login');
     return (
         // <div className="flex flex-col items-center min-h-screen relative">
         //     <div
@@ -36,7 +38,7 @@ const AuthLayout = () => {
                     </div>
 
                     {/* Tabs for Login/Signup */}
-                    <Tabs defaultValue="login" className="w-full lg:w-[840px]">
+                    <Tabs value={value} onValueChange={setValue} className="w-full lg:w-[840px]">
                         <TabsList className="grid w-full grid-cols-2">
                             <TabsTrigger value="login" className="text-xl">
                                 Login

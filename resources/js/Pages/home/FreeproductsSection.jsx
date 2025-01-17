@@ -79,7 +79,7 @@ const FreeproductsSection = () => {
                 </div>
             </div> */}
 
-            <div className="w-full py-20 bg-[#FFFAFE] flex flex-col items-center">
+            <div className="w-full py-20 bg-[#FFFAFE] flex flex-col items-center px-4">
                 <div className="w-full md:w-[85%] flex flex-col items-center gap-16">
                     <div className="flex flex-col gap-2 items-center">
                         <h5 className="text-lg sm:text-2xl font-semibold text-pink-400">

@@ -14,7 +14,10 @@ export default {
     theme: {
         extend: {
             screens: {},
-
+            backgroundImage: {
+                'desktop': "url('assets/images/herorobgimg.png')",
+                'mobile': "url('assets/images/mobile-bg.png')",
+            },
             fontFamily: {
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
