@@ -21,7 +21,7 @@ class SettingController extends Controller
 
                 if ($key == 'logo' && $request->hasFile('logo')) {
                     $mediaPath = Storage::put('media', $request->file('logo'));
-                    setEnvironmentVariable($key, 'public/' . $mediaPath);
+                    setEnvironmentVariable($key, $mediaPath);
                 } else {
                     setEnvironmentVariable($key, $value);
                 }

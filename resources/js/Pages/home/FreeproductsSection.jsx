@@ -1,6 +1,8 @@
 import { ScrollArea } from "@/Components/ui/scroll-area";
 import { Gift } from "lucide-react";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { products } from '../../Helper/api';
+
 
 const freeProductsLeftCard = [
     {
@@ -24,6 +26,25 @@ const freeProductsLeftCard = [
 ];
 
 const FreeproductsSection = () => {
+    const [freeProducts, setFreeProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await products(['1']);
+                if (response && Array.isArray(response.data)) {
+                    setFreeProducts(response.data);
+                } else {
+                    console.error("Fetched data is not an array", response);
+                }
+            } catch (error) {
+                console.error("Error fetching products:", error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
     return (
         <>
             {/* <div className="flex flex-col items-center gap-8 mt-8">
@@ -71,30 +92,34 @@ const FreeproductsSection = () => {
 
                     <div className="flex items-center flex-col md:flex-row gap-6">
                         <div className="flex flex-col gap-6">
-                            {freeProductsLeftCard.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6"
-                                >
-                                    <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
-                                        <img
-                                            src="assets/social_media/youtube.svg"
-                                            alt="youtube"
-                                            className="w-full h-auto"
-                                        />
-                                    </div>
+                            {freeProducts.length > 0 ? (
+                                freeProducts.slice(0, 3).map((product) => (
+                                    <div
+                                        key={product.id}
+                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6"
+                                    >
+                                        <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
+                                            <img
+                                                src={product.image.path}
+                                                alt={product.name}
+                                                className="w-full h-auto"
+                                            />
+                                        </div>
 
-                                    <div className="flex flex-col gap-2">
-                                        <h2 className="font-semibold text-[16px] text-[#232323]">
-                                            YouTube
-                                        </h2>
-                                        <p className="text-[12px] text-[#6C728A]">
-                                            Safety-focused lubricant: secure
-                                            facilities, CCTV, alarms.
-                                        </p>
+                                        <div className="flex flex-col gap-2">
+                                            <h2 className="font-semibold text-[16px] text-[#232323]">
+                                                {product.name.split('|')[0]}
+                                            </h2>
+                                            <p className="text-[12px] text-[#6C728A]">
+                                                {product.name.split('|').slice(1).join(' | ')}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))
+
+                            ) : (
+                                <p>No products available</p>
+                            )}
                         </div>
                         <div className="hidden lg:block">
                             <img
@@ -103,30 +128,34 @@ const FreeproductsSection = () => {
                             />
                         </div>
                         <div className="flex flex-col gap-6">
-                            {freeProductsLeftCard.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6"
-                                >
-                                    <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
-                                        <img
-                                            src="assets/social_media/youtube.svg"
-                                            alt="youtube"
-                                            className="w-full h-auto"
-                                        />
-                                    </div>
+                            {freeProducts.length > 3 ? (
+                                freeProducts.slice(3, 6).map((product) => (
+                                    <div
+                                        key={product.id}
+                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6"
+                                    >
+                                        <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
+                                            <img
+                                                src={product.image.path}
+                                                alt={product.name}
+                                                className="w-full h-auto"
+                                            />
+                                        </div>
 
-                                    <div className="flex flex-col gap-2">
-                                        <h2 className="font-semibold text-[16px] text-[#232323]">
-                                            YouTube
-                                        </h2>
-                                        <p className="text-[12px] text-[#6C728A]">
-                                            Safety-focused lubricant: secure
-                                            facilities, CCTV, alarms.
-                                        </p>
+                                        <div className="flex flex-col gap-2">
+                                            <h2 className="font-semibold text-[16px] text-[#232323]">
+                                                {product.name.split('|')[0]}
+                                            </h2>
+                                            <p className="text-[12px] text-[#6C728A]">
+                                                {product.name.split('|').slice(1).join(' | ')}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))
+
+                            ) : (
+                                <p>No products available</p>
+                            )}
                         </div>
                     </div>
                 </div>

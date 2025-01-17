@@ -44,3 +44,21 @@ function getSiteLogo()
     }
     return $logo;
 }
+
+function getSocialMediaImage($name)
+{
+    $socialMediaImages = [
+        'YouTube' => 'youtube.svg',
+        'Facebook' => 'facebook.svg',
+        'Twitter' => 'twitter.svg',
+        'Instagram' => 'instagram.svg',
+        'TikTok' => 'tiktok.svg',
+    ];
+
+    foreach ($socialMediaImages as $platform => $image) {
+        if (strpos($name, $platform) !== false) {
+            return asset('assets/social_media/' . $image);
+        }
+    }
+    return null;
+}

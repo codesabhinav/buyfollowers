@@ -97,8 +97,8 @@
                         <td>
                             @if ($product->image)
                                 <div class=" w-25">
-                                    <a class="image-popup-no-margins mr-2" href="{{ getFilePath($product->image->path) }}">
-                                        <img src="{{ getFilePath($product->image->path) }}" class="img-responsive"
+                                    <a class="image-popup-no-margins mr-2" href="{{ ($product->image['path']) }}">
+                                        <img src="{{ ($product->image['path']) }}"  class="img-responsive"
                                             style="width:50px;"></a>
                                 </div>
                             @endif

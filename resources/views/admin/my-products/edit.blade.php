@@ -228,7 +228,7 @@
                                     <div class="profile-image w-32px">
                                         <div id="previewLogo"
                                             class="bg-light d-flex align-items-center justify-content-center mx-2 p-2"
-                                            style="height:170px; background-position: center center; background-size: cover; background-repeat: no-repeat; background-image: url({{ getFilePath($product->image->path ?? null) }});">
+                                            style="height:170px; background-position: center center; background-size: cover; background-repeat: no-repeat; background-image: url({{ ($product->image['path'] ?? null) }});">
                                         </div>
                                     </div>
                                 </div>

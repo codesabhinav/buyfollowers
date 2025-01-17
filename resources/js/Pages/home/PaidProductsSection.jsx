@@ -9,75 +9,11 @@ import { useRef } from "react";
 
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const paidProducts = [
-    {
-        image: "assets/social_media/facebook.svg",
-        title: "Facebook",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-        href: "add-cart",
-    },
-    {
-        image: "assets/social_media/instagram.svg",
-        title: "Instagram",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-        href: "add-cart",
-    },
-    {
-        image: "assets/social_media/tiktok.svg",
-        title: "Tiktok",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-        href: "add-cart",
-    },
-    {
-        image: "assets/social_media/twitter.svg",
-        title: "Twitter",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-        href: "add-cart",
-    },
-    {
-        image: "assets/social_media/facebook.svg",
-        title: "Facebook",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-        href: "add-cart",
-    },
-    {
-        image: "assets/social_media/instagram.svg",
-        title: "Instagram",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-        href: "add-cart",
-    },
-    {
-        image: "assets/social_media/tiktok.svg",
-        title: "Tiktok",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-        href: "add-cart",
-    },
-    {
-        image: "assets/social_media/twitter.svg",
-        title: "Twitter",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-        href: "add-cart",
-    },
-];
+import { products } from '../../Helper/api';
+import React, { useState, useEffect } from "react";
 
 const PaidProductsSection = () => {
+    const [paidProducts, setPaidProducts] = useState([]);
     const plugin = useRef(
         Autoplay({
             delay: 2000,
@@ -85,6 +21,23 @@ const PaidProductsSection = () => {
             stopOnMouseEnter: true,
         })
     );
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await products(['2', '3']);
+                if (response && Array.isArray(response.data)) {
+                    setPaidProducts(response.data);
+                } else {
+                    console.error("Fetched data is not an array", response);
+                }
+            } catch (error) {
+                console.error("Error fetching products:", error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
     return (
         <>
@@ -161,45 +114,41 @@ const PaidProductsSection = () => {
                     className="flex flex-col items-center justify-center"
                 >
                     <CarouselContent>
-                        {paidProducts.map((item, index) => (
-                            <CarouselItem
-                                key={index}
-                                className="md:basis-1/3 lg:basis-1/4 h-72"
-                            >
-                                <div className="flex flex-col items-center relative">
-                                    <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        className="w-24 h-full object-center absolute top-12 left-1/2"
-                                        style={{
-                                            transform: "translate(-50%, -50%)",
-                                        }}
-                                    />
-                                    <div className="p-4 mt-11 border border-[#F2F2F2] rounded-xl shadow-lg flex flex-col items-center justify-center gap-2">
-                                        <h2 className="text-xl font-semibold text-center mt-12">
-                                            {item.title}
-                                        </h2>
-                                        <p className="text-center text-sm text-gray-600">
-                                            {item.description}
-                                        </p>
-                                        <div className="flex justify-center items-center gap-2">
-                                            <span className="text-lg text-gray-400 line-through">
-                                                {item.oldAmount}
-                                            </span>
-                                            <span className="text-xl font-semibold text-green-600">
-                                                {item.newAmount}
-                                            </span>
+                        {paidProducts.length > 0 ? (
+                            paidProducts.map((product) => (
+                                <CarouselItem
+                                    key={product.id}
+                                    className="md:basis-1/3 lg:basis-1/4 h-72"
+                                >
+                                    <div className="flex flex-col items-center relative">
+                                        <img
+                                            src={product.image.path}
+                                            alt={product.name}
+                                            className="w-24 h-115px object-center absolute top-12 left-1/2"
+                                            style={{
+                                                transform: "translate(-50%, -50%)",
+                                            }}
+                                        />
+                                        <div className="p-4 mt-11 border border-[#F2F2F2] rounded-xl shadow-lg flex flex-col items-center justify-center gap-2">
+                                            <h2 className="text-xl font-semibold text-center mt-12">
+                                                {product.name.split('|')[0]}
+                                            </h2>
+                                            <p className="text-center text-sm text-gray-600">
+                                                {product.name.split('|').slice(1).join(' | ')}
+                                            </p>
+                                            <a
+                                                href={product.href}
+                                                className="w-fit py-2 px-2 bg-pink-500 hover:bg-pink-600 text-white text-xs font-semibold rounded-full transition-all cursor-pointer"
+                                            >
+                                                Buy now
+                                            </a>
                                         </div>
-                                        <a
-                                            href={item.href}
-                                            className="w-fit py-2 px-2 bg-pink-500 hover:bg-pink-600 text-white text-xs font-semibold rounded-full transition-all"
-                                        >
-                                            Buy now
-                                        </a>
                                     </div>
-                                </div>
-                            </CarouselItem>
-                        ))}
+                                </CarouselItem>
+                            ))
+                        ) : (
+                            <p>No products available</p>
+                        )}
                     </CarouselContent>
                     <div className="flex items-center gap-2">
                         <ChevronLeft className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />

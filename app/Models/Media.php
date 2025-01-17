@@ -10,4 +10,6 @@ class Media extends Model
         'name',
         'path',
     ];
+
+    protected $hidden = ['name','created_at', 'updated_at','deleted_at'];
 }

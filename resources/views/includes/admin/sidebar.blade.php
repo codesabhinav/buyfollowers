@@ -1,7 +1,7 @@
 @if (!Auth::guard('admin')->check())
 <div class="sidebar-inner">
     <a href="{{ route('home') }}" class="sidenav-logo">
-        <img src="" height="60">
+        <img src="{{ getSiteLogo('logo') }}" height="35">
     </a>
 
     <!-- Sidebar menu -->

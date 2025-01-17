@@ -30,9 +30,24 @@ class Product extends Model
         'cancel' => 'boolean',
     ];
 
+    
     public function image()
     {
         return $this->belongsTo(Media::class, 'media_id');
+    }
+
+    public function getImageAttribute()
+    {
+        $media = $this->image()->first();
+        if ($media) {
+            return [
+                'id' => $media->id,
+                'name' => $media->name,
+                'path' => getFilePath($media->path),
+            ];
+        }
+        $imagePath = getSocialMediaImage($this->name);
+        return $imagePath ? ['path' => $imagePath] : null;
     }
 
     public function setRefillAttribute($value)
