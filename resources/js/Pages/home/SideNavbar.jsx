@@ -13,12 +13,34 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/Components/ui/sheet";
+import React, { useState, useEffect } from "react";
 import { AlignJustify } from "lucide-react";
 import { navbarLinks } from "./Navbar";
 import { Link } from "@inertiajs/react";
 import { ScrollArea } from "@/Components/ui/scroll-area";
+import { getSettingByKey, navbar } from "../../Helper/api";
+
 
 const SideNavbar = () => {
+    const [logo, setLogo] = useState("assets/images/buy_followers_logo.svg");
+    const [navbarData, setNavbarData] = useState([]);
+    const fetchData = async () => {
+        try {
+            const logoPath = await getSettingByKey("logo");
+            if (logoPath) {
+                setLogo(logoPath);
+            }
+            const fetchedNavbarData = await navbar();
+            if (fetchedNavbarData?.data) {
+                setNavbarData(fetchedNavbarData.data);
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+    useEffect(() => {
+        fetchData();
+    }, []);
     return (
         <>
             <Sheet key={"left"}>
@@ -30,7 +52,7 @@ const SideNavbar = () => {
                     <SheetHeader>
                         <SheetTitle className="text-white text-[14px] text-center flex flex-col min-[532px]:flex-row justify-between items-center gap-8">
                             <img
-                                src="assets/images/buy_followers_logo.svg"
+                                src={logo}
                                 alt="logo-v1"
                                 className="w-44 lg:w-48 xl:w-64 h-auto"
                             />
@@ -43,7 +65,7 @@ const SideNavbar = () => {
                     </SheetHeader>
                     <ScrollArea className="w-full h-[359px]">
                         <div className="flex flex-col items-center py-4">
-                            {navbarLinks.map((item, index) => (
+                            {navbarData.map((item, index) => (
                                 <div
                                     key={index}
                                     className={`w-full text-[#D52E9C]`}
@@ -67,6 +89,7 @@ const SideNavbar = () => {
                                                             >
                                                                 {subItem.title}
                                                             </a>
+                                                             <hr className="mt-2"/>
                                                         </AccordionContent>
                                                     )
                                                 )}

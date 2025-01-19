@@ -57,7 +57,6 @@ class BlogController extends Controller
         try {
             $data = $request->validate([
                 'title' => ['required'],
-                'logo' => ['required', 'image'],
                 'description' => ['required'],
             ]);
             if (isset($request->logo)) {

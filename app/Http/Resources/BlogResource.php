@@ -17,6 +17,7 @@ class BlogResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'href' => "#",
             'description' => $this->description,
             'media_id' => new MediaResource($this->image),
         ];

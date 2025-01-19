@@ -10,10 +10,13 @@ import {
 import { Input } from "@/Components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import { z } from "zod";
+import { GoogleLogin } from '@react-oauth/google';
+import { googleLogin } from '../../Helper/api.js';
+import axios from "axios";
 
 const formSchema = z.object({
     email: z.string().min(2, {
@@ -24,7 +27,8 @@ const formSchema = z.object({
     }),
 });
 
-const Login = ({switchTab}) => {
+const Login = ({ switchTab }) => {
+
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -34,14 +38,30 @@ const Login = ({switchTab}) => {
     });
 
     const [isPasswordVisible, setPasswordVisible] = useState(false);
+    const [loginSuccessMessage, setLoginSuccessMessage] = useState(""); 
 
     const togglePasswordVisibility = () => {
         setPasswordVisible((prev) => !prev);
     };
 
-    const handleLogin = (values) => {
-        console.log(values);
+    const handleSuccess = async (response) => {
+        console.log('Google Login Success:', response);
+        try {
+            const data = await googleLogin(response.credential);
+            console.log('Backend Response:', data);
+            localStorage.setItem('token', data.token);
+            setLoginSuccessMessage("Login Successfull!");
+            window.location.href = "/"; 
+        } catch (error) {
+            console.error('Error during API call:', error);
+        }
     };
+
+    const handleFailure = (response) => {
+        console.error(response);
+        setLoginSuccessMessage("Google login failed. Please try again.");
+    };
+
 
     return (
         <>
@@ -49,9 +69,16 @@ const Login = ({switchTab}) => {
                 <h2 className="text-2xl font-bold text-center text-pink-500 mb-6">
                     Login
                 </h2>
+
+                {loginSuccessMessage && (
+                    <div className="bg-green-100 text-green-700 p-4 rounded-md mb-4">
+                        {loginSuccessMessage}
+                    </div>
+                )}
+
                 <Form {...form}>
                     <form
-                        onSubmit={form.handleSubmit(handleLogin)}
+
                         className="space-y-6"
                     >
                         <div className="flex flex-col gap-4">
@@ -144,18 +171,25 @@ const Login = ({switchTab}) => {
                             Login
                         </Button>
                     </form>
-                    <Button className="w-full bg-transparent text-white text-lg bg-black hover:text-white font-semibold h-12 flex items-center justify-center gap-2 mt-4">
-                        <img
-                            src="assets/images/google.png"
-                            alt="google"
-                            width={20}
-                            height={20}
-                        />
-                        <span>Signup With Google</span>
-                    </Button>
+                    <GoogleLogin
+                        clientId="YOUR_GOOGLE_CLIENT_ID"
+                        onSuccess={handleSuccess}
+                        onFailure={handleFailure}
+                        cookiePolicy={'single_host_origin'}
+                        render={(renderProps) => (
+                            <button
+                                className="w-full bg-transparent text-white text-lg bg-black hover:text-white font-semibold h-12 flex items-center justify-center gap-2 mt-4"
+                                onClick={renderProps.onClick}
+                                disabled={renderProps.disabled}
+                            >
+                                <img src="assets/images/google.png" alt="google" width={20} height={20} />
+                                <span>Signup With Google</span>
+                            </button>
+                        )}
+                    ></GoogleLogin>
                     {/* New link for existing users to login */}
                     <div className="mt-4 text-center">
-                        <p className="text-sm text-gray-600 font-semibold">
+                        <p className="text-sm text-gray-600 font-semibold cursor-pointer">
                             Don't have an account?{" "}
                             <span
                                 onClick={() => switchTab("signup")}

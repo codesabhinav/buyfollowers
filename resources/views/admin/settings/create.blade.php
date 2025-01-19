@@ -101,6 +101,32 @@
 
                 <div class="form-group">
                     <div class="row align-items-center">
+                        <div class="col-sm-2">
+                            <label>{{ __('Google Client Id') }}
+                            </label>
+                        </div>
+                        <div class="col-sm-5 mb-2 d-flex">
+                            <input type="text" name="google_client_id" id="google_client_id" class="form-control"
+                                value="{{ getEnvironmentVariable('google_client_id') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row align-items-center">
+                        <div class="col-sm-2">
+                            <label>{{ __('Google Client Secret') }}
+                            </label>
+                        </div>
+                        <div class="col-sm-5 mb-2 d-flex">
+                            <input type="text" name="google_client_secret" id="google_client_secret" class="form-control"
+                                value="{{ getEnvironmentVariable('google_client_secret') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row align-items-center">
                         <label>{{ __('About Us') }}</label>
                         <div class="col-sm-8 mb-2 d-flex">
                             <textarea name="about_us" id="about_us" class="form-control ckeditor">{{ old('about_us', getEnvironmentVariable('about_us')) }}</textarea>

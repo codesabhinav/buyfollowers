@@ -3,31 +3,73 @@ import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SideNavbar from "./SideNavbar";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { getSettingByKey, products } from "../../Helper/api";
+import { getSettingByKey, products, navbar, getUserDetails, logout } from "../../Helper/api";
 
 const NewNavbar = ({ navbarstyle }) => {
     const [logo, setLogo] = useState("assets/images/buy_followers_logo.svg");
+    const [navbarData, setNavbarData] = useState([]);
     const [productNames, setProductNames] = useState([]);
+    const [userDetails, setUserDetails] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [token, setToken] = useState(localStorage.getItem("token"));
+
     const fetchData = async () => {
-        const logoPath = await getSettingByKey("logo");
-        if (logoPath) {
-            setLogo(logoPath);
+        try {
+            const logoPath = await getSettingByKey("logo");
+            if (logoPath) {
+                setLogo(logoPath);
+            }
+            const fetchedProducts = await products([2, 3]);
+            if (fetchedProducts) {
+                setProductNames(fetchedProducts.data);
+            }
+
+            const fetchedNavbarData = await navbar();
+            if (fetchedNavbarData?.data) {
+                setNavbarData(fetchedNavbarData.data);
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
         }
-        const fetchedProducts = await products([2, 3]);
-        if (fetchedProducts) {
-            setProductNames(fetchedProducts.data);
+    };
+
+    const handleLogout = async () => {
+        await logout();
+        localStorage.removeItem("token");
+        setUserDetails(null);
+        window.location.href = "/authentication";
+    };
+
+    const fetchUserDetails = async () => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            try {
+                const response = await getUserDetails(token);
+                console.log("Fetched User Details:", response);
+                if (response && response.data && response.data.name) {
+                    setUserDetails(response.data);
+                } else {
+                    console.error("User details do not contain a name");
+                }
+            } catch (error) {
+                console.error("Error fetching user details:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        } else {
+            setIsLoading(false); 
         }
     };
 
     useEffect(() => {
         fetchData();
+        fetchUserDetails();
     }, []);
 
     return (
         <div
-            className={`flex justify-between items-center mt-2 w-full h-16 bg-white/45 rounded-full text-black p-9 ${
-                navbarstyle && navbarstyle
-            }`}
+            className={`flex justify-between items-center mt-2 w-full h-16 bg-white/45 rounded-full text-black p-9 ${navbarstyle && navbarstyle
+                }`}
         >
             <div className="mt-2">
                 <img
@@ -38,7 +80,7 @@ const NewNavbar = ({ navbarstyle }) => {
             </div>
 
             <div className="hidden lg:flex items-center gap-4">
-                {navbarList.map((item) => (
+                {navbarData.map((item) => (
                     <FlyoutLink key={item.id} item={item} />
                 ))}
             </div>
@@ -47,35 +89,41 @@ const NewNavbar = ({ navbarstyle }) => {
                 <SideNavbar />
             </div>
 
-            <a
-                href="/authentication"
-                className="bg-[#D52E9C] hover:bg-[#f23bb5] p-2 rounded-lg text-white text-[14px] font-semibold hidden lg:flex"
-            >
-                My Account
-            </a>
+            <div className="flex items-center gap-4">
+                {token && (
+                    <button
+                        onClick={handleLogout}
+                        className="bg-[#D52E9C] hover:bg-[#f23bb5] p-2 rounded-lg text-white text-[14px] font-semibold"
+                    >
+                        Logout
+                    </button>
+                )}
+
+                <a
+                    href="/authentication"
+                    className="bg-[#D52E9C] hover:bg-[#f23bb5] p-2 rounded-lg text-white text-[14px] font-semibold hidden lg:flex"
+                >
+                    {isLoading ? "Loading..." : userDetails?.name ? `Hello, ${userDetails.name}` : "My Account"}
+                </a>
+            </div>
         </div>
     );
 };
 
 const FlyoutLink = ({ item }) => {
     const [open, setOpen] = useState(false);
-
-    // Check if the item has sub-navigation links
     const hasSubNav = item?.sub_navbarLinks?.length > 0;
-
     const showFlyout = hasSubNav && open;
-
-    // Split sub-navigation items into chunks of 10
     const chunkSize = 10;
     const subNavChunks = hasSubNav
         ? item.sub_navbarLinks.reduce((result, value, index) => {
-              const chunkIndex = Math.floor(index / chunkSize);
-              if (!result[chunkIndex]) {
-                  result[chunkIndex] = [];
-              }
-              result[chunkIndex].push(value);
-              return result;
-          }, [])
+            const chunkIndex = Math.floor(index / chunkSize);
+            if (!result[chunkIndex]) {
+                result[chunkIndex] = [];
+            }
+            result[chunkIndex].push(value);
+            return result;
+        }, [])
         : [];
 
     return (
@@ -111,54 +159,38 @@ const FlyoutLink = ({ item }) => {
                     >
                         <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
                         <div className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white" />
-
-                        {/* Dynamically render sub-navigation links */}
-                        {/* {hasSubNav && (
-                            <div className="w-64 bg-white p-6 shadow-xl rounded-lg">
-                                {item.sub_navbarLinks.map(
-                                    (subItem, subIndex) => (
-                                        <div
-                                            key={subIndex}
-                                            className="space-y-3 hover:bg-pink-200/25 px-2 py-2 rounded-md"
-                                        >
-                                            <a
-                                                href={subItem.href}
-                                                className="block text-sm"
-                                            >
-                                                {subItem.title}
-                                            </a>
-                                        </div>
-                                    )
-                                )}
-                            </div>
-                        )} */}
                         {hasSubNav && (
                             <div
-                                className={`${
-                                    item.sub_navbarLinks.length > 10
-                                        ? "w-full"
-                                        : "w-full"
-                                }  bg-white p-6 shadow-xl rounded-lg flex`}
+                                className={`${item.sub_navbarLinks.length > 10
+                                    ? "w-full"
+                                    : "w-full"
+                                    }  bg-white p-6 shadow-xl rounded-lg flex`}
+                                style={{
+                                    maxHeight: "550px",
+                                    overflowY: "auto",
+                                    scrollbarWidth: "thin",
+                                    scrollbarColor: "#f099bf transparent",
+                                }}
                             >
                                 {subNavChunks.map((chunk, chunkIndex) => (
                                     <div
                                         key={`chunk-${chunkIndex}`}
-                                        className={`flex flex-col ${
-                                            chunkIndex > 0
-                                                ? "ml-6 border-l-2"
-                                                : ""
-                                        }`}
+                                        className={`flex flex-col ${chunkIndex > 0
+                                            ? "ml-6 border-l-2"
+                                            : ""
+                                            }`}
                                     >
-                                        {chunk.map((subItem) => (
+                                        {chunk.map((subItem, index) => (
                                             <div
                                                 key={subItem.id}
                                                 className={`space-y-3 hover:bg-pink-200/25 px-2 py-2 rounded-md`}
                                             >
                                                 <a
                                                     href={subItem.href}
-                                                    className="block text-sm"
+                                                    className="block text-sm w-[300px] max-w-fit min-w-fit"
                                                 >
                                                     {subItem.title}
+                                                    {index < chunk.length - 1 && <hr className="mt-2" />}
                                                 </a>
                                             </div>
                                         ))}

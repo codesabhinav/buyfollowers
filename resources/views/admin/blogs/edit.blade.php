@@ -46,8 +46,8 @@
                                         <label for="logo" class="btn btn-primary mb-0">choose
                                             file</label>
                                         <input type="file" name="logo" id="logo" hidden class="filestyle"
-                                            onchange="loadFile(this)" data-parsley-error-message="Logo is Required"
-                                            required>
+                                            onchange="loadFile(this)" 
+                                            >
                                         <label for="logo" class="error" style="display: none;"></label>
                                     </div>
                                     <div class="col-auto">

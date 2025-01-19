@@ -230,8 +230,8 @@ const Signup = ({switchTab}) => {
                         <span>Signup With Google</span>
                     </Button> */}
                     <div className="mt-4 text-center">
-                        <p className="text-sm text-gray-600 font-semibold">
-                            Don't have an account?{" "}
+                        <p className="text-sm text-gray-600 font-semibold cursor-pointer">
+                            Already have an account?{" "}
                             <span
                                 onClick={() => switchTab("login")}
                                 className="text-pink-500 hover:underline"
