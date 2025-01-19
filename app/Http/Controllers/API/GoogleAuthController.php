@@ -4,44 +4,73 @@ namespace App\Http\Controllers\API;
 
 use App\Enums\RoleEnum;
 use App\Enums\StatusEnum;
-use App\Helpers\SocialLoginHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SignupRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
-use GuzzleHttp\Exception\ClientException;
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use Google_Client;
-use Google_Service_Oauth2;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Hash;
 
 class GoogleAuthController extends Controller
 {
     use AuthenticatesUsers;
 
+    public function signup(SignupRequest $request)
+    {
+        $data = $request->all();
+        $data['role'] = RoleEnum::USER;
+        $data['status'] = StatusEnum::ACTIVE;
+        $user = User::create($data);
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'data' => $user,
+            'token' => $token,
+            'message' => 'User registered successfully',
+        ], 201);
+    }
     public function login(Request $request)
     {
-        $client = new Google_Client(['client_id' => getEnvironmentVariable('google_client_id')]);
-        $payload = $client->verifyIdToken($request->token);
+        if ($request->has('token')) {
+            $client = new Google_Client(['client_id' => getEnvironmentVariable('google_client_id')]);
+            $payload = $client->verifyIdToken($request->token);
 
-        if ($payload) {
-            $user = User::updateOrCreate(
-                ['email' => $payload['email']],
-                [
-                    'name' => $payload['name'],
-                    'email_verified_at' => now(),
-                    'password' => bcrypt(uniqid()),
-                    'role' => RoleEnum::USER,
-                    'status' => StatusEnum::ACTIVE,
-                ]
-            );
+            if ($payload) {
+                $user = User::updateOrCreate(
+                    ['email' => $payload['email']],
+                    [
+                        'name' => $payload['name'],
+                        'email_verified_at' => now(),
+                        'password' => bcrypt(uniqid()),
+                        'role' => RoleEnum::USER,
+                        'status' => StatusEnum::ACTIVE,
+                    ]
+                );
 
-            $token = $user->createToken('Google Login')->plainTextToken;
-            return response()->json(['token' => $token, 'user' => $user]);
+                $token = $user->createToken('Google Login')->plainTextToken;
+                return response()->json(['token' => $token, 'user' => $user]);
+            }
+
+            return response()->json(['error' => 'Invalid Google token'], 401);
+        } elseif ($request->has('email') && $request->has('password')) {
+            $user = User::where('email', $request->email)->first();
+
+            if ($user) {
+                if (Hash::check($request->password, $user->password)) {
+                    $token = $user->createToken('Login')->plainTextToken;
+                    return response()->json(['token' => $token, 'user' => $user]);
+                } else {
+                    return response()->json(['error' => 'Incorrect password'], 401);
+                }
+            } else {
+                return response()->json(['error' => 'User not found'], 404);
+            }
         }
-        return response()->json(['error' => 'Invalid Google token'], 401);
+
+        return response()->json(['error' => 'No valid login data provided'], 400);
     }
 
     public function logout()
@@ -61,6 +90,6 @@ class GoogleAuthController extends Controller
         if (!$user) {
             return response()->json(['error' => 'User not authenticated.'], 401);
         }
-        return $this->sendResponse($user, 200, 'User authenticated');
+        return $this->sendResponse($user, 200, 'My Profile');
     }
 }

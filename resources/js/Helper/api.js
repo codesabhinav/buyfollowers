@@ -42,7 +42,7 @@ export const navbar = async () => {
 
 export const googleLogin = async (token) => {
     try {
-        const response = await axios.post(`${API_BASE_URL}/google-login`, { token });
+        const response = await axios.post(`${API_BASE_URL}/login`, { token });
         return response.data;
     } catch (error) {
         throw error.response ? error.response.data : error.message;

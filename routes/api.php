@@ -19,4 +19,5 @@ Route::get('/products/{product}', [ProductController::class, 'show']);
 Route::get('/blogs', [BlogController::class, 'index']);
 Route::get('/blogs/{blog}', [BlogController::class, 'show']);
 
-Route::post('/google-login', [GoogleAuthController::class, 'login']);
+Route::post('/login', [GoogleAuthController::class, 'login']);
+Route::post('/signup', [GoogleAuthController::class, 'signup']);
