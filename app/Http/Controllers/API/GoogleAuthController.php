@@ -6,6 +6,7 @@ use App\Enums\RoleEnum;
 use App\Enums\StatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignupRequest;
+use App\Http\Resources\UserResource;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -34,6 +35,7 @@ class GoogleAuthController extends Controller
     }
     public function login(Request $request)
     {
+        $user = null;
         if ($request->has('token')) {
             $client = new Google_Client(['client_id' => getEnvironmentVariable('google_client_id')]);
             $payload = $client->verifyIdToken($request->token);
@@ -49,25 +51,23 @@ class GoogleAuthController extends Controller
                         'status' => StatusEnum::ACTIVE,
                     ]
                 );
-
-                $token = $user->createToken('Google Login')->plainTextToken;
-                return response()->json(['token' => $token, 'user' => $user]);
+            } else {
+                return response()->json(['error' => 'Invalid Google token'], 401);
             }
-
-            return response()->json(['error' => 'Invalid Google token'], 401);
         } elseif ($request->has('email') && $request->has('password')) {
             $user = User::where('email', $request->email)->first();
 
             if ($user) {
-                if (Hash::check($request->password, $user->password)) {
-                    $token = $user->createToken('Login')->plainTextToken;
-                    return response()->json(['token' => $token, 'user' => $user]);
-                } else {
+                if (!Hash::check($request->password, $user->password)) {
                     return response()->json(['error' => 'Incorrect password'], 401);
                 }
             } else {
                 return response()->json(['error' => 'User not found'], 404);
             }
+        }
+        if ($user) {
+            $token = $user->createToken('Login')->plainTextToken;
+            return response()->json(['data' => new UserResource($user), 'token' => $token, 'message' => 'Login Success!']);
         }
 
         return response()->json(['error' => 'No valid login data provided'], 400);
@@ -90,6 +90,6 @@ class GoogleAuthController extends Controller
         if (!$user) {
             return response()->json(['error' => 'User not authenticated.'], 401);
         }
-        return $this->sendResponse($user, 200, 'My Profile');
+        return $this->sendResponse(new UserResource($user), 200, 'My Profile');
     }
 }

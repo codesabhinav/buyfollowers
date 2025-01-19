@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:api'])->group(function () {
-    Route::get('user', [GoogleAuthController::class, 'getUser']);
+    Route::get('my-profile', [GoogleAuthController::class, 'getUser']);
     Route::post('logout', [GoogleAuthController::class, 'logout']);
 });
 

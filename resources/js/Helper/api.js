@@ -30,7 +30,7 @@ export const products = async (serviceTypes) => {
 
 export const navbar = async () => {
     try {
-        const response = await fetch("/api/navbar"); 
+        const response = await fetch("/api/navbar");
         return await response.json();
     } catch (error) {
         console.error("Error fetching navbar data:", error);
@@ -50,11 +50,11 @@ export const googleLogin = async (token) => {
 };
 
 export const getUserDetails = async () => {
-    const token = localStorage.getItem("token"); 
+    const token = localStorage.getItem("token");
     if (!token) return null;
 
     try {
-        const response = await axios.get(`${API_BASE_URL}/user`, {
+        const response = await axios.get(`${API_BASE_URL}/my-profile`, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
@@ -81,3 +81,11 @@ export const logout = async () => {
     }
 };
 
+export const signup = async (data) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/signup`, data);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
