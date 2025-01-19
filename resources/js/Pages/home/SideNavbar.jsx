@@ -20,7 +20,6 @@ import { Link } from "@inertiajs/react";
 import { ScrollArea } from "@/Components/ui/scroll-area";
 import { getSettingByKey, navbar } from "../../Helper/api";
 
-
 const SideNavbar = () => {
     const [logo, setLogo] = useState("assets/images/buy_followers_logo.svg");
     const [navbarData, setNavbarData] = useState([]);
@@ -57,9 +56,12 @@ const SideNavbar = () => {
                                 className="w-44 lg:w-48 xl:w-64 h-auto"
                             />
 
-                            <Button className="bg-[#D52E9C] hover:bg-[#D52E9C] border border-white text-white font-semibold transition-all ease-in-out delay-150 hover:-translate-y-1 hover:scale-110">
+                            <a
+                                href="/authentication"
+                                className="bg-[#D52E9C] hover:bg-[#D52E9C] p-2 rounded-lg border border-white text-white font-semibold transition-all ease-in-out delay-150 hover:-translate-y-1 hover:scale-110"
+                            >
                                 My Account
-                            </Button>
+                            </a>
                         </SheetTitle>
                         <SheetDescription className="pt-8 text-[16px] text-[#D52E9C]"></SheetDescription>
                     </SheetHeader>
@@ -84,12 +86,14 @@ const SideNavbar = () => {
                                                             key={index}
                                                         >
                                                             <a
-                                                                href="/about"
+                                                                href={
+                                                                    subItem.href
+                                                                }
                                                                 className={`text-[14px] font-medium`}
                                                             >
                                                                 {subItem.title}
                                                             </a>
-                                                             <hr className="mt-2"/>
+                                                            <hr className="mt-2" />
                                                         </AccordionContent>
                                                     )
                                                 )}
@@ -97,7 +101,7 @@ const SideNavbar = () => {
                                         </Accordion>
                                     ) : (
                                         <a
-                                            href="#"
+                                            href={item.href}
                                             className={`text-[16px] font-semibold`}
                                         >
                                             {item.title}

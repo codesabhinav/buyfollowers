@@ -31,8 +31,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/authentication', function () {
     return Inertia::render('Auth/AuthLayout');
 });
-Route::get('/forget', function () {
-    return Inertia::render('Auth/Forgot');
+Route::get('/forgot', function () {
+    return Inertia::render('Auth/verification/ForgotLayout');
 });
 Route::get('/add-cart', function () {
     return Inertia::render('home/addtocart/AddtoCartLayout');

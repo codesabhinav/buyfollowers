@@ -46,38 +46,6 @@ const FreeproductsSection = () => {
 
     return (
         <>
-            {/* <div className="flex flex-col items-center gap-8 mt-8">
-                <h3 className="text-4xl sm:text-5xl font-bold text-pink-400">
-                    Free products
-                </h3>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 w-full">
-                    {freeProducts.map((item, index) => (
-                        <div
-                            key={index}
-                            className="relative flex flex-col md:flex-row items-center gap-4 p-8 bg-white rounded-md shadow-md transition-transform duration-300 transform hover:scale-105 hover:rotate-3d hover:shadow-lg hover:translate-z-10"
-                        >
-                            <div className="flex items-center justify-center w-full relative">
-                                <img
-                                    src={item.img}
-                                    alt={`image-${index}`}
-                                    className="object-cover w-[123px] h-full rounded-md"
-                                />
-                            </div>
-
-                            <div className="flex flex-col gap-4">
-                                <h1 className="text-lg font-medium">
-                                    {item.heading}
-                                </h1>
-                                <p className="text-sm text-gray-600">
-                                    {item.description}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div> */}
-
             <div className="w-full py-20 bg-[#FFFAFE] flex flex-col items-center px-4">
                 <div className="w-full md:w-[85%] flex flex-col items-center gap-16">
                     <div className="flex flex-col gap-2 items-center">
@@ -95,7 +63,7 @@ const FreeproductsSection = () => {
                                 freeProducts.slice(0, 3).map((product) => (
                                     <div
                                         key={product.id}
-                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6"
+                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6 h-[8rem]"
                                     >
                                         <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
                                             <img
@@ -133,7 +101,7 @@ const FreeproductsSection = () => {
                                 freeProducts.slice(3, 6).map((product) => (
                                     <div
                                         key={product.id}
-                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6"
+                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6 h-[8rem]"
                                     >
                                         <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
                                             <img

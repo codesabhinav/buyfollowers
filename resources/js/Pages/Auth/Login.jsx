@@ -14,9 +14,11 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import { z } from "zod";
-import { GoogleLogin } from '@react-oauth/google';
-import { googleLogin } from '../../Helper/api.js';
+import { GoogleLogin } from "@react-oauth/google";
+import { googleLogin } from "../../Helper/api.js";
 import axios from "axios";
+
+import "./login.css";
 
 const formSchema = z.object({
     email: z.string().min(2, {
@@ -28,7 +30,6 @@ const formSchema = z.object({
 });
 
 const Login = ({ switchTab }) => {
-
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -38,22 +39,22 @@ const Login = ({ switchTab }) => {
     });
 
     const [isPasswordVisible, setPasswordVisible] = useState(false);
-    const [loginSuccessMessage, setLoginSuccessMessage] = useState(""); 
+    const [loginSuccessMessage, setLoginSuccessMessage] = useState("");
 
     const togglePasswordVisibility = () => {
         setPasswordVisible((prev) => !prev);
     };
 
     const handleSuccess = async (response) => {
-        console.log('Google Login Success:', response);
+        console.log("Google Login Success:", response);
         try {
             const data = await googleLogin(response.credential);
-            console.log('Backend Response:', data);
-            localStorage.setItem('token', data.token);
+            console.log("Backend Response:", data);
+            localStorage.setItem("token", data.token);
             setLoginSuccessMessage("Login Successfull!");
-            window.location.href = "/"; 
+            window.location.href = "/";
         } catch (error) {
-            console.error('Error during API call:', error);
+            console.error("Error during API call:", error);
         }
     };
 
@@ -62,6 +63,18 @@ const Login = ({ switchTab }) => {
         setLoginSuccessMessage("Google login failed. Please try again.");
     };
 
+    const fourceLogin = () => {
+        console.log("force login");
+
+        return (
+            <GoogleLogin
+                clientId="YOUR_GOOGLE_CLIENT_ID"
+                onSuccess={handleSuccess}
+                onFailure={handleFailure}
+                cookiePolicy={"single_host_origin"}
+            ></GoogleLogin>
+        );
+    };
 
     return (
         <>
@@ -77,10 +90,7 @@ const Login = ({ switchTab }) => {
                 )}
 
                 <Form {...form}>
-                    <form
-
-                        className="space-y-6"
-                    >
+                    <form className="space-y-6">
                         <div className="flex flex-col gap-4">
                             <FormField
                                 control={form.control}
@@ -172,21 +182,11 @@ const Login = ({ switchTab }) => {
                         </Button>
                     </form>
                     <GoogleLogin
-                        clientId="YOUR_GOOGLE_CLIENT_ID"
                         onSuccess={handleSuccess}
                         onFailure={handleFailure}
-                        cookiePolicy={'single_host_origin'}
-                        render={(renderProps) => (
-                            <button
-                                className="w-full bg-transparent text-white text-lg bg-black hover:text-white font-semibold h-12 flex items-center justify-center gap-2 mt-4"
-                                onClick={renderProps.onClick}
-                                disabled={renderProps.disabled}
-                            >
-                                <img src="assets/images/google.png" alt="google" width={20} height={20} />
-                                <span>Signup With Google</span>
-                            </button>
-                        )}
+                        cookiePolicy={"single_host_origin"}
                     ></GoogleLogin>
+
                     {/* New link for existing users to login */}
                     <div className="mt-4 text-center">
                         <p className="text-sm text-gray-600 font-semibold cursor-pointer">

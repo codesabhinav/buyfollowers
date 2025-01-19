@@ -131,7 +131,7 @@ const PaidProductsSection = () => {
                                                     "translate(-50%, -50%)",
                                             }}
                                         />
-                                        <div className="p-4 mt-11 border border-[#F2F2F2] rounded-xl shadow-lg flex flex-col items-center justify-center gap-2">
+                                        <div className="p-4 mt-11 border border-[#F2F2F2] rounded-xl shadow-lg flex flex-col items-center justify-center gap-2 h-[14rem]">
                                             <h2 className="text-xl font-semibold text-center mt-12">
                                                 {product.name.split("|")[0]}
                                             </h2>
