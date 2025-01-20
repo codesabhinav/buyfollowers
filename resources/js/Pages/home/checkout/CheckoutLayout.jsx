@@ -1,5 +1,6 @@
 import Footer from "../Footer";
 import NewNavbar from "../NewNavbar";
+import Checkout from "./Checkout";
 
 const CheckoutLayout = () => {
     const customNavbarstyle =
@@ -27,14 +28,15 @@ const CheckoutLayout = () => {
                         <NewNavbar navbarstyle={customNavbarstyle} />
 
                         {/* <AddtoCartHero /> */}
+                        <Checkout />
                     </div>
                 </div>
-                <div className="w-full mt-10 mb-12 flex flex-col items-center gap-12 px-4 md:px-1">
-                    {/* <BuyFollowers />
+                {/* <div className="w-full mt-10 mb-12 flex flex-col items-center gap-12 px-4 md:px-1"> */}
+                {/* <BuyFollowers />
                     <HowToBuy />
                     <WhyshouldBuy />
                     <FrequentlyAnsweredQuestions /> */}
-                </div>
+                {/* </div> */}
 
                 <Footer />
             </div>
