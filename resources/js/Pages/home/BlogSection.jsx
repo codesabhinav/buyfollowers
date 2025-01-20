@@ -6,72 +6,28 @@ import {
     CarouselPrevious,
 } from "@/Components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef } from "react";
-
-const blockContent = [
-    {
-        image: "assets/images/rectangle_blog_bg.png",
-        title: "Safety and Security",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-    },
-    {
-        image: "assets/images/rectangle_blog_bg.png",
-        title: "Safety and Security",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-    },
-    {
-        image: "assets/images/rectangle_blog_bg.png",
-        title: "Safety and Security",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-    },
-    {
-        image: "assets/images/rectangle_blog_bg.png",
-        title: "Safety and Security",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-    },
-    {
-        image: "assets/images/rectangle_blog_bg.png",
-        title: "Safety and Security",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-    },
-    {
-        image: "assets/images/rectangle_blog_bg.png",
-        title: "Safety and Security",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-    },
-    {
-        image: "assets/images/rectangle_blog_bg.png",
-        title: "Safety and Security",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-    },
-    {
-        image: "assets/images/rectangle_blog_bg.png",
-        title: "Safety and Security",
-        heading: "Safety-focused lubricant:",
-        description:
-            "secure facilities, CCTV, alarms, patrols ensuring optimal security.",
-    },
-];
+import { fetchBlogs } from "../../Helper/api.js";
+import React, { useState, useEffect } from "react";
 
 const BlogSection = () => {
+    const [blogs, setBlogs] = useState([]);
     const plugin = useRef(
         Autoplay({ delay: 200000000, stopOnInteraction: true })
     );
+    useEffect(() => {
+        const getBlogs = async () => {
+            try {
+                const response = await fetchBlogs();
+                if (response.status === 200) {
+                    setBlogs(response.data);
+                }
+            } catch (error) {
+                console.error("Error fetching blogs:", error);
+            }
+        };
+        getBlogs();
+    }, []);
 
     return (
         <div className="w-full bg-[#FFFAFE] flex flex-col items-center">
@@ -94,98 +50,26 @@ const BlogSection = () => {
                     }}
                     className="w-full flex flex-col items-center justify-center gap-12"
                 >
-                    {/* <CarouselContent>
-                        {blockContent.map((item, index) => (
-                            <CarouselItem
-                                key={index}
-                                className="md:basis-1/3 lg:basis-1/4"
-                            >
-                                <div className="border border-[#EDEDED] rounded-lg relative">
-                                    <div className="w-full">
-                                        <img
-                                            src={item.image}
-                                            alt="rectangle_blog_bg"
-                                            className="w-full"
-                                        />
-                                    </div>
-
-                                    <div className="absolute bottom-0 left-0 rounded-b-lg p-4">
-                                        <div className="absolute bottom-0 left-0 z-10 w-full">
-                                            <img
-                                                src="assets/images/rectangle_blog.png"
-                                                alt="rectangle_blog.png"
-                                                className="w-full h-auto"
-                                            />
-                                        </div>
-                                        <div className="absolute top-0 left-[62%] transform -translate-y-[65%] z-30">
-                                            <img
-                                                src="assets/images/youtube_blog.png"
-                                                alt="2_youtube"
-                                                className="w-12 h-12"
-                                            />
-                                        </div>
-                                        <div className="z-20 relative top-0 w-[75%]">
-                                            <h1 className="text-[#232323] text-[16px] font-bold">
-                                                {item.title}
-                                            </h1>
-                                            <p className="text-[#6C728A] mt-1 mb-8 text-xs">
-                                                {item.heading}{" "}
-                                                {item.description}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent> */}
                     <CarouselContent>
-                        {blockContent.map((item, index) => (
+                        {blogs.map((item, index) => (
                             <CarouselItem
-                                key={index}
+                                key={item.id}
                                 className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 p-2"
                             >
-                                {/* <div
-                                    className="border border-[#EDEDED] rounded-lg relative overflow-hidden w-full bg-cover bg-center"
-                                    style={{
-                                        backgroundImage: `url(${item.image})`,
-                                        aspectRatio: "9 / 8",
-                                    }}
-                                >
-                                    <div className="absolute bottom-0 left-0 w-full">
-                                        <div className="relative">
-                                            <img
-                                                src="assets/images/rectangle_blog.svg"
-                                                alt="rectangle_blog"
-                                                className="w-full"
-                                            />
-
-                                            <div className="z-20 absolute top-12 min-[359px]:top-1/3  md:top-8 lg:top-8 w-[75%] px-3 py-2">
-                                                <h1 className="text-[#232323] text-[18px] md:text-[12px] lg:text-[14px] font-bold">
-                                                    {item.title}
-                                                </h1>
-                                                <p className="text-[#6C728A] mt-1 mb-8 text-[14px] md:text-[8px] lg:text-[11px]">
-                                                    {item.heading}{" "}
-                                                    {item.description}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
                                 <div
                                     className="border border-[#EDEDED] rounded-lg relative overflow-hidden w-full bg-cover bg-center"
                                     style={{
-                                        backgroundImage: `url(${item.image})`,
-                                        aspectRatio: "9 / 8",
+                                        backgroundImage: `url(${item.media_id.path})`,
+                                        aspectRatio: '9 / 8',
                                     }}
                                 >
                                     <div className="absolute bottom-0 left-0 w-full h-full">
                                         <div className="absolute bottom-0 left-0 w-[85%] px-3 py-2 z-20">
                                             <h1 className="text-[#232323] text-[18px] md:text-[12px] lg:text-[14px] font-bold">
-                                                {item.title}
+                                            {item.title.length > 20 ? item.title.slice(0, 20) + "..." : item.title}
                                             </h1>
                                             <p className="text-[#6C728A] mt-1 mb-8 text-[14px] md:text-[8px] lg:text-[11px]">
-                                                {item.heading}{" "}
-                                                {item.description}
+                                                {item.description.length > 95 ? item.description.slice(0, 95) + "..." : item.description}
                                             </p>
                                         </div>
 
@@ -201,8 +85,6 @@ const BlogSection = () => {
                     </CarouselContent>
 
                     <div className="flex items-center gap-2">
-                        {/* <ChevronLeft className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
-                        <ChevronRight className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" /> */}
                         <CarouselPrevious className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
                         <CarouselNext className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
                     </div>

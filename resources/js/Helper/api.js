@@ -10,8 +10,7 @@ export const getSettingByKey = async (key) => {
         const setting = response.data.data.find((item) => item.key === key);
         return setting ? setting.value : null;
     } catch (error) {
-        console.error("Error fetching setting:", error);
-        return null;
+        throw error;
     }
 };
 
@@ -23,8 +22,7 @@ export const products = async (serviceTypes) => {
         const response = await axios.get(`/api/products?${params}`);
         return response.data;
     } catch (error) {
-        console.error("Error fetching services:", error);
-        return null;
+        throw error;
     }
 };
 
@@ -33,19 +31,16 @@ export const navbar = async () => {
         const response = await fetch("/api/navbar");
         return await response.json();
     } catch (error) {
-        console.error("Error fetching navbar data:", error);
-        return null;
+        throw error;
     }
 };
-
-
 
 export const googleLogin = async (token) => {
     try {
         const response = await axios.post(`${API_BASE_URL}/login`, { token });
         return response.data;
     } catch (error) {
-        throw error.response ? error.response.data : error.message;
+        throw error;
     }
 };
 
@@ -63,8 +58,7 @@ export const getUserDetails = async () => {
 
         return response.data;
     } catch (error) {
-        console.error("Error fetching user details:", error);
-        return null;
+        throw error;
     }
 };
 
@@ -75,15 +69,59 @@ export const logout = async () => {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
         });
-        console.log("Backend Logout Response:", response);
     } catch (error) {
-        console.error("Error during API logout:", error);
+        throw error;
     }
 };
 
 export const signup = async (data) => {
     try {
         const response = await axios.post(`${API_BASE_URL}/signup`, data);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const login = async (data) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/login`, data)
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const forgotPassword = async (email) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/forgot-password`, { email });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const verifyOtp = async (email, otp) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/otp-verify`, { email, otp });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const changePassword = async (data) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/change-password`, data);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const fetchBlogs = async () => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/blogs`);
         return response.data;
     } catch (error) {
         throw error;

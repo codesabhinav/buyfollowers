@@ -3,27 +3,6 @@ import { Gift } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { products } from "../../Helper/api";
 
-const freeProductsLeftCard = [
-    {
-        title: "Youtube",
-        img: "assets/social_media/youtube.svg",
-        description:
-            "Safety-focused lubricant: secure facilities, CCTV, alarms.",
-    },
-    {
-        title: "Youtube",
-        img: "assets/social_media/youtube.svg",
-        description:
-            "Safety-focused lubricant: secure facilities, CCTV, alarms.",
-    },
-    {
-        title: "Youtube",
-        img: "assets/social_media/youtube.svg",
-        description:
-            "Safety-focused lubricant: secure facilities, CCTV, alarms.",
-    },
-];
-
 const FreeproductsSection = () => {
     const [freeProducts, setFreeProducts] = useState([]);
 

@@ -25,7 +25,10 @@ class User extends Authenticatable
         'google_id',
         'role',
         'status',
-        'email_verified_at'
+        'email_verified_at',
+        'is_otp_verified',
+        'otp',
+        'otp_expiry'
     ];
 
     /**

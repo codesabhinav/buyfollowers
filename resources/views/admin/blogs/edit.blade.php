@@ -9,7 +9,7 @@
             @method('PUT')
             <div class="row mb-2 justify-content-between">
                 <div class="col-auto mb-4">
-                    <h2 class="title-1" style="color: black;">Settings
+                    <h2 class="title-1" style="color: black;">Blog
                     </h2>
                 </div>
                 <div class="col-auto">

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:api'])->group(function () {
-    Route::get('my-profile', [GoogleAuthController::class, 'getUser']);
+    Route::get('my-profile', [GoogleAuthController::class, 'myProfile']);
     Route::post('logout', [GoogleAuthController::class, 'logout']);
 });
 
@@ -21,3 +21,6 @@ Route::get('/blogs/{blog}', [BlogController::class, 'show']);
 
 Route::post('/login', [GoogleAuthController::class, 'login']);
 Route::post('/signup', [GoogleAuthController::class, 'signup']);
+Route::post('/forgot-password', [GoogleAuthController::class, 'forgotPassword']);
+Route::post('/otp-verify', [GoogleAuthController::class, 'otpVerify']);
+Route::post('/change-password', [GoogleAuthController::class, 'changePassword']);

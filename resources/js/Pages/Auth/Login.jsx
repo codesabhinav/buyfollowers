@@ -10,26 +10,29 @@ import {
 import { Input } from "@/Components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import { z } from "zod";
 import { GoogleLogin } from "@react-oauth/google";
-import { googleLogin } from "../../Helper/api.js";
-import axios from "axios";
+import { googleLogin, login } from "../../Helper/api.js";
 
 import "./login.css";
 
 const formSchema = z.object({
-    email: z.string().min(2, {
-        message: "Email must be a valid Email.",
+    email: z.string().email({
+        message: "Please enter a valid email address.",
     }),
-    password: z.string().min(2, {
+    password: z.string().min(6, {
         message: "Password is Required.",
     }),
 });
 
 const Login = ({ switchTab }) => {
+    const [isPasswordVisible, setPasswordVisible] = useState(false);
+    const [apiMessage, setApiMessage] = useState("");
+    const [isSuccess, setIsSuccess] = useState(false);
+
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -38,42 +41,65 @@ const Login = ({ switchTab }) => {
         },
     });
 
-    const [isPasswordVisible, setPasswordVisible] = useState(false);
-    const [loginSuccessMessage, setLoginSuccessMessage] = useState("");
+    useEffect(() => {
+        if (apiMessage) {
+            const timer = setTimeout(() => setApiMessage(null), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [apiMessage]);
+
+
 
     const togglePasswordVisibility = () => {
         setPasswordVisible((prev) => !prev);
     };
 
     const handleSuccess = async (response) => {
-        console.log("Google Login Success:", response);
         try {
+            if (localStorage.getItem("token")) {
+                localStorage.removeItem("token");
+            }
             const data = await googleLogin(response.credential);
-            console.log("Backend Response:", data);
             localStorage.setItem("token", data.token);
-            setLoginSuccessMessage("Login Successfull!");
+            setApiMessage(data.message || "Login Successful!");
+            setIsSuccess(true);
             window.location.href = "/";
         } catch (error) {
-            console.error("Error during API call:", error);
+            const errorMessage =
+                error.response?.data?.message || "An unexpected error occurred.";
+            setIsSuccess(false);
+            setApiMessage(errorMessage);
         }
     };
 
     const handleFailure = (response) => {
         console.error(response);
-        setLoginSuccessMessage("Google login failed. Please try again.");
+        setApiMessage("Google login failed. Please try again.");
     };
 
-    const fourceLogin = () => {
-        console.log("force login");
+    const handleLogin = async (values) => {
+        try {
+            if (localStorage.getItem("token")) {
+                localStorage.removeItem("token");
+            }
+            const payload = {
+                email: values.email,
+                password: values.password,
+            };
+            const response = await login(payload);
+            setIsSuccess(true);
+            setApiMessage(response.message || "Login Successful!");
+            window.location.href = "/";
+            if (response?.token) {
+                localStorage.setItem("token", response.token); 
+            }
 
-        return (
-            <GoogleLogin
-                clientId="YOUR_GOOGLE_CLIENT_ID"
-                onSuccess={handleSuccess}
-                onFailure={handleFailure}
-                cookiePolicy={"single_host_origin"}
-            ></GoogleLogin>
-        );
+        } catch (error) {
+            const errorMessage =
+                error.response?.data?.message || "An unexpected error occurred.";
+            setIsSuccess(false);
+            setApiMessage(errorMessage);
+        }
     };
 
     return (
@@ -83,14 +109,21 @@ const Login = ({ switchTab }) => {
                     Login
                 </h2>
 
-                {loginSuccessMessage && (
-                    <div className="bg-green-100 text-green-700 p-4 rounded-md mb-4">
-                        {loginSuccessMessage}
+                {apiMessage && (
+                    <div
+                        className={`text-center p-3 mb-4 rounded-lg ${isSuccess
+                            ? "bg-green-100 text-green-700"
+                            : "bg-red-100 text-red-700"
+                            }`}
+                    >
+                        {apiMessage}
                     </div>
                 )}
 
                 <Form {...form}>
-                    <form className="space-y-6">
+                    <form
+                        onSubmit={form.handleSubmit(handleLogin)}
+                        className="space-y-6">
                         <div className="flex flex-col gap-4">
                             <FormField
                                 control={form.control}
@@ -167,7 +200,7 @@ const Login = ({ switchTab }) => {
                                 </label>
                             </div>
                             <a
-                                href="/forget"
+                                href="/forgot"
                                 className="text-pink-500 hover:underline"
                             >
                                 Forgot Password?

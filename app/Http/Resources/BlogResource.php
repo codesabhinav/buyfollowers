@@ -18,7 +18,7 @@ class BlogResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'href' => "#",
-            'description' => $this->description,
+            'description' => strip_tags($this->description),
             'media_id' => new MediaResource($this->image),
         ];
     }

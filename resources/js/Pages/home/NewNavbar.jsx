@@ -60,7 +60,6 @@ const NewNavbar = ({ navbarstyle }) => {
         if (token) {
             try {
                 const response = await getUserDetails(token);
-                console.log("Fetched User Details:", response);
                 if (response && response.data && response.data.name) {
                     setUserDetails(response.data);
                 } else {
@@ -126,9 +125,9 @@ const NewNavbar = ({ navbarstyle }) => {
                             {/* <DropdownMenuLabel>Appearance</DropdownMenuLabel> */}
                             <DropdownMenuSeparator />
                             <DropdownMenuCheckboxItem>
-                                <a href="/authentication">My Account</a>
+                                <a href="/forgot" className="font-semibold cursor-pointer">Forgot Password</a>
                             </DropdownMenuCheckboxItem>
-                            <DropdownMenuCheckboxItem onClick={handleLogout}>
+                            <DropdownMenuCheckboxItem onClick={handleLogout} className="font-semibold cursor-pointer">
                                 Logout
                             </DropdownMenuCheckboxItem>
                         </DropdownMenuContent>

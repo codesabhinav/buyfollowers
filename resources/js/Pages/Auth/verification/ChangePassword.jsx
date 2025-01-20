@@ -11,22 +11,23 @@ import { Input } from "@/Components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { changePassword } from "../../../Helper/api.js";
 
-// Update the schema without using getValues in refine
 const formSchema = z.object({
-    password: z.string().min(2, {
-        message: "Password must be at least 2 characters.",
+    password: z.string().min(6, {
+        message: "Password must be at least 6 characters.",
     }),
     confirmPassword: z
         .string()
-        .min(2, { message: "Confirm Password must be at least 2 characters." }),
+        .min(6, { message: "Confirm Password must be at least 6 characters." }),
 });
 
-const ChangePassword = () => {
+const ChangePassword = ({ email }) => {
     const [isPasswordVisible, setPasswordVisible] = useState(false);
-    const [loginSuccessMessage, setLoginSuccessMessage] = useState("");
+    const [apiMessage, setApiMessage] = useState("✅ OTP verified successfully!");
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const togglePasswordVisibility = () => {
         setPasswordVisible((prev) => !prev);
@@ -39,10 +40,16 @@ const ChangePassword = () => {
         },
     });
 
+    useEffect(() => {
+        if (apiMessage) {
+            const timer = setTimeout(() => setApiMessage(null), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [apiMessage]);
+
     const [showOtpPage, setShowOtpPage] = useState(false);
 
-    // Custom validation for matching passwords
-    const handleLogin = (values) => {
+    const handleLogin = async (values) => {
         if (values.password !== values.confirmPassword) {
             form.setError("confirmPassword", {
                 type: "manual",
@@ -50,7 +57,22 @@ const ChangePassword = () => {
             });
             return;
         }
-        console.log(values);
+        try {
+            const payload = {
+                email: email,
+                password: values.password,
+                password_confirmation: values.confirmPassword,
+            };
+            const response = await changePassword(payload);
+            setIsSuccess(true);
+            setApiMessage(response.message || "✅ Password changed successfully!");
+            window.location.href = "/";
+        } catch (error) {
+            const errorMessage =
+                error.response?.data?.message || "❌ Something went wrong. Please try again.";
+            setIsSuccess(false);
+            setApiMessage(errorMessage);
+        }
         setShowOtpPage(true);
     };
 
@@ -60,6 +82,16 @@ const ChangePassword = () => {
                 <h2 className="text-2xl font-bold text-center text-pink-500 mb-6">
                     Change Password
                 </h2>
+                {apiMessage && (
+                    <div
+                        className={`text-center p-3 mb-4 rounded-lg ${isSuccess
+                            ? "bg-green-100 text-green-700"
+                            : "bg-red-100 text-red-700"
+                            }`}
+                    >
+                        {apiMessage}
+                    </div>
+                )}
                 <Form {...form}>
                     <form
                         onSubmit={form.handleSubmit(handleLogin)}

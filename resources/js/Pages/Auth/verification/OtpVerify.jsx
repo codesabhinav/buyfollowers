@@ -13,6 +13,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState, useEffect, useRef } from "react";
 import ChangePassword from "./ChangePassword";
+import { verifyOtp } from "../../../Helper/api.js";
+
 
 const formSchema = z.object({
     otp1: z
@@ -41,7 +43,7 @@ const formSchema = z.object({
         .regex(/^\d$/, { message: "OTP must only contain digits." }),
 });
 
-const OtpVerify = () => {
+const OtpVerify = ({ email }) => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -57,6 +59,8 @@ const OtpVerify = () => {
     const [loading, setLoading] = useState(false);
     const inputRefs = useRef([]);
     const [changePassword, setChangePassword] = useState(false);
+    const [apiMessage, setApiMessage] = useState("🎉 Check your inbox! We’ve sent an OTP to your email. 📧");
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleChange = (e, index) => {
         const value = e.target.value;
@@ -81,26 +85,54 @@ const OtpVerify = () => {
             setLoading(true);
             const timer = setTimeout(() => {
                 form.handleSubmit(handleVerifyOtp)();
-            }, 5000);
+            }, 2000);
             return () => clearTimeout(timer);
         }
     }, [form.getValues()]);
 
-    const handleVerifyOtp = (values) => {
-        console.log(values);
-        setLoading(false);
-        setChangePassword(true);
+    useEffect(() => {
+        if (apiMessage) {
+            const timer = setTimeout(() => setApiMessage(null), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [apiMessage]);
+
+    const handleVerifyOtp = async (values) => {
+        const otp = Object.values(values).join("");
+        try {
+            const response = await verifyOtp(email, otp);
+            setIsSuccess(true);
+            setApiMessage(response.message);
+            setLoading(false);
+            setChangePassword(true);
+        } catch (error) {
+            const errorMessage =
+            error.response?.data?.message || "❌ Something went wrong. Please try again.";
+            setLoading(false);
+            setIsSuccess(false);
+            setApiMessage(errorMessage);
+        }
     };
 
     return (
         <>
             {changePassword ? (
-                <ChangePassword />
+                <ChangePassword email={email} />
             ) : (
                 <div className="bg-white p-8 rounded-lg shadow-lg w-full">
                     <h2 className="text-2xl font-bold text-center text-pink-500 mb-6">
                         Verify OTP
                     </h2>
+                    {apiMessage && (
+                        <div
+                            className={`text-center p-3 mb-4 rounded-lg ${isSuccess
+                                ? "bg-green-100 text-green-700"
+                                : "bg-red-100 text-red-700"
+                                }`}
+                        >
+                            {apiMessage}
+                        </div>
+                    )}
                     <Form {...form}>
                         <form
                             onSubmit={form.handleSubmit(handleVerifyOtp)}
@@ -121,9 +153,9 @@ const OtpVerify = () => {
                                                         <Input
                                                             {...field}
                                                             ref={(el) =>
-                                                                (inputRefs.current[
-                                                                    index
-                                                                ] = el)
+                                                            (inputRefs.current[
+                                                                index
+                                                            ] = el)
                                                             }
                                                             value={
                                                                 field.value ||
