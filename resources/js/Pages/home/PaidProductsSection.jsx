@@ -142,7 +142,7 @@ const PaidProductsSection = () => {
                                                     .join(" | ")}
                                             </p>
                                             <a
-                                                href={product.href}
+                                                href={`/add-cart/${product.id}`}
                                                 className="w-fit py-2 px-2 bg-pink-500 hover:bg-pink-600 text-white text-xs font-semibold rounded-full transition-all cursor-pointer"
                                             >
                                                 Buy now

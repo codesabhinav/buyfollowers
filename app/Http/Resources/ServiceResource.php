@@ -18,7 +18,7 @@ class ServiceResource extends JsonResource
             'id' => $this->id,
             'service' => $this->service,
             'title' => $this->name,
-            'href' => "#",
+            'href' => asset('add-cart/'. $this->id),
             'category' => $this->category,
             'service_type' => $this->service_type
         ];

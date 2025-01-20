@@ -34,7 +34,7 @@ Route::get('/authentication', function () {
 Route::get('/forgot', function () {
     return Inertia::render('Auth/verification/ForgotLayout');
 });
-Route::get('/add-cart', function () {
+Route::get('/add-cart/{id}', function () {
     return Inertia::render('home/addtocart/AddtoCartLayout');
 });
 Route::get('/checkout', function () {
