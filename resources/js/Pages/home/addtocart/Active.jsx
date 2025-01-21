@@ -2,7 +2,7 @@ import { Slider } from "@/Components/ui/slider";
 import { cn } from "@/lib/utils";
 import { Minus, Plus } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useProductContext } from '../../../Context/ProductContext';
+import { useProductContext } from "../../../Context/ProductContext";
 
 const Active = () => {
     const [packageQuantity, setPackageQuantity] = useState(500);
@@ -21,7 +21,6 @@ const Active = () => {
     const handleIncrement = () => {
         setPackageQuantity(packageQuantity + 100);
     };
-
 
     return (
         <>
@@ -116,7 +115,7 @@ const Active = () => {
 
                 <div className="flex flex-col gap-2 items-center justify-center">
                     <a
-                        href="#"
+                        href="/checkout"
                         className="bg-[#D52E9C] p-2 w-full rounded-full text-white font-semibold text-center"
                     >
                         Order Now

@@ -20,29 +20,27 @@ const fetchGoogleClientId = async () => {
 
 fetchAppName().then((appName) => {
     fetchGoogleClientId().then((googleClientId) => {
-    createInertiaApp({
-        title: (title) => `${title} - ${appName}`,
-        resolve: (name) =>
-            resolvePageComponent(
-                `./Pages/${name}.jsx`,
-                import.meta.glob("./Pages/**/*.jsx")
-            ),
-        setup({ el, App, props }) {
-            const root = createRoot(el);
+        createInertiaApp({
+            title: (title) => `${title} - ${appName}`,
+            resolve: (name) =>
+                resolvePageComponent(
+                    `./Pages/${name}.jsx`,
+                    import.meta.glob("./Pages/**/*.jsx")
+                ),
+            setup({ el, App, props }) {
+                const root = createRoot(el);
 
-            root.render(
-                <GoogleOAuthProvider 
-                clientId={googleClientId}>
-                    <ProductProvider>
-                    <App {...props} />
-                    </ProductProvider>
-                </GoogleOAuthProvider>
-            );
-        },
-        progress: {
-            color: "#4B5563",
-        },
+                root.render(
+                    <GoogleOAuthProvider clientId={googleClientId}>
+                        <ProductProvider>
+                            <App {...props} />
+                        </ProductProvider>
+                    </GoogleOAuthProvider>
+                );
+            },
+            progress: {
+                color: "#4B5563",
+            },
+        });
     });
 });
-});
-

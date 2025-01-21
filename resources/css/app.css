@@ -95,3 +95,51 @@
         border-radius: 10px;
     }
 }
+
+@layer utilities {
+    @keyframes border-blink {
+        0% {
+            border-color: transparent;
+        }
+
+        50% {
+            border-color: #32d74b;
+            /* Green color */
+        }
+
+        100% {
+            border-color: transparent;
+        }
+    }
+
+    .animate-border-blink {
+        animation: border-blink 2s ease-in-out infinite;
+    }
+}
+
+.divider {
+    display: flex;
+
+    &:before,
+    &:after {
+        content: "";
+        flex: 1;
+    }
+}
+
+.gradient {
+    align-items: stretch;
+    margin: 1em 0;
+    height: 1.8px;
+    line-height: 2em;
+    color: white;
+    background: rgb(84, 84, 84);
+
+    &:before {
+        background: linear-gradient(to right, white, black);
+    }
+
+    &:after {
+        background: linear-gradient(to left, white, black);
+    }
+}
