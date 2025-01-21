@@ -13,6 +13,7 @@ Route::middleware(['auth:api'])->group(function () {
 });
 
 Route::get('/settings', [SettingController::class, 'index']);
+Route::get('/payment-links', [SettingController::class, 'paymentLinks']);
 Route::get('/navbar', [SettingController::class, 'navbar']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{product}', [ProductController::class, 'show']);

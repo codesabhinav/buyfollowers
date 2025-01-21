@@ -21,45 +21,54 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         try {
-        $data = $request->validate(
-            [
-                'service' => ['required', 'integer'],
-                'name' => ['required'],
-                'type' => ['required'],
-                'category' => ['required'],
-                'network' => ['required'],
-                'description' => ['nullable'],
-                'rate' => ['required'],
-                'min' => ['required'],
-                'max' => ['required'],
-                'refill' => ['required'],
-                'canceling_is_available' => ['required'],
-                'logo' => ['nullable', 'image'],
-                'cancel' => ['required'],
-                'service_type' => ['required', 'in:' . ProductEnum::FREE . ',' . ProductEnum::HIGH_QUALITY . ',' . ProductEnum::ACTIVE],
-                "rate_percentage" => [
-                    "required_if:service_type," . ProductEnum::HIGH_QUALITY,
-                    "required_if:service_type," . ProductEnum::ACTIVE
+            $data = $request->validate(
+                [
+                    'service' => ['required', 'integer'],
+                    'name' => ['required'],
+                    'type' => ['required'],
+                    'category' => ['required'],
+                    'network' => ['required'],
+                    'description' => ['nullable'],
+                    'rate' => ['required'],
+                    'min' => ['required'],
+                    'max' => ['required'],
+                    'refill' => ['required'],
+                    'canceling_is_available' => ['required'],
+                    'logo' => ['nullable', 'image'],
+                    'free_max' => ['nullable'],
+                    'cancel' => ['required'],
+                    'service_type' => ['required', 'in:' . ProductEnum::FREE . ',' . ProductEnum::HIGH_QUALITY . ',' . ProductEnum::ACTIVE],
+                    "rate_percentage" => [
+                        "required_if:service_type," . ProductEnum::HIGH_QUALITY,
+                        "required_if:service_type," . ProductEnum::ACTIVE
+                    ]
+                ],
+                [
+                    'rate_percentage.required_if' => 'The Rate Percentage is required when is Service is High quality or Active.'
                 ]
-            ],
-            [
-                'rate_percentage.required_if' => 'The Rate Percentage is required when is Service is High quality or Active.'
-            ]
-        );
+            );
 
-        if (isset($request->logo)) {
-            $data['media_id'] = $this->upload($request->logo)->id;
+            if (isset($request->logo)) {
+                $data['media_id'] = $this->upload($request->logo)->id;
+            }
+
+            if ($request->service_type == ProductEnum::FREE) {
+                if ($request->has('free_max') && $request->free_max !== null) {
+                    $data['max'] = $request->free_max;
+                }
+                $data['rate'] = 0;
+                $data['min'] = 0;
+            }
+
+            Product::updateOrCreate(
+                ['service' => $data['service']],
+                $data
+            );
+            return redirect()->back()->with('success', 'Service Insert Successfully!');
+        } catch (Exception $e) {
+            Log::error("Store Products"  . $e->getMessage());
+            return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-
-        Product::updateOrCreate(
-            ['service' => $data['service']],
-            $data
-        );
-        return redirect()->back()->with('success', 'Service Insert Successfully!');
-    } catch (Exception $e) {
-        Log::error("Store Products"  . $e->getMessage());
-        return redirect()->back()->with(['error' => $e->getMessage()]);
-    }
     }
 
     public function myProducts(Request $request)

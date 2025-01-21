@@ -6,6 +6,7 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { createRoot } from "react-dom/client";
 import { getSettingByKey } from "./Helper/api";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { ProductProvider } from "./Context/ProductContext.jsx";
 
 const fetchAppName = async () => {
     const appName = await getSettingByKey("title");
@@ -32,7 +33,9 @@ fetchAppName().then((appName) => {
             root.render(
                 <GoogleOAuthProvider 
                 clientId={googleClientId}>
+                    <ProductProvider>
                     <App {...props} />
+                    </ProductProvider>
                 </GoogleOAuthProvider>
             );
         },

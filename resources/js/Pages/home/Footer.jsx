@@ -6,7 +6,7 @@ const Footer = () => {
             <div
                 className="absolute inset-0 opacity-35 z-10 object-contain"
                 style={{
-                    backgroundImage: "url('assets/images/footer_bgimage.png')",
+                    backgroundImage: "url('/assets/images/footer_bgimage.png')",
                     backgroundSize: "auto",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
@@ -19,7 +19,7 @@ const Footer = () => {
                     <div className="flex flex-col items-start gap-8 w-full lg:w-[25%]">
                         <div className="">
                             <img
-                                src="assets/images/footericon.svg"
+                                src="/assets/images/footericon.svg"
                                 alt="footericon"
                             />
                         </div>
@@ -41,7 +41,7 @@ const Footer = () => {
                                 </div>
                                 <div className="hidden md:block absolute top-5 -right-6 w-12 h-12 lg:w-14 lg:h-14">
                                     <img
-                                        src="assets/images/footer_mail.png"
+                                        src="/assets/images/footer_mail.png"
                                         alt="footer_mail"
                                     />
                                 </div>
@@ -82,7 +82,7 @@ const Footer = () => {
                                 <div className="flex flex-col items-start gap-4">
                                     <span className="flex items-center gap-2">
                                         <img
-                                            src="assets/images/footer_location.svg"
+                                            src="/assets/images/footer_location.svg"
                                             alt="footer_contact"
                                         />
                                         <span>
@@ -91,7 +91,7 @@ const Footer = () => {
                                     </span>
                                     <span className="flex items-center gap-2">
                                         <img
-                                            src="assets/images/footer_contact.svg"
+                                            src="/assets/images/footer_contact.svg"
                                             alt="footer_contact"
                                         />
                                         <span>+1 999-688-4585</span>

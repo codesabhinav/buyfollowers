@@ -127,3 +127,22 @@ export const fetchBlogs = async () => {
         throw error;
     }
 };
+
+export const addCart = async (productId) => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/products/${productId}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const paymentLinks = async (title) => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/payment-links?title=${title}`);
+        return response.data.data[0];
+    } catch (error) {
+        throw error;
+    }
+};
+

@@ -3,19 +3,19 @@ import CustomCardTabs from "./CustomCardTabs";
 
 const buyFollowersList = [
     {
-        image: "assets/addtocart/cart-peppols.png",
+        image: "/assets/addtocart/cart-peppols.png",
         titel: "cart-peppols",
         description:
             "✅ 2000+ Influencers ordered our top-rated Instagram likes within 24 hours",
     },
     {
-        image: "assets/addtocart/cart-star.png",
+        image: "/assets/addtocart/cart-star.png",
         titel: "cart-peppols",
         description:
             "✅ 2000+ Influencers ordered our top-rated Instagram likes within 24 hours",
     },
     {
-        image: "assets/addtocart/cart-delivery.png",
+        image: "/assets/addtocart/cart-delivery.png",
         titel: "cart-peppols",
         description:
             "✅ 2000+ Influencers ordered our top-rated Instagram likes within 24 hours",

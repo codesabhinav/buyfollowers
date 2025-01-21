@@ -22,13 +22,13 @@ const AddtoCartHero = () => {
                     /> */}
                     <div className=" w-[283px] lg:w-[434px]">
                         <img
-                            src="assets/addtocart/cart_girl.png"
+                            src="/assets/addtocart/cart_girl.png"
                             alt="cart_girl"
                             className="w-full h-auto"
                         />
                     </div>
                     <img
-                        src="assets/addtocart/gitl_backgroung.png"
+                        src="/assets/addtocart/gitl_backgroung.png"
                         alt="girl_wifi"
                         className=" absolute right-0 lg:-right-20 top-[162px]"
                     />

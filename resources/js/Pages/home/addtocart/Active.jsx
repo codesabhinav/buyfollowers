@@ -1,10 +1,17 @@
 import { Slider } from "@/Components/ui/slider";
 import { cn } from "@/lib/utils";
 import { Minus, Plus } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useProductContext } from '../../../Context/ProductContext';
 
 const Active = () => {
     const [packageQuantity, setPackageQuantity] = useState(500);
+    const [productData, setProductData] = useState();
+    const { dynamicFields } = useProductContext();
+
+    useEffect(() => {
+        setProductData(dynamicFields.data);
+    }, [dynamicFields]);
 
     const handleDecrement = () => {
         if (packageQuantity > 0) {
@@ -14,6 +21,7 @@ const Active = () => {
     const handleIncrement = () => {
         setPackageQuantity(packageQuantity + 100);
     };
+
 
     return (
         <>
@@ -42,7 +50,7 @@ const Active = () => {
                     </div>
                     <div className="flex flex-col justify-center items-center gap-2">
                         <span className="text-black font-semibold">
-                            $33.5{" "}
+                            ${Number(productData?.rate).toFixed(2)}{" "}
                             <span className="line-through text-red-500 font-normal">
                                 $46.5
                             </span>

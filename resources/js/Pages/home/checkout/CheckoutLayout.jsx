@@ -14,7 +14,7 @@ const CheckoutLayout = () => {
                         className="absolute inset-0 opacity-12 z-20 pointer-events-none"
                         style={{
                             backgroundImage:
-                                "url('assets/addtocart/cat_background.png')",
+                                "url('/assets/addtocart/cat_background.png')",
                             backgroundSize: "auto",
                             backgroundPosition: "center",
                             backgroundRepeat: "repeat",

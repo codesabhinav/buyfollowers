@@ -21,7 +21,7 @@ import { ScrollArea } from "@/Components/ui/scroll-area";
 import { getSettingByKey, navbar } from "../../Helper/api";
 
 const SideNavbar = () => {
-    const [logo, setLogo] = useState("assets/images/buy_followers_logo.svg");
+    const [logo, setLogo] = useState("/assets/images/buy_followers_logo.svg");
     const [navbarData, setNavbarData] = useState([]);
     const fetchData = async () => {
         try {

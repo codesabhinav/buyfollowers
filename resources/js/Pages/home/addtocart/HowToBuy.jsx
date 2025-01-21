@@ -1,24 +1,24 @@
 const howToBuyList = [
     {
-        icon: "assets/addtocart/howtobuy_1.png",
+        icon: "/assets/addtocart/howtobuy_1.png",
         title: "Go for the Right One!",
         description:
             "Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant:",
     },
     {
-        icon: "assets/addtocart/howtobuy_2.png",
+        icon: "/assets/addtocart/howtobuy_2.png",
         title: "Information Time",
         description:
             "Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant:",
     },
     {
-        icon: "assets/addtocart/howtobuy_3.png",
+        icon: "/assets/addtocart/howtobuy_3.png",
         title: "Expeditious Delivery",
         description:
             "Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant:",
     },
     {
-        icon: "assets/addtocart/howtobuy_4.png",
+        icon: "/assets/addtocart/howtobuy_4.png",
         title: "Perks Are Here!",
         description:
             "Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant:",

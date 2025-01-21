@@ -8,6 +8,7 @@ use App\Http\Resources\BlogResource;
 use App\Http\Resources\ServiceResource;
 use App\Http\Resources\SettingResource;
 use App\Models\Blog;
+use App\Models\PaymentLink;
 use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -25,6 +26,19 @@ class SettingController extends Controller
             return $this->errorResponse(404, 'No data found');
         }
         return $this->sendResponse(SettingResource::collection($settings), 200, 'Settings get successfully');
+    }
+
+    public function paymentLinks(Request $request)
+    {
+        $paymentLinks = PaymentLink::query();
+        if ($request->title) {
+            $paymentLinks->where('title', 'like', '%' . $request->title . '%');
+        }
+        $paymentLinks = $paymentLinks->get();
+        if ($paymentLinks->isEmpty()) {
+            return $this->errorResponse(404, 'No data found');
+        }
+        return $this->sendResponse($paymentLinks, 200, 'Payment Links get successfully');
     }
 
     public function navbar()

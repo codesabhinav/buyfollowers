@@ -97,6 +97,13 @@
                                 placeholder="Enter service description"></textarea>
                         </div>
 
+                        <div class="mb-3 max-none" id="freeMaxLimitContainer">
+                            <label for="freeMaxLimitInput" class="form-label" style="color: black">Max Limit</label>
+                            <input type="text" class="form-control" id="freeMaxLimitInput" name="free_max"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                placeholder="Enter Max Limit" data-parsley-error-message="Max is Required">
+                        </div>
+
                         <div class="mb-3 d-none" id="rateInputContainer">
                             <label for="rateInput" class="form-label" style="color: black">Rate</label>
                             <input type="text" class="form-control" id="rateInput" name="rate"
@@ -156,6 +163,8 @@
             $('#serviceType').val('').trigger('change');
             $('#rateInput').val(rate);
             $('#ratePercentageInput').val('');
+            $('#freeMaxLimitInput').val('');
+            $('#freeMaxLimitContainer').addClass('d-none');
             $('#rateInputContainer').addClass('d-none');
             $('#ratePercentageContainer').addClass('d-none');
             $('#nameInput').val(name);
@@ -166,15 +175,26 @@
             const selectedValue = $(this).val();
             const highQuality = "{{ App\Enums\ProductEnum::HIGH_QUALITY }}";
             const active = "{{ App\Enums\ProductEnum::ACTIVE }}";
+            const free = "{{ App\Enums\ProductEnum::FREE }}";
 
-            if (selectedValue === highQuality || selectedValue === active) {
-                $('#rateInputContainer').removeClass('d-none');
-                $('#ratePercentageContainer').removeClass('d-none');
-                $('#ratePercentageInput').attr('required', true);
-            } else {
+            if (selectedValue === free) {
+                $('#freeMaxLimitContainer').removeClass('max-none').removeClass('d-none');
                 $('#rateInputContainer').addClass('d-none');
                 $('#ratePercentageContainer').addClass('d-none');
                 $('#ratePercentageInput').removeAttr('required');
+                $('#freeMaxLimitInput').attr('required', true);
+            } else if (selectedValue === highQuality || selectedValue === active) {
+                $('#rateInputContainer').removeClass('d-none');
+                $('#ratePercentageContainer').removeClass('d-none');
+                $('#freeMaxLimitContainer').addClass('d-none');
+                $('#ratePercentageInput').attr('required', true);
+                $('#freeMaxLimitInput').removeAttr('required');
+            } else {
+                $('#rateInputContainer').addClass('d-none');
+                $('#ratePercentageContainer').addClass('d-none');
+                $('#freeMaxLimitContainer').addClass('d-none');
+                $('#ratePercentageInput').removeAttr('required');
+                $('#freeMaxLimitInput').removeAttr('required');
             }
         });
 

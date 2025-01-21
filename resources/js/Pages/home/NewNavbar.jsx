@@ -21,7 +21,7 @@ import {
 import { Button } from "@/Components/ui/button";
 
 const NewNavbar = ({ navbarstyle }) => {
-    const [logo, setLogo] = useState("assets/images/buy_followers_logo.svg");
+    const [logo, setLogo] = useState("/assets/images/buy_followers_logo.svg");
     const [navbarData, setNavbarData] = useState([]);
     const [productNames, setProductNames] = useState([]);
     const [userDetails, setUserDetails] = useState(null);
