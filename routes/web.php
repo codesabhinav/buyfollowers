@@ -43,6 +43,9 @@ Route::get('/checkout', function () {
 Route::get('/about-us', function () {
     return Inertia::render('home/about/AboutusLayout');
 });
+Route::get('/order-history', function () {
+    return Inertia::render('home/orderHistory/OrderHistoryLayout');
+});
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

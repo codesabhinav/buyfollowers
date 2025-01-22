@@ -125,9 +125,25 @@ const NewNavbar = ({ navbarstyle }) => {
                             {/* <DropdownMenuLabel>Appearance</DropdownMenuLabel> */}
                             <DropdownMenuSeparator />
                             <DropdownMenuCheckboxItem>
-                                <a href="/forgot" className="font-semibold cursor-pointer">Forgot Password</a>
+                                <a
+                                    href="/order-history"
+                                    className="font-semibold cursor-pointer"
+                                >
+                                    Order History
+                                </a>
                             </DropdownMenuCheckboxItem>
-                            <DropdownMenuCheckboxItem onClick={handleLogout} className="font-semibold cursor-pointer">
+                            <DropdownMenuCheckboxItem>
+                                <a
+                                    href="/forgot"
+                                    className="font-semibold cursor-pointer"
+                                >
+                                    Forgot Password
+                                </a>
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuCheckboxItem
+                                onClick={handleLogout}
+                                className="font-semibold cursor-pointer"
+                            >
                                 Logout
                             </DropdownMenuCheckboxItem>
                         </DropdownMenuContent>
