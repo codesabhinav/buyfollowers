@@ -1,3 +1,7 @@
+
+import { useProductContext } from "../../../Context/ProductContext";
+import { useState, useEffect } from "react";
+
 const howToBuyList = [
     {
         icon: "/assets/addtocart/howtobuy_1.png",
@@ -26,16 +30,24 @@ const howToBuyList = [
 ];
 
 const HowToBuy = () => {
+
+    const [productData, setProductData] = useState();
+    const { dynamicFields } = useProductContext();
+
+    useEffect(() => {
+        setProductData(dynamicFields.data);
+    }, [dynamicFields]);
+
     return (
         <>
             <div className="bg-[#FFFAFE] w-full flex items-center justify-center py-12 px-2">
                 <div className="flex flex-col gap-12 items-center w-full md:w-[85%]">
                     <div className="flex flex-col items-center gap-2 w-full">
                         <span className="text-[#D52E9C] font-semibold text-[28px] sm:text-[33px] lg:text-[38px] xl:text-[42px] text-center">
-                            How To Buy Instagram Likes From Buy Followers?
+                            How To Buy {productData?.name.split("|")[0]} From Buy Followers?
                         </span>
                         <span className="text-[14px] text-[#5F5F5F] font-medium text-center">
-                            Buy Instagram likes from Buy Followers to grow your
+                            Buy {productData?.name.split("|")[0]} from Buy Followers to grow your
                             engagement. Our services are authentic and safe.
                             Take a look at the <br /> following steps to walk
                             through the process.

@@ -1,28 +1,17 @@
 import { motion, useTime, useTransform } from "framer-motion";
 import CustomCardTabs from "./CustomCardTabs";
-
-const buyFollowersList = [
-    {
-        image: "/assets/addtocart/cart-peppols.png",
-        titel: "cart-peppols",
-        description:
-            "✅ 2000+ Influencers ordered our top-rated Instagram likes within 24 hours",
-    },
-    {
-        image: "/assets/addtocart/cart-star.png",
-        titel: "cart-peppols",
-        description:
-            "✅ 2000+ Influencers ordered our top-rated Instagram likes within 24 hours",
-    },
-    {
-        image: "/assets/addtocart/cart-delivery.png",
-        titel: "cart-peppols",
-        description:
-            "✅ 2000+ Influencers ordered our top-rated Instagram likes within 24 hours",
-    },
-];
+import { useProductContext } from "../../../Context/ProductContext";
+import { useState, useEffect } from "react";
 
 const BuyFollowers = () => {
+
+    const [productData, setProductData] = useState();
+    const { dynamicFields } = useProductContext();
+
+    useEffect(() => {
+        setProductData(dynamicFields.data);
+    }, [dynamicFields]);
+
     const time = useTime();
 
     const rotate = useTransform(time, [0, 3000], [0, 360], {
@@ -31,6 +20,29 @@ const BuyFollowers = () => {
     const rotatingBg = useTransform(rotate, (r) => {
         return `conic-gradient(from ${r}deg, #ff4545, #00ff99, #006aff, #ff0095, #ff4545)`;
     });
+    
+const buyFollowersList = [
+    {
+        image: "/assets/addtocart/cart-peppols.png",
+        title: "cart-peppols",
+        description:
+            `✅ 2000+ Influencers ordered our top-rated ${productData?.name.split("|")[0]} within 24 hours`,
+    },
+    {
+        image: "/assets/addtocart/cart-star.png",
+        title: "cart-peppols",
+        description:
+            `✅ 2000+ Influencers ordered our top-rated ${productData?.name.split("|")[0]} within 24 hours`,
+    },
+    {
+        image: "/assets/addtocart/cart-delivery.png",
+        title: "cart-peppols",
+        description:
+            `✅ 2000+ Influencers ordered our top-rated ${productData?.name.split("|")[0]} within 24 hours`,
+    },
+];
+
+
 
     return (
         <>
@@ -39,11 +51,10 @@ const BuyFollowers = () => {
                     <div className="flex flex-col items-center gap-8 w-full">
                         <div className=" flex flex-col gap-2">
                             <span className="text-[#151515] font-semibold text-[28px] sm:text-[33px] lg:text-[38px] xl:text-[42px]">
-                                Buy Followers - Check out Our Top-notch
-                                Instagram Likes Services!
+                                Buy Followers - Check out Our Top-notch {productData?.name.split("|")[0]}  Services!
                             </span>
                             <span className="text-[14px] text-[#5F5F5F] font-medium text-start">
-                                Buy Instagram Likes To Gain Instant Engagement.
+                                Buy {productData?.name.split("|")[0]} Services! To Gain Instant Engagement.
                                 Check Our Top-Quality Packages!
                             </span>
                         </div>

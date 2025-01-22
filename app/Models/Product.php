@@ -22,6 +22,8 @@ class Product extends Model
         'cancel',
         'service_type',
         'media_id',
+        'high_quality_rate',
+        'active_rate'
     ];
 
     protected $casts = [

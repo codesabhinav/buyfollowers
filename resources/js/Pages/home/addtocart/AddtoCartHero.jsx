@@ -1,10 +1,20 @@
+import { useProductContext } from "../../../Context/ProductContext";
+import { useState, useEffect } from "react";
 const AddtoCartHero = () => {
+
+    const [productData, setProductData] = useState();
+    const { dynamicFields } = useProductContext();
+
+    useEffect(() => {
+        setProductData(dynamicFields.data);
+    }, [dynamicFields]);
+
     return (
         <>
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-36">
                 <div className="flex flex-col gap-4 w-full lg:w-[45%]">
                     <span className="text-[28px] sm:text-[33px] lg:text-[38px] xl:text-[42px] text-[#D52E9C] font-semibold">
-                        Buy Followers – Your #1 Authentic Instagram Likes
+                        Buy Followers – Your #1 Authentic {productData?.name.split("|")[0]}
                         Provider
                     </span>
                     <span className="text-[#474747] text-[14px] font-medium">

@@ -13,18 +13,42 @@ const Active = () => {
         setProductData(dynamicFields.data);
     }, [dynamicFields]);
 
+    useEffect(() => {
+        if (productData) {
+            setPackageQuantity(productData.min);
+        }
+    }, [productData]);
+
     const handleDecrement = () => {
-        if (packageQuantity > 0) {
-            setPackageQuantity(packageQuantity - 100);
+        if (packageQuantity > productData?.min) {
+            const newQuantity = packageQuantity - 1;
+            if (newQuantity < productData?.min) {
+                alert(`Quantity cannot be less than the minimum value of ${productData?.min}`);
+            } else {
+                setPackageQuantity(newQuantity);
+            }
         }
     };
+
     const handleIncrement = () => {
-        setPackageQuantity(packageQuantity + 100);
+        const newQuantity = packageQuantity + 1;
+        if (newQuantity > productData?.max) {
+            alert(`Quantity cannot exceed the maximum value of ${productData?.max}`);
+        } else {
+            setPackageQuantity(newQuantity);
+        }
     };
 
+    const boxValues = [];
+    const maxValue = productData?.max;
+    const boxValue = maxValue / 5;
+
+    for (let i = 1; i <= 5; i++) {
+        boxValues.push(boxValue * i);
+    }
     return (
         <>
-            <div className="p-6 flex flex-col gap-12 w-full">
+            <div className="p-6 flex flex-col gap-8 w-full">
                 <div className="flex justify-between items-center w-full">
                     <div className="flex flex-col justify-center items-center gap-2">
                         <div className="flex items-center gap-2">
@@ -49,7 +73,7 @@ const Active = () => {
                     </div>
                     <div className="flex flex-col justify-center items-center gap-2">
                         <span className="text-black font-semibold">
-                            ${Number(productData?.rate).toFixed(2)}{" "}
+                            ${(productData?.active_rate)}{" "}
                             <span className="line-through text-red-500 font-normal">
                                 $46.5
                             </span>
@@ -63,10 +87,13 @@ const Active = () => {
                     </div>
                 </div>
                 <div className="w-full">
-                    <Slider
+                <Slider
                         value={[packageQuantity]}
-                        onValueChange={(value) => setPackageQuantity(value)}
-                        max={10000}
+                        onValueChange={(value) => {
+                            const newValue = Math.max(productData?.min, Math.min(value[0], productData?.max));
+                            setPackageQuantity(newValue);
+                        }}
+                        max={productData?.max}
                         step={1}
                         className={cn("w-full")}
                     />
@@ -80,36 +107,15 @@ const Active = () => {
                     </div>
 
                     <div className="relative flex items-center gap-2 pt-2 overflow-x-scroll scroll-smooth scrollbar-custom">
-                        <span
-                            className="text-[#D52E9C] text-center font-semibold border border-[#D52E9C] hover:bg-[#D52E9C] hover:text-white rounded-md p-1 w-full cursor-pointer"
-                            onClick={() => setPackageQuantity(500)}
-                        >
-                            500
-                        </span>
-                        <span
-                            className="text-[#D52E9C] text-center font-semibold border border-[#D52E9C] hover:bg-[#D52E9C] hover:text-white rounded-md p-1 w-full cursor-pointer"
-                            onClick={() => setPackageQuantity(1000)}
-                        >
-                            1000
-                        </span>
-                        <span
-                            className="text-[#D52E9C] text-center font-semibold border border-[#D52E9C] hover:bg-[#D52E9C] hover:text-white rounded-md p-1 w-full cursor-pointer"
-                            onClick={() => setPackageQuantity(2500)}
-                        >
-                            2500
-                        </span>
-                        <span
-                            className="text-[#D52E9C] text-center font-semibold border border-[#D52E9C] hover:bg-[#D52E9C] hover:text-white rounded-md p-1 w-full cursor-pointer"
-                            onClick={() => setPackageQuantity(5000)}
-                        >
-                            5000
-                        </span>
-                        <span
-                            className="text-[#D52E9C] text-center font-semibold border border-[#D52E9C] hover:bg-[#D52E9C] hover:text-white rounded-md p-1 w-full cursor-pointer"
-                            onClick={() => setPackageQuantity(10000)}
-                        >
-                            10000
-                        </span>
+                        {boxValues.map((value, index) => (
+                            <span
+                                key={index}
+                                className="text-[#D52E9C] text-center font-semibold border border-[#D52E9C] hover:bg-[#D52E9C] hover:text-white rounded-md p-1 w-full cursor-pointer"
+                                onClick={() => setPackageQuantity(value)}
+                            >
+                                {value}
+                            </span>
+                        ))}
                     </div>
                 </div>
 
@@ -120,10 +126,6 @@ const Active = () => {
                     >
                         Order Now
                     </a>
-
-                    <span className="text-[#82D616] text-[16px] font-semibold">
-                        You Save $0.1
-                    </span>
                 </div>
             </div>
         </>

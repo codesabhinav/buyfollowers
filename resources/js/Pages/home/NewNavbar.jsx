@@ -172,7 +172,7 @@ const FlyoutLink = ({ item }) => {
             className="relative w-fit h-fit"
         >
             <a href={item.href} className="relative text-[#474747]">
-                <span className="flex items-center gap-0.5">
+                <span className="flex items-center gap-0.5 font-semibold">
                     {item.title}
                     {item.sub_navbarLinks && (
                         <>{open === true ? <ChevronUp /> : <ChevronDown />}</>

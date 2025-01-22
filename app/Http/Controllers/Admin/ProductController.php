@@ -36,6 +36,8 @@ class ProductController extends Controller
                     'canceling_is_available' => ['required'],
                     'logo' => ['nullable', 'image'],
                     'free_max' => ['nullable'],
+                    'high_quality_rate' => ['nullable'],
+                    'active_rate' => ['nullable'],
                     'cancel' => ['required'],
                     'service_type' => ['required', 'in:' . ProductEnum::FREE . ',' . ProductEnum::HIGH_QUALITY . ',' . ProductEnum::ACTIVE],
                     "rate_percentage" => [
@@ -58,6 +60,19 @@ class ProductController extends Controller
                 }
                 $data['rate'] = 0;
                 $data['min'] = 0;
+                $data['high_quality_rate'] = 0;
+                $data['active_rate'] = 0;
+            } elseif ($request->service_type == ProductEnum::HIGH_QUALITY || $request->service_type == ProductEnum::ACTIVE) {
+                $ratePercentage = $request->rate_percentage / 100;
+                if ($request->service_type == ProductEnum::HIGH_QUALITY) {
+                    $data['high_quality_rate'] = (int)round($data['rate'] * (1 + $ratePercentage));
+                    $data['active_rate'] = (int)$data['rate'];
+                }
+
+                if ($request->service_type == ProductEnum::ACTIVE) {
+                    $data['active_rate'] = (int)round($data['rate'] * (1 + $ratePercentage));
+                    $data['high_quality_rate'] = (int)$data['rate'];
+                }
             }
 
             Product::updateOrCreate(

@@ -43,17 +43,6 @@ const Checkout = () => {
         <div className="flex flex-col justify-center items-center gap-12 w-full">
             <div className="p-8 shadow-xl bg-white border border-gray-400/50 rounded-xl w-full sm:w-3/4 md:w-2/3 lg:w-1/2 mx-auto">
                 <div className="flex flex-col gap-8 py-6">
-                    <div className="flex flex-col items-center justify-center gap-3">
-                        <span className="bg-green-300/50 px-3 py-1 rounded-md text-lg text-gray-500 font-semibold flex items-center gap-2">
-                            <span className="p-1 bg-green-600 rounded-full border-4 border-transparent animate-border-blink"></span>
-                            <span>508</span>
-                            <span className="text-sm font-normal">
-                                Live users checking out
-                            </span>
-                        </span>
-                    </div>
-
-                    <hr className="w-full divider gradient" />
 
                     <div className="flex flex-col items-center w-full">
                         <div className="flex flex-col items-center justify-center w-full gap-1">
@@ -112,13 +101,6 @@ const Checkout = () => {
                                 <CeckoutSlider />
                             )}
 
-                            <div className="flex flex-col gap-1 mt-4">
-                                <span>Google captcha here</span>
-                                <span className="text-sm">
-                                    Please solve the captcha to continue.
-                                </span>
-                            </div>
-
                             <div className="flex flex-col items-center w-full gap-2 mt-8">
                                 <a
                                     href="#"
@@ -126,12 +108,6 @@ const Checkout = () => {
                                 >
                                     SEARCH ACCOUNT
                                 </a>
-
-                                <span className="text-sm text-center mt-2">
-                                    Privacy secured! No password or personal
-                                    info is needed, just share your Instagram
-                                    username.
-                                </span>
                             </div>
                         </div>
                     </div>
