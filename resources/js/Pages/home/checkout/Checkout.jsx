@@ -5,9 +5,16 @@ import { Label } from "@/Components/ui/label.jsx";
 import { Input } from "@/Components/ui/input.jsx";
 import { AtSign, FilePen, Heart } from "lucide-react";
 import { Button } from "@/Components/ui/button.jsx";
-import CeckoutSlider from "./CeckoutSlider.jsx";
+import CheckoutSlider from "./CheckoutSlider.jsx";
 
 const Checkout = () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const quantity = queryParams.get("quantity");
+    const rate = queryParams.get("rate");
+    const discount = queryParams.get("discount");
+    const name = queryParams.get("name");
+    const service = queryParams.get("service");
+
     const [paymentStatus, setPaymentStatus] = useState(null);
     const [clientId, setClientId] = useState(null);
     const [amount, setAmount] = useState("1");
@@ -47,12 +54,12 @@ const Checkout = () => {
                         <div className="flex flex-col items-center w-full">
                             <div className="flex flex-col items-center justify-center w-full gap-1">
                                 <label className="block text-4xl text-gray-600 font-semibold pb-2">
-                                    Instagram Likes
+                                    {name}
                                 </label>
                                 <div className="relative w-full">
                                     <Input
                                         type="text"
-                                        placeholder="username on instagram"
+                                        placeholder="Enter link"
                                         className="mt-2 pl-8 border rounded-md w-full"
                                     />
                                     <span className="absolute top-0 left-2 translate-y-1/2 text-pink-500 font-semibold text-xl">
@@ -60,53 +67,38 @@ const Checkout = () => {
                                     </span>
                                 </div>
                                 <span className="text-xs text-gray-500 text-start w-full">
-                                    Instagram Username (No @ Symbol)
+                                    {name} Username (No @ Symbol)
                                 </span>
                             </div>
 
-                            <div className="flex flex-col justify-between gap-2 mt-12 w-full">
-                                {showSlide === false ? (
-                                    <div className="flex items-center justify-between w-full">
-                                        <div className="flex flex-col items-start gap-2">
-                                            <span className="flex items-center gap-2">
-                                                <Heart className="fill-red-600 stroke-red-600 size-4" />
-                                                <span>200</span>
-                                                <FilePen
-                                                    className="stroke-red-600 size-4"
-                                                    onClick={() =>
-                                                        setShowSlide(true)
-                                                    }
-                                                />
-                                            </span>
+                            <div className="flex flex-col justify-between gap-2 mt-6 w-full">
+                                <div className="flex items-center justify-between w-full">
+                                    <div className="flex flex-col items-start gap-2">
+                                        <span className="flex items-center gap-2">
+                                            <Heart className="fill-red-600 stroke-red-600 size-4" />
+                                            <span>{quantity}</span>
+                                        </span>
 
-                                            <span className="px-2 py-0.5 rounded-md bg-pink-400 text-sm text-white">
-                                                INSTAGRAM LIKES
-                                            </span>
-                                        </div>
-
-                                        <div className="flex flex-col gap-2">
-                                            <span className="text-black font-semibold flex items-center gap-1">
-                                                $5.321
-                                                <span className="line-through text-red-500 font-normal">
-                                                    $46.5
-                                                </span>
-                                            </span>
-
-                                            <span className="px-1 py-0.5 rounded-full bg-green-500 text-sm text-white text-center">
-                                                Save 27%
-                                            </span>
-                                        </div>
+                                        <span className="px-2 py-0.5 rounded-md bg-pink-400 text-sm text-white">
+                                            {name}
+                                        </span>
                                     </div>
-                                ) : (
-                                    <CeckoutSlider />
-                                )}
 
+                                    <div className="flex flex-col gap-2">
+                                        <span className="text-black font-semibold flex items-center gap-1">
+                                            ${rate}
+                                            <span className="line-through text-red-500 font-normal">
+                                                ${discount}
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
                                 <div className="flex flex-col items-center w-full gap-2 mt-8">
                                     <a
                                         href="#"
                                         className="bg-[#D52E9C] p-2 w-full rounded-xl text-white font-semibold text-center transition-all duration-500 hover:scale-105 ease-in-out"
                                     >
-                                        SEARCH ACCOUNT
+                                        Pay now
                                     </a>
                                 </div>
                             </div>
@@ -115,9 +107,9 @@ const Checkout = () => {
                 </div>
                 <div className="hidden lg:block w-full">
                     <img
-                        src="assets/images/constact-buyfollowers.jpg"
+                        src="assets/images/checkOut1.jpg"
                         alt="Side Image"
-                        className="w-full h-[634px] object-contain mix-blend-darken"
+                        className="w-full h-[600px] object-contain mix-blend-darken"
                     />
                 </div>
             </div>

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 
-const CeckoutSlider = () => {
+const CheckoutSlider = () => {
     const [packageQuantity, setPackageQuantity] = useState(500);
 
     const handleDecrement = () => {
@@ -69,4 +69,4 @@ const CeckoutSlider = () => {
     );
 };
 
-export default CeckoutSlider;
+export default CheckoutSlider;

@@ -15,7 +15,7 @@ const HighQuality = () => {
 
     useEffect(() => {
         if (productData) {
-            setPackageQuantity(productData.min);
+            setPackageQuantity(1000);
         }
     }, [productData]);
 
@@ -46,6 +46,30 @@ const HighQuality = () => {
     for (let i = 1; i <= 5; i++) {
         boxValues.push(boxValue * i);
     }
+
+    const handleOrderNow = () => {
+        const token = localStorage.getItem("token");
+        const checkoutData = {
+            quantity: packageQuantity,
+            rate: calculateRate(),
+            name: productData?.name.split("|")[0],
+            service: productData?.service,
+            discount : calculateRate() * 2,
+        };
+
+        if (token) {
+            const queryParams = new URLSearchParams(checkoutData).toString();
+            window.location.href = `/checkout?${queryParams}`;
+        } else {
+            window.location.href = "/authentication";
+        }
+    };
+
+    const calculateRate = () => {
+        if (!productData || !packageQuantity) return 0;
+        return ((productData.high_quality_rate / 1000) * packageQuantity).toFixed(2);
+    };
+
     return (
         <>
             <div className="p-6 flex flex-col gap-8 w-full">
@@ -73,9 +97,9 @@ const HighQuality = () => {
                     </div>
                     <div className="flex flex-col justify-center items-center gap-2">
                         <span className="text-black font-semibold">
-                            ${(productData?.high_quality_rate)}{" "}
+                            ${calculateRate()}{" "}
                             <span className="line-through text-red-500 font-normal">
-                                $46.5
+                            ${calculateRate() * 2}
                             </span>
                         </span>
                         <a
@@ -86,7 +110,7 @@ const HighQuality = () => {
                         </a>
                     </div>
                 </div>
-                <div className="w-full">
+                <div className="w-full cursor-pointer">
                     <Slider
                         value={[packageQuantity]}
                         onValueChange={(value) => {
@@ -121,8 +145,8 @@ const HighQuality = () => {
 
                 <div className="flex flex-col gap-1 items-center justify-center">
                     <a
-                        href="/checkout"
-                        className="bg-[#D52E9C] p-2 w-full rounded-full text-white font-semibold text-center"
+                        onClick={handleOrderNow}
+                        className="bg-[#D52E9C] p-2 w-full rounded-full text-white font-semibold text-center cursor-pointer"
                     >
                         Order Now
                     </a>

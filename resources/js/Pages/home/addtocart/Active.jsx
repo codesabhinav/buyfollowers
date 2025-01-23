@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useProductContext } from "../../../Context/ProductContext";
 
 const Active = () => {
-    const [packageQuantity, setPackageQuantity] = useState(500);
+    const [packageQuantity, setPackageQuantity] = useState(null);
     const [productData, setProductData] = useState();
     const { dynamicFields } = useProductContext();
 
@@ -15,7 +15,7 @@ const Active = () => {
 
     useEffect(() => {
         if (productData) {
-            setPackageQuantity(productData.min);
+            setPackageQuantity(1000);
         }
     }, [productData]);
 
@@ -46,6 +46,27 @@ const Active = () => {
     for (let i = 1; i <= 5; i++) {
         boxValues.push(boxValue * i);
     }
+    const handleOrderNow = () => {
+        const token = localStorage.getItem("token");
+        const checkoutData = {
+            quantity: packageQuantity,
+            rate: calculateRate(),
+            name: productData?.name.split("|")[0],
+            service: productData?.service,
+            discount : calculateRate() * 2,
+        };
+
+        if (token) {
+            const queryParams = new URLSearchParams(checkoutData).toString();
+            window.location.href = `/checkout?${queryParams}`;
+        } else {
+            window.location.href = "/authentication";
+        }
+    };
+    const calculateRate = () => {
+        if (!productData || !packageQuantity) return 0;
+        return ((productData.active_rate / 1000) * packageQuantity).toFixed(2);
+    };
     return (
         <>
             <div className="p-6 flex flex-col gap-8 w-full">
@@ -73,9 +94,9 @@ const Active = () => {
                     </div>
                     <div className="flex flex-col justify-center items-center gap-2">
                         <span className="text-black font-semibold">
-                            ${(productData?.active_rate)}{" "}
+                            ${calculateRate()}{" "}
                             <span className="line-through text-red-500 font-normal">
-                                $46.5
+                                ${calculateRate() * 2}
                             </span>
                         </span>
                         <a
@@ -86,8 +107,8 @@ const Active = () => {
                         </a>
                     </div>
                 </div>
-                <div className="w-full">
-                <Slider
+                <div className="w-full cursor-pointer">
+                    <Slider
                         value={[packageQuantity]}
                         onValueChange={(value) => {
                             const newValue = Math.max(productData?.min, Math.min(value[0], productData?.max));
@@ -121,8 +142,8 @@ const Active = () => {
 
                 <div className="flex flex-col gap-2 items-center justify-center">
                     <a
-                        href="/checkout"
-                        className="bg-[#D52E9C] p-2 w-full rounded-full text-white font-semibold text-center"
+                        onClick={handleOrderNow}
+                        className="bg-[#D52E9C] p-2 w-full rounded-full text-white font-semibold text-center cursor-pointer"
                     >
                         Order Now
                     </a>
