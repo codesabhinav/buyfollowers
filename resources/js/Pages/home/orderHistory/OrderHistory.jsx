@@ -140,7 +140,6 @@ const OrderHistory = () => {
                                                     <a href="#">
                                                         Buy again Products
                                                     </a>
-
                                                 </div>
                                             </div>
                                         </div>
