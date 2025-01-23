@@ -11,7 +11,7 @@ const OrderHistoryLayout = () => {
             <div className="flex flex-col items-center min-h-screen relative bg-repeat bg-cover bg-center">
                 <div className="relative w-full flex flex-col items-center justify-center">
                     <div
-                        className="absolute inset-0 opacity-12 z-20 pointer-events-none"
+                        className="absolute inset-0 opacity-35 z-20 pointer-events-none"
                         style={{
                             backgroundImage:
                                 "url('/assets/addtocart/cat_background.png')",

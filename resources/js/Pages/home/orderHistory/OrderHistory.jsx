@@ -1303,7 +1303,7 @@ const OrderHistory = () => {
                 {paginatedData.map((item, index) => (
                     <div
                         key={index}
-                        className="w-full p-4 shadow-md rounded-lg border border-gray-400/20 flex flex-col gap-4"
+                        className="w-full p-4 shadow-xl shadow-pink-200/20 rounded-lg border border-gray-400/20 flex flex-col gap-4"
                     >
                         <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6">
                             <div className="flex flex-wrap items-center gap-6">
@@ -1352,10 +1352,10 @@ const OrderHistory = () => {
                                         <img
                                             src={subItem.img}
                                             alt="orderHistory-1"
-                                            className="mix-blend-multiply w-full h-full rounded-xl"
+                                            className="mix-blend-multiply w-full h-full rounded-full"
                                         />
                                     </div>
-                                    <div className="w-full flex flex-col gap-2 lg:gap-8">
+                                    <div className="w-full flex flex-col gap-2 lg:gap-4">
                                         <div className="flex items-center justify-between">
                                             <span className="text-lg font-semibold">
                                                 {subItem.title}
@@ -1387,9 +1387,16 @@ const OrderHistory = () => {
                                                 </span>
                                             </div>
                                             <div className="flex items-center gap-1 text-pink-500 max-[369px]:text-xs">
-                                                <a href="#">View Products</a>
-                                                <span>|</span>
-                                                <a href="#">
+                                                <a
+                                                    href="#"
+                                                    className="bg-[#D52E9C] hover:bg-[#f23bb5] p-2 rounded-lg text-white text-[14px] font-semibold hidden lg:flex"
+                                                >
+                                                    View Products
+                                                </a>
+                                                <a
+                                                    href="#"
+                                                    className="bg-[#D52E9C] hover:bg-[#f23bb5] p-2 rounded-lg text-white text-[14px] font-semibold hidden lg:flex"
+                                                >
                                                     Buy again Products
                                                 </a>
                                             </div>
