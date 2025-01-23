@@ -23,7 +23,7 @@ const CheckoutLayout = () => {
                     ></div>
                     {/* <div className="absolute inset-0 bg-custom-gradient opacity-85"></div> */}
 
-                    <div className="relative z-30 mt-4 md:px-2 w-full md:w-[85%] md:min-h-screen flex flex-col justify-start gap-14 px-6 ">
+                    <div className="relative z-30 mt-4 md:px-2 w-full md:w-[85%] md:min-h-screen flex flex-col justify-start gap-6 px-6 ">
                         {/* <Navbar navbarstyle={customNavbarstyle} /> */}
                         <NewNavbar navbarstyle={customNavbarstyle} />
 

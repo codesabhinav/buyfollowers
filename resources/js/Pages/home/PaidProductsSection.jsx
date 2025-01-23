@@ -125,14 +125,14 @@ const PaidProductsSection = () => {
                                         <img
                                             src={product.image.path}
                                             alt={product.name}
-                                            className="w-24 h-115px object-center absolute top-12 left-1/2"
+                                            className="w-[73px] h-[73px] object-center absolute top-12 left-1/2 rounded-full border-2 border-dashed border-pink-500 p-2 bg-pink-300/20"
                                             style={{
                                                 transform:
                                                     "translate(-50%, -50%)",
                                             }}
                                         />
-                                        <div className="p-4 mt-11 border border-[#F2F2F2] rounded-xl shadow-lg flex flex-col items-center justify-center gap-2 h-[14rem]">
-                                            <h2 className="text-xl font-semibold text-center mt-12">
+                                        <div className="p-4 mt-12 border border-[#F2F2F2] rounded-xl shadow-lg flex flex-col items-center justify-center gap-2 h-[12rem]">
+                                            <h2 className="text-xl font-semibold text-center mt-6">
                                                 {product.name.split("|")[0]}
                                             </h2>
                                             <p className="text-center text-sm text-gray-600">
