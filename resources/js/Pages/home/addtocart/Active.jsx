@@ -53,6 +53,7 @@ const Active = () => {
             rate: calculateRate(),
             name: productData?.name.split("|")[0],
             service: productData?.service,
+            id: productData?.id,
             discount : calculateRate() * 2,
         };
 

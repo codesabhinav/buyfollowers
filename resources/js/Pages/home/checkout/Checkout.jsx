@@ -5,7 +5,7 @@ import { Label } from "@/Components/ui/label.jsx";
 import { Input } from "@/Components/ui/input.jsx";
 import { AtSign, FilePen, Heart } from "lucide-react";
 import { Button } from "@/Components/ui/button.jsx";
-import CheckoutSlider from "./CheckoutSlider.jsx";
+import { getUserDetails, makePayment } from "../../../Helper/api.js";
 
 const Checkout = () => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -13,14 +13,30 @@ const Checkout = () => {
     const rate = queryParams.get("rate");
     const discount = queryParams.get("discount");
     const name = queryParams.get("name");
+    const productId = queryParams.get("id");
     const service = queryParams.get("service");
 
     const [paymentStatus, setPaymentStatus] = useState(null);
+    const [userId, setUserId] = useState(null);
     const [clientId, setClientId] = useState(null);
-    const [amount, setAmount] = useState("1");
-    const [showSlide, setShowSlide] = useState(false);
+    const [userEmail, setUserEmail] = useState(null);
 
     useEffect(() => {
+        const fetchUserDetails = async () => {
+            try {
+                const response = await getUserDetails();
+                if (response && response.data.id) {
+                    setUserId(response.data.id);
+                    setUserEmail(response.data.email);
+                } else {
+                    throw (error)
+                }
+            } catch (error) {
+                throw (error)
+            }
+        };
+
+        fetchUserDetails();
         const fetchClientId = async () => {
             const data = await paymentLinks("Paypal");
             if (data && data.client_id) {
@@ -33,17 +49,34 @@ const Checkout = () => {
         fetchClientId();
     }, []);
 
-    const handleApprove = (data, actions) => {
-        return actions.order
-            .capture()
-            .then((details) => {
-                console.log("Payment successful:", details);
+    const handleApprove = async (data, actions) => {
+        try {
+            const details = await actions.order.capture();
+            console.log("Payment successful:", details);
+
+            const paymentData = {
+                user_id: userId,  
+                product_id: productId, 
+                quantity: quantity,  
+                order_id: data.orderID,  
+                payer_id: details.payer.payer_id,  
+                payment_id: details.id,  
+                status: "completed", 
+                amount: rate,  
+                currency: "USD", 
+                payer_email: userEmail,  
+            };
+
+            const response = await makePayment(paymentData);
+            if (response.success) {
                 setPaymentStatus("Payment Successful");
-            })
-            .catch((error) => {
-                console.error("Payment error:", error);
+            } else {
                 setPaymentStatus("Payment Failed");
-            });
+            }
+        } catch (error) {
+            console.error("Payment error:", error);
+            setPaymentStatus("Payment Failed");
+        }
     };
 
     return (
@@ -102,7 +135,7 @@ const Checkout = () => {
                                             purchase_units: [
                                                 {
                                                     amount: {
-                                                        value: amount,
+                                                        value: rate,
                                                         currency_code: "USD",
                                                     },
                                                 },

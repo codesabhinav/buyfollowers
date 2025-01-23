@@ -47,7 +47,6 @@ export const googleLogin = async (token) => {
 export const getUserDetails = async () => {
     const token = localStorage.getItem("token");
     if (!token) return null;
-
     try {
         const response = await axios.get(`${API_BASE_URL}/my-profile`, {
             headers: {
@@ -146,3 +145,17 @@ export const paymentLinks = async (title) => {
     }
 };
 
+
+export const makePayment = async (paymentData) => {
+    try {
+        const response = await axios.post("/api/payment", paymentData, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "Content-Type": "application/json",
+            },
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
