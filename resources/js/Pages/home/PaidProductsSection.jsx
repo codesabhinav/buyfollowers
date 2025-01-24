@@ -156,14 +156,6 @@ const PaidProductsSection = () => {
                         )}
                     </CarouselContent>
                     <div className="flex items-center gap-2">
-                        {/* <ChevronLeft
-                            className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer"
-                            onClick={handlePrev}
-                        />
-                        <ChevronRight
-                            className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer"
-                            onClick={handleNext}
-                        /> */}
                         <CarouselPrevious className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
                         <CarouselNext className="bg-[#F2F2F2] p-2 size-9 rounded-full text-[#474747] cursor-pointer" />
                     </div>

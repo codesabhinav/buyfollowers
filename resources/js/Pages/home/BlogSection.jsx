@@ -51,7 +51,8 @@ const BlogSection = () => {
                     className="w-full flex flex-col items-center justify-center gap-12"
                 >
                     <CarouselContent>
-                        {blogs.map((item, index) => (
+                        {blogs.length > 0 ? (
+                        blogs.map((item, index) => (
                             <CarouselItem
                                 key={item.id}
                                 className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 p-2"
@@ -81,7 +82,10 @@ const BlogSection = () => {
                                     </div>
                                 </div>
                             </CarouselItem>
-                        ))}
+                        ))
+                    ) : (
+                        <p>No Blogs available</p>
+                    )}
                     </CarouselContent>
 
                     <div className="flex items-center gap-2">

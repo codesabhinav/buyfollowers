@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\GoogleAuthController;
+use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\PaypalController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\SettingController;
@@ -12,6 +13,11 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('my-profile', [GoogleAuthController::class, 'myProfile']);
     Route::post('logout', [GoogleAuthController::class, 'logout']);
     Route::post('payment', [PaypalController::class, 'store']);
+
+    Route::prefix('order')->group(function () {
+        Route::get('/', [OrderController::class, 'index']);
+        Route::post('/', [OrderController::class, 'store']);
+    });
 });
 
 Route::get('/settings', [SettingController::class, 'index']);

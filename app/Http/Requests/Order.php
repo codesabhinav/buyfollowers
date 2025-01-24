@@ -6,9 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class Paypal extends FormRequest
+class Order extends FormRequest
 {
-
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
@@ -17,8 +16,6 @@ class Paypal extends FormRequest
             ], 404)
         );
     }
-
-
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -37,14 +34,11 @@ class Paypal extends FormRequest
         return [
             'user_id' =>'required|exists:users,id',
             'product_id' =>'required|exists:products,id',
+            'order_id' =>'required|integer',
+            'paypal_transaction_id' =>'nullable',
             'quantity' =>'required|integer',
-            'order_id' => 'required|string',
-            'payer_id' => 'required|string',
-            'payment_id' => 'required|string',
-            'status' => 'required',
-            'amount' => 'required|numeric',
-            'currency' => 'required|string',
-            'payer_email' => 'required|email',
+            'amount' =>'required|numeric',
+            'status' =>'required',
         ];
     }
 }

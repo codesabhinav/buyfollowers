@@ -42,7 +42,7 @@ const FreeproductsSection = () => {
                                 freeProducts.slice(0, 3).map((product) => (
                                     <div
                                         key={product.id}
-                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6 h-[8rem]"
+                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6 h-[9rem]"
                                     >
                                         <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
                                             <img
@@ -62,6 +62,12 @@ const FreeproductsSection = () => {
                                                     .slice(1)
                                                     .join(" | ")}
                                             </p>
+                                            <a
+                                                href={`/add-cart/${product.id}`}
+                                                className="w-fit py-2 px-2 bg-pink-500 hover:bg-pink-600 text-white text-xs font-semibold rounded-full transition-all cursor-pointer"
+                                            >
+                                                Try for Free 🤩
+                                            </a>
                                         </div>
                                     </div>
                                 ))
@@ -80,7 +86,7 @@ const FreeproductsSection = () => {
                                 freeProducts.slice(3, 6).map((product) => (
                                     <div
                                         key={product.id}
-                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6 h-[8rem]"
+                                        className="shadow-xl p-4 rounded-xl bg-[#FFFFFF] flex items-center gap-6 h-[9rem]"
                                     >
                                         <div className="shadow-xl p-6 rounded-2xl bg-[#FFFFFF] w-36 min-[359px]:w-24 md:w-28">
                                             <img
@@ -100,6 +106,12 @@ const FreeproductsSection = () => {
                                                     .slice(1)
                                                     .join(" | ")}
                                             </p>
+                                            <a
+                                                href={`/add-cart/${product.id}`}
+                                                className="w-fit py-2 px-2 bg-pink-500 hover:bg-pink-600 text-white text-xs font-semibold rounded-full transition-all cursor-pointer"
+                                            >
+                                                Try for Free 🤩
+                                            </a>
                                         </div>
                                     </div>
                                 ))

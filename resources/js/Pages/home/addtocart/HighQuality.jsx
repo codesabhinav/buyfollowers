@@ -15,7 +15,7 @@ const HighQuality = () => {
 
     useEffect(() => {
         if (productData) {
-            setPackageQuantity(1000);
+            setPackageQuantity(productData?.max / 2);
         }
     }, [productData]);
 
@@ -55,6 +55,7 @@ const HighQuality = () => {
             name: productData?.name.split("|")[0],
             service: productData?.service,
             id: productData?.id,
+            service_type: productData?.service_type,
             discount : calculateRate() * 2,
         };
 

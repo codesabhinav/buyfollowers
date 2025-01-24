@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Resources\MediaResource;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -32,7 +33,7 @@ class Product extends Model
         'cancel' => 'boolean',
     ];
 
-    
+
     public function image()
     {
         return $this->belongsTo(Media::class, 'media_id');
@@ -42,14 +43,15 @@ class Product extends Model
     {
         $media = $this->image()->first();
         if ($media) {
-            return [
-                'id' => $media->id,
-                'name' => $media->name,
-                'path' => getFilePath($media->path),
-            ];
+            return new MediaResource($media);
         }
         $imagePath = getSocialMediaImage($this->name);
         return $imagePath ? ['path' => $imagePath] : null;
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 
     public function setRefillAttribute($value)
