@@ -1,11 +1,8 @@
 import Footer from "./home/Footer";
-import Navbar from "./home/Navbar";
-// import HomeComp from "./home/HomeComp";
 import FirstSection from "./home/FirstSection";
 import FreeproductsSection from "./home/FreeproductsSection";
 import PaidProductsSection from "./home/PaidProductsSection";
 import BlogSection from "./home/BlogSection";
-import MovingWave from "./home/MovingWave";
 import WhyBuyFollwers from "./home/WhyBuyFollwers";
 import Testimonials from "./home/Testimonials";
 import NewNavbar from "./home/NewNavbar";

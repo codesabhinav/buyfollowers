@@ -52,7 +52,7 @@ function getSocialMediaImage($name)
         'Facebook' => 'facebook.svg',
         'Twitter' => 'twitter.svg',
         'Instagram' => 'instagram.svg',
-        'TikTok' => 'tiktok.svg',
+        'TikTok' => '2_tiktok.svg',
     ];
 
     foreach ($socialMediaImages as $platform => $image) {

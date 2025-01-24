@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Footer from "../Footer";
-import Navbar from "../Navbar";
 import NewNavbar from "../NewNavbar";
 import AddtoCartHero from "./AddtoCartHero";
 import BuyFollowers from "./BuyFollowers";
@@ -8,8 +7,8 @@ import FrequentlyAnsweredQuestions from "./FrequentlyAnsweredQuestions";
 import HowToBuy from "./HowToBuy";
 import WhyshouldBuy from "./WhyshouldBuy";
 import Active from "./Active";
-import { addCart } from "../../../Helper/api.js"
-import { useProductContext } from '../../../Context/ProductContext';
+import { addCart } from "../../../Helper/api.js";
+import { useProductContext } from "../../../Context/ProductContext";
 
 const AddtoCartLayout = () => {
     const [productData, setProductData] = useState(null);
@@ -22,7 +21,7 @@ const AddtoCartLayout = () => {
         try {
             const response = await addCart(productId);
             setProductData(response.data);
-            addDynamicField('data', response.data);
+            addDynamicField("data", response.data);
         } catch (error) {
             console.error("Error fetching product data:", error);
         }
