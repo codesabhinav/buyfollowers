@@ -25,10 +25,17 @@ const CheckoutLayout = () => {
 
                     <div className="relative z-30 mt-4 md:px-2 w-full md:w-[85%] md:min-h-screen flex flex-col justify-start gap-6 px-6 ">
                         {/* <Navbar navbarstyle={customNavbarstyle} /> */}
-                        <NewNavbar navbarstyle={customNavbarstyle} />
+                        {/* <NewNavbar navbarstyle={customNavbarstyle} /> */}
 
                         {/* <AddtoCartHero /> */}
-                        <Checkout />
+                        {/* <Checkout /> */}
+                        <div className="relative z-40">
+                            <NewNavbar navbarstyle={customNavbarstyle} />
+                        </div>
+
+                        <div className="relative z-30">
+                            <Checkout />
+                        </div>
                     </div>
                 </div>
                 {/* <div className="w-full mt-10 mb-12 flex flex-col items-center gap-12 px-4 md:px-1"> */}
