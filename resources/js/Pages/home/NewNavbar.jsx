@@ -149,17 +149,6 @@ const NewNavbar = ({ navbarstyle }) => {
                         </DropdownMenuContent>
                     )}
                 </DropdownMenu>
-
-                {/* {token && (
-                    <button
-                        onClick={handleLogout}
-                        className="bg-[#D52E9C] hover:bg-[#f23bb5] p-2 rounded-lg text-white text-[14px] font-semibold"
-                    >
-                        Logout
-                    </button>
-                )}
-
-               */}
             </div>
         </div>
     );
