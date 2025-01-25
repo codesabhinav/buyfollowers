@@ -43,14 +43,9 @@ class SettingController extends Controller
 
     public function navbar()
     {
-        // Fetch paid and free products
         $paidProducts = Product::whereNot('service_type', ProductEnum::FREE)->get();
         $freeProducts = Product::where('service_type', ProductEnum::FREE)->get();
-
-        // Fetch blogs
         $blogs = Blog::all();
-
-        // Format the navbar data
         $navbarData = [
             [
                 'id' => 1,
@@ -88,7 +83,7 @@ class SettingController extends Controller
             [
                 'id' => 5,
                 'title' => 'About-us',
-                'href' => 'about-us',
+                'href' => asset('about-us'),
                 'description' => 'About us',
             ],
         ];
