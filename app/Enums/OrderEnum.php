@@ -14,4 +14,5 @@ final class OrderEnum extends Enum
     const IN_PROGRESS = 0;
     const COMPLETE = 1;
     const CANCEL = 2;
+    
 }
