@@ -19,6 +19,7 @@ class OrderResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'product' => new ProductResource($this->product),
+            'link' => $this->link,
             'order_id' => $this->order_id,
             'paypal_transaction_id' => $this->paypal_transaction_id,
             'quantity' => $this->quantity,

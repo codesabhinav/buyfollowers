@@ -3,6 +3,7 @@
 
 use App\Enums\RoleEnum;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentLinkController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\QueryController;
@@ -69,6 +70,12 @@ Route::middleware(['auth', 'isValidRole:' . RoleEnum::SUPER_ADMIN])->group(funct
             Route::get('/{payment}', [PaymentLinkController::class, 'edit'])->name('edit');
             Route::put('/{payment}', [PaymentLinkController::class, 'update'])->name('update');
             Route::delete('/{payment}', [PaymentLinkController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::prefix('orders')->name('orders.')->group(function () {
+            Route::get('/', [OrderController::class, 'index'])->name('index');
+            Route::post('/{order}', [OrderController::class, 'update'])->name('update');
+
         });
 
         Route::prefix('settings')->name('settings.')->group(function () {

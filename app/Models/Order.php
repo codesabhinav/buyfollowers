@@ -13,7 +13,8 @@ class Order extends Model
         'quantity',
         'paypal_transaction_id',
         'amount',
-        'status'
+        'status',
+        'link'
     ];
 
     public function user()

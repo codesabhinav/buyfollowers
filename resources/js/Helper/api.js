@@ -219,3 +219,21 @@ export const fetchOrderStatusData = async (orderId) => {
         throw error;
     }
 };
+
+export const checkOrderServiceType = async (serviceType) => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/order`, {
+            params: { service_type: serviceType },
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "Content-Type": "application/json",
+            },
+        });
+        if (!response.data || response.data.length === 0) {
+            return { success: false, message: "No data found" };
+        }
+        return { success: true, data: response.data };
+    } catch (error) {
+        return { success: false, message: "Failed to check service type." };
+    }
+};

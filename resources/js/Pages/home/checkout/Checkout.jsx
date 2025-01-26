@@ -5,7 +5,7 @@ import { Label } from "@/Components/ui/label.jsx";
 import { Input } from "@/Components/ui/input.jsx";
 import { AtSign, FilePen, Heart } from "lucide-react";
 import { Button } from "@/Components/ui/button.jsx";
-import { getUserDetails, makePayment, createOrder, storeOrder } from "../../../Helper/api.js";
+import { getUserDetails, makePayment, createOrder, storeOrder, checkOrderServiceType } from "../../../Helper/api.js";
 
 const Checkout = () => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -55,16 +55,25 @@ const Checkout = () => {
     const handleGrabItNowClick = async () => {
         setLoading(true);
         try {
-            const orderResult = await processOrder(quantity, userId, productId, rate);
-            if (orderResult.success) {
-                setGrabIt(orderResult.message)
-                return { success: true, message: orderResult.message };
-            } else {
-                setGrabIt(orderResult.message)
-                return { success: false, message: orderResult.message };
+            if (service_type === "1") {
+                const checkResponse = await checkOrderServiceType(service_type);
+                if (!checkResponse.success || checkResponse.message === "No data found") {
+                    const orderResult = await processOrder(quantity, userId, productId, rate);
+                    if (orderResult.success) {
+                        setGrabIt(orderResult.message);
+                        window.location.href = `/success?message=${encodeURIComponent(orderResult.message)}`;
+                        return { success: true, message: orderResult.message };
+                    } else {
+                        setGrabIt(orderResult.message);
+                        return { success: false, message: orderResult.message };
+                    }
+                } else {
+                    setGrabIt("🚫 You are not allowed to take this for free.💸❌");
+                    alert("🚫 You are not allowed to take this for free.💸❌");
+                }
             }
         } catch (error) {
-            return { success: false, message: orderResult.message };
+            return { success: false, message: error.message };
         } finally {
             setLoading(false);
         }
@@ -84,6 +93,7 @@ const Checkout = () => {
                     quantity: quantity,
                     amount: rate,
                     status: 0,
+                    link: link
                 };
 
                 const storeOrderResponse = await storeOrder(orderData);
@@ -123,6 +133,7 @@ const Checkout = () => {
                 const orderResult = await processOrder(quantity, userId, productId, rate, response.data.id);
                 if (orderResult.success) {
                     setPaymentStatus(orderResult.message);
+                    window.location.href = `/success?message=${encodeURIComponent(orderResult.message)}`;
                 } else {
                     setPaymentStatus(orderResult.message);
                 }

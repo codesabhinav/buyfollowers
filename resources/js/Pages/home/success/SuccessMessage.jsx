@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./SuccessMessage.css";
 import { Button } from "@/Components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
+
+
 const SuccessMessage = () => {
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        const queryParams = new URLSearchParams(window.location.search);
+        const messageFromUrl = queryParams.get("message");
+        if (messageFromUrl) {
+            setMessage(decodeURIComponent(messageFromUrl));
+        }
+    }, []);
+
     return (
         <div className="h-screen flex items-center justify-center px-4">
             <div className="bg-white shadow-lg p-10 text-center border-b-4 border-pink-600 w-full md:w-5/12 flex flex-col justify-center items-center gap-8">
@@ -51,19 +63,18 @@ const SuccessMessage = () => {
                 </div>
 
                 <h2 className="mt-4 text-2xl md:text-3xl font-medium text-gray-800">
-                    Your payment was successful
+                    Your Order has been Placed
                 </h2>
                 <p className="text-base md:text-lg text-gray-600">
-                    Thank you for your payment. We will be in contact with more
-                    details shortly.
+                   {message}
                 </p>
 
                 <a
-                    href="/"
+                    href="/order-history"
                     className="p-2 rounded-lg text-white bg-pink-600 hover:bg-pink-500 flex items-center gap-2"
                 >
                     <ArrowLeft />
-                    Go Back to Home
+                    Check Order History
                 </a>
             </div>
         </div>

@@ -28,7 +28,7 @@ class PaginationResource extends JsonResource
             'per_page' => $paginator->perPage(),
             'prev_page_url' => $paginator->previousPageUrl(),
             'to' => $paginator->lastItem(),
-            'status_code' => 200,
+            'success' => true,
             'message' => 'Data Listed Successfully',
         ];
     }
