@@ -47,7 +47,7 @@ Route::get('/order-history', function () {
     return Inertia::render('home/orderHistory/OrderHistoryLayout');
 });
 Route::get('/success', function () {
-    return Inertia::render('home/success/Success');
+    return Inertia::render('home/success/SuccessMessage');
 });
 
 require __DIR__ . '/auth.php';
