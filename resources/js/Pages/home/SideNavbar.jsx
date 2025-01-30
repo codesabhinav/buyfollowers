@@ -28,6 +28,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu";
+import GoogleTranslate from "@/Context/GoogleTranslate";
+
 
 const SideNavbar = () => {
     const [logo, setLogo] = useState("/assets/images/buy_followers_logo.svg");
@@ -146,6 +148,8 @@ const SideNavbar = () => {
                                     </DropdownMenuContent>
                                 )}
                             </DropdownMenu>
+                <GoogleTranslate />
+
                         </SheetTitle>
                         <SheetDescription className="pt-8 text-[16px] text-[#D52E9C]"></SheetDescription>
                     </SheetHeader>

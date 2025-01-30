@@ -7,6 +7,7 @@ import { createRoot } from "react-dom/client";
 import { getSettingByKey } from "./Helper/api";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { ProductProvider } from "./Context/ProductContext.jsx";
+import  GoogleTranslate   from "./Context/GoogleTranslate.jsx";
 
 const fetchAppName = async () => {
     const appName = await getSettingByKey("title");

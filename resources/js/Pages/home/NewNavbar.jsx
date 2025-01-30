@@ -19,6 +19,7 @@ import {
     DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu";
 import { Button } from "@/Components/ui/button";
+import GoogleTranslate from "@/Context/GoogleTranslate";
 
 const NewNavbar = ({ navbarstyle }) => {
     const [logo, setLogo] = useState("/assets/images/buy_followers_logo.svg");
@@ -80,11 +81,11 @@ const NewNavbar = ({ navbarstyle }) => {
         fetchUserDetails();
     }, []);
 
+
     return (
         <div
-            className={`flex justify-between items-center mt-2 w-full h-16 bg-white/45 rounded-full text-black p-9 ${
-                navbarstyle && navbarstyle
-            }`}
+            className={`flex justify-between items-center mt-2 w-full h-16 bg-white/45 rounded-full text-black p-9 ${navbarstyle && navbarstyle
+                }`}
         >
             <div className="mt-2">
                 <img
@@ -109,6 +110,7 @@ const NewNavbar = ({ navbarstyle }) => {
                     <DropdownMenuTrigger asChild>
                         {/* <Button variant="outline">Open</Button> */}
                         {/* <CircleUser className="text-[#D52E9C]" /> */}
+                        
                         <a
                             href="/authentication"
                             className="bg-[#D52E9C] hover:bg-[#f23bb5] p-2 rounded-lg text-white text-[14px] font-semibold hidden lg:flex"
@@ -116,8 +118,8 @@ const NewNavbar = ({ navbarstyle }) => {
                             {isLoading
                                 ? "Loading..."
                                 : userDetails?.name
-                                ? `Hello, ${userDetails.name}`
-                                : "My Account"}
+                                    ? `Hello, ${userDetails.name}`
+                                    : "My Account"}
                         </a>
                     </DropdownMenuTrigger>
                     {token && (
@@ -149,6 +151,8 @@ const NewNavbar = ({ navbarstyle }) => {
                         </DropdownMenuContent>
                     )}
                 </DropdownMenu>
+                <GoogleTranslate />
+                 
             </div>
         </div>
     );
@@ -161,13 +165,13 @@ const FlyoutLink = ({ item }) => {
     const chunkSize = 10;
     const subNavChunks = hasSubNav
         ? item.sub_navbarLinks.reduce((result, value, index) => {
-              const chunkIndex = Math.floor(index / chunkSize);
-              if (!result[chunkIndex]) {
-                  result[chunkIndex] = [];
-              }
-              result[chunkIndex].push(value);
-              return result;
-          }, [])
+            const chunkIndex = Math.floor(index / chunkSize);
+            if (!result[chunkIndex]) {
+                result[chunkIndex] = [];
+            }
+            result[chunkIndex].push(value);
+            return result;
+        }, [])
         : [];
 
     return (
@@ -205,11 +209,10 @@ const FlyoutLink = ({ item }) => {
                         <div className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white" />
                         {hasSubNav && (
                             <div
-                                className={`${
-                                    item.sub_navbarLinks.length > 10
+                                className={`${item.sub_navbarLinks.length > 10
                                         ? "w-full"
                                         : "w-full"
-                                }  bg-white p-6 shadow-xl rounded-lg flex`}
+                                    }  bg-white p-6 shadow-xl rounded-lg flex`}
                                 style={{
                                     maxHeight: "550px",
                                     overflowY: "auto",
@@ -220,11 +223,10 @@ const FlyoutLink = ({ item }) => {
                                 {subNavChunks.map((chunk, chunkIndex) => (
                                     <div
                                         key={`chunk-${chunkIndex}`}
-                                        className={`flex flex-col ${
-                                            chunkIndex > 0
+                                        className={`flex flex-col ${chunkIndex > 0
                                                 ? "ml-6 border-l-2"
                                                 : ""
-                                        }`}
+                                            }`}
                                     >
                                         {chunk.map((subItem, index) => (
                                             <div
@@ -238,8 +240,8 @@ const FlyoutLink = ({ item }) => {
                                                     {subItem.title}
                                                     {index <
                                                         chunk.length - 1 && (
-                                                        <hr className="mt-2" />
-                                                    )}
+                                                            <hr className="mt-2" />
+                                                        )}
                                                 </a>
                                             </div>
                                         ))}
