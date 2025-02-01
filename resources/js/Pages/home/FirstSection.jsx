@@ -2,8 +2,12 @@ import { Input } from "@/Components/ui/input";
 import { Search } from "lucide-react";
 import ServicesCarousel from "./ServicesCarousel";
 import { FaYoutube } from "react-icons/fa";
+import PaidProductsSection from "./PaidProductsSection";
+import { useState } from "react";
 
 const FirstSection = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+
     return (
         <>
             <div className="relative bg-transparent w-full mt-4 mb-8 xl:mt-28 flex flex-col lg:flex-row justify-between items-center gap-4 lg:gap-48 px-2">

@@ -58,8 +58,6 @@ const AddtoCartLayout = () => {
                     <WhyshouldBuy />
                     <FrequentlyAnsweredQuestions />
                 </div>
-                <Active />
-
                 <Footer />
             </div>
         </>

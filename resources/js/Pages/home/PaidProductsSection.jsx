@@ -12,7 +12,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { products } from "../../Helper/api";
 import React, { useState, useEffect } from "react";
 
-const PaidProductsSection = () => {
+const PaidProductsSection = ({ searchQuery, sectionRef }) => {
     const [paidProducts, setPaidProducts] = useState([]);
     const plugin = useRef(
         Autoplay({
@@ -40,63 +40,21 @@ const PaidProductsSection = () => {
         fetchProducts();
     }, []);
 
+    const filteredProducts = searchQuery
+        ? paidProducts.filter((product) =>
+            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        : paidProducts;
+
+    useEffect(() => {
+        if (searchQuery && sectionRef.current) {
+            sectionRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [searchQuery]);
+
     return (
         <>
-            {/* <div className="flex flex-col items-center gap-8 mt-8">
-                <h3 className="text-4xl sm:text-5xl font-bold text-pink-400">
-                    Paid products
-                </h3>
-                <Carousel
-                    plugins={[plugin.current]}
-                    opts={{
-                        align: "start",
-                        loop: true,
-                    }}
-                    className="w-full"
-                >
-                    <CarouselContent>
-                        {paidProducts.map((item, index) => (
-                            <CarouselItem
-                                key={index}
-                                className="md:basis-1/3 lg:basis-1/4"
-                            >
-                                <div className="border border-gray-300 rounded-lg overflow-hidden shadow-lg transition-all hover:scale-105 hover:shadow-xl flex flex-col items-center p-4">
-                                    <div className="w-28 mix-blend-darken">
-                                        <img
-                                            src={item.image}
-                                            alt={item.title}
-                                            className="w-full object-cover"
-                                        />
-                                    </div>
-                                    <div className="p-4">
-                                        <h2 className="text-xl font-semibold text-center mb-2">
-                                            {item.title}
-                                        </h2>
-                                        <p className="text-center text-sm text-gray-600 mb-4">
-                                            {item.description}
-                                        </p>
-                                        <div className="flex justify-center items-center gap-2 mb-4">
-                                            <span className="text-lg text-gray-400 line-through">
-                                                {item.oldAmount}
-                                            </span>
-                                            <span className="text-xl font-semibold text-green-600">
-                                                {item.newAmount}
-                                            </span>
-                                        </div>
-                                        <button className="w-full py-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-lg transition-all">
-                                            Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="absolute top-1/2 -left-4" />
-                    <CarouselNext className="absolute top-1/2 -right-4" />
-                </Carousel>
-            </div> */}
-
-            <div className="w-full md:w-[85%] flex flex-col items-center gap-16 py-20 px-4">
+            <div ref={sectionRef} className="w-full md:w-[85%] flex flex-col items-center gap-16 py-20 px-4">
                 <div className="flex flex-col gap-2 items-center">
                     <h5 className="text-lg sm:text-2xl font-semibold text-pink-400">
                         Our Paid Product
@@ -115,8 +73,8 @@ const PaidProductsSection = () => {
                     className="flex flex-col items-center justify-center"
                 >
                     <CarouselContent>
-                        {paidProducts.length > 0 ? (
-                            paidProducts.map((product) => (
+                        {filteredProducts.length > 0 ? (
+                            filteredProducts.map((product) => (
                                 <CarouselItem
                                     key={product.id}
                                     className="md:basis-1/3 lg:basis-1/4 h-72"
