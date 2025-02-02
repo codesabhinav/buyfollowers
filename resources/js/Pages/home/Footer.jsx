@@ -54,11 +54,11 @@ const Footer = () => {
                                 Links:
                             </span>
                             <li className="flex flex-col items-start gap-4 text-base font-semibold">
-                                <a href="#" className="text-nowrap">
+                                <a href="/" className="text-nowrap">
                                     Home
                                 </a>
-                                <a href="#" className="text-nowrap">
-                                    About
+                                <a href="/about-us" className="text-nowrap">
+                                    About us
                                 </a>
                                 <a href="#" className="text-nowrap">
                                     All Products
@@ -68,9 +68,6 @@ const Footer = () => {
                                 </a>
                                 <a href="#" className="text-nowrap">
                                     Blog
-                                </a>
-                                <a href="#" className="text-nowrap">
-                                    About us
                                 </a>
                             </li>
                         </div>
@@ -143,7 +140,7 @@ const Footer = () => {
                 <hr />
                 <div>
                     <span>
-                        Copyright © 2023 Buy Followers - All rights reserved.
+                        Copyright © 2025 Buy Followers - All rights reserved.
                     </span>
                 </div>
             </div>

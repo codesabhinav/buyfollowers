@@ -7,25 +7,25 @@ const howToBuyList = [
         icon: "/assets/addtocart/howtobuy_1.png",
         title: "Go for the Right One!",
         description:
-            "Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant:",
+            "Boost your social media with real, high-quality followers. Increase credibility, engagement, and organic growth instantly. Choose the best and watch your profile thrive",
     },
     {
         icon: "/assets/addtocart/howtobuy_2.png",
         title: "Information Time",
         description:
-            "Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant:",
+            "Don’t waste time—boost your social media with real followers today. Gain credibility, engagement, and organic growth instantly. Take action now for faster success",
     },
     {
         icon: "/assets/addtocart/howtobuy_3.png",
         title: "Expeditious Delivery",
         description:
-            "Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant:",
+            "Boost your social media fast! With quick follower delivery, gain increased engagement and visibility in no time. Enhance your profile efficiently and watch it grow",
     },
     {
         icon: "/assets/addtocart/howtobuy_4.png",
         title: "Perks Are Here!",
         description:
-            "Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant: secure facilities, CCTV, alarms, patrols ensuring optimal security. Safety-focused lubricant:",
+            "Unlock the benefits of a stronger social media presence today! With our service, you’ll enjoy a boost in followers, increased engagement, and enhanced credibility",
     },
 ];
 

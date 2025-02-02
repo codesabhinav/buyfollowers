@@ -11,24 +11,24 @@ import { useRef } from "react";
 
 const detailsTestimonials = [
     {
-        title: "What Clients Say About Us",
+        title: "What Clients Say About Us 😎",
         description:
-            "Our clients consistently praise us for our unparalleled expertise, unwavering commitment, and exceptional service. Their testimonials reflect a trust in our ability to deliver results, making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions. making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions.",
+            "I was preparing for a major marketing campaign and needed my social media profile to look more professional and appealing to potential clients. This service provided the perfect solution, delivering a quick boost in followers within hours. The increase in followers instantly enhanced my credibility, making my brand appear more established. Since then, I’ve noticed more interactions, inquiries, and genuine interest in my services. This service not only gave my campaign the push it needed but also set me up for long-term success",
     },
     {
-        title: "What Clients Say About Us",
+        title: "What Clients Say About Us 🤩",
         description:
-            "Our clients consistently praise us for our unparalleled expertise, unwavering commitment, and exceptional service. Their testimonials reflect a trust in our ability to deliver results, making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions. making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions.",
+            "Starting as a new influencer was challenging, as gaining visibility and engagement felt nearly impossible. However, after purchasing followers, everything changed. My content started reaching a wider audience, and more people began engaging with my posts. The increased follower count not only made my profile look more credible but also encouraged organic followers to join in. Now, my engagement has significantly improved, and my account is growing naturally. This service gave me the perfect boost I needed to kickstart my journey as an influencer",
     },
     {
-        title: "What Clients Say About Us",
+        title: "What Clients Say About Us 😊",
         description:
-            "Our clients consistently praise us for our unparalleled expertise, unwavering commitment, and exceptional service. Their testimonials reflect a trust in our ability to deliver results, making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions. making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions.",
+            "Since increasing my followers, I’ve seen a remarkable improvement in my social media engagement. My posts are getting more likes, comments, and shares than ever before. This service not only provided me with an instant credibility boost but also helped my content become more visible to a larger audience. The engagement increase has led to more organic reach, making my profile much more active and influential. I highly recommend this service to anyone looking to enhance their social media presence and grow their brand",
     },
     {
-        title: "What Clients Say About Us",
+        title: "What Clients Say About Us 💓",
         description:
-            "Our clients consistently praise us for our unparalleled expertise, unwavering commitment, and exceptional service. Their testimonials reflect a trust in our ability to deliver results, making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions. making us their preferred choice. Discover the satisfaction our clients experience with our top-notch solutions.",
+            "Investing in followers was one of the best decisions I made for my social media growth. Before using this service, my account struggled to gain traction, and I felt like my efforts weren’t being noticed. After purchasing followers, my profile looked more established, and as a result, I started gaining real, organic followers as well. The credibility boost encouraged more people to follow and engage with my content naturally. This service provided the perfect foundation for building a strong and successful online presence",
     },
 ];
 
