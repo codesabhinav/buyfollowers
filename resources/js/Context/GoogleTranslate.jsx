@@ -4,7 +4,7 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
     DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
+} from "../Components/ui/dropdown-menu";
 
 
 const GoogleTranslate = () => {
