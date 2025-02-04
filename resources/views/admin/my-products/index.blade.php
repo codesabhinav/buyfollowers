@@ -73,6 +73,8 @@
                     <th>Description</th>
                     <th>Rate</th>
                     <th>Rate Percentage</th>
+                    <td>High Quality Rate</td>
+                    <td>Active Rate</td>
                     <th>Min</th>
                     <th>Max</th>
                     <th>Refill</th>
@@ -110,6 +112,8 @@
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->rate }}</td>
                         <td>{{ $product->rate_percentage }}</td>
+                        <td>{{ $product->high_quality_rate }}</td>
+                        <td>{{ $product->active_rate }}</td>
                         <td>{{ $product->min }}</td>
                         <td>{{ $product->max }}</td>
                         @if ($product->refill == App\Enums\ProductEnum::REFILL_YES)

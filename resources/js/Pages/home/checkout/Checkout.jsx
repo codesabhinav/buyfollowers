@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { z } from "zod";
 import { paymentLinks } from "../../../Helper/api.js";
 import { Label } from "@/Components/ui/label.jsx";
 import { Input } from "@/Components/ui/input.jsx";
 import { AtSign, FilePen, Heart } from "lucide-react";
 import { Button } from "@/Components/ui/button.jsx";
 import { getUserDetails, makePayment, createOrder, storeOrder, checkOrderServiceType } from "../../../Helper/api.js";
+
+const schema = z.object({
+    link: z.string().min(1, "Link is required").regex(/^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/, "Invalid URL"),
+});
 
 const Checkout = () => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -53,6 +58,11 @@ const Checkout = () => {
     }, []);
 
     const handleGrabItNowClick = async () => {
+        const link = document.querySelector('input[type="text"]').value;
+        if (!link) {
+            alert("Link is Required!");
+            return;
+        }
         setLoading(true);
         try {
             if (service_type === "1") {
@@ -211,6 +221,11 @@ const Checkout = () => {
                                 <PayPalButtons
                                     className="w-full"
                                     createOrder={(data, actions) => {
+                                        const link = document.querySelector('input[type="text"]').value;
+                                        if (!link) {
+                                            alert("Link is Required!");
+                                            return;
+                                        }
                                         return actions.order.create({
                                             purchase_units: [
                                                 {
