@@ -15,7 +15,7 @@ export default {
         extend: {
             screens: {},
             backgroundImage: {
-                'desktop': "url('assets/images/herorobgimg.png')",
+                'desktop': "url('../assets/images/herorobgimg.png')",
                 'mobile': "url('assets/images/mobile-bg.png')",
             },
             fontFamily: {
