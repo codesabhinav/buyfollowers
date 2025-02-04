@@ -19,7 +19,7 @@ import {
     DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu";
 import { Button } from "@/Components/ui/button";
-// import GoogleTranslate from "@/Context/GoogleTranslate";
+import GoogleTranslate from "@/Context/GoogleTranslate";
 
 const NewNavbar = ({ navbarstyle }) => {
     const [logo, setLogo] = useState("/assets/images/buy_followers_logo.svg");
@@ -151,7 +151,8 @@ const NewNavbar = ({ navbarstyle }) => {
                         </DropdownMenuContent>
                     )}
                 </DropdownMenu>
-                {/* <GoogleTranslate /> */}
+                <GoogleTranslate />
+                 
             </div>
         </div>
     );
