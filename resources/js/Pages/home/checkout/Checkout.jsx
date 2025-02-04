@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { z } from "zod";
 import { paymentLinks } from "../../../Helper/api.js";
-import { Label } from "@/Components/ui/label.jsx";
+import { Label } from "../../../Components/ui/label.jsx";
 import { Input } from "@/Components/ui/input.jsx";
 import { AtSign, FilePen, Heart } from "lucide-react";
 import { Button } from "@/Components/ui/button.jsx";
