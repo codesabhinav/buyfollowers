@@ -14,6 +14,7 @@ const fetchAppName = async () => {
     return appName || "Buy Followers";
 };
 
+
 const fetchGoogleClientId = async () => {
     const googleClientId = await getSettingByKey("google_client_id");
     return googleClientId;
