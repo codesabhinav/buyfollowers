@@ -44,10 +44,6 @@ const GoogleTranslate = () => {
         const googleTranslateDropdown = document.querySelector(".goog-te-combo");
         googleTranslateDropdown.value = lang;
         googleTranslateDropdown.dispatchEvent(new Event("change"));
-        setTimeout(()=>{
-            window.location.reload();
-        },200);
-       
     };
 
     return (
